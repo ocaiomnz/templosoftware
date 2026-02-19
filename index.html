@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Templo Software • engenharia sob medida</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* cores fornecidas */
+        :root {
+            --primary-100: #FF6600;
+            --primary-200: #ff983f;
+            --primary-300: #ffffa1;
+            --accent-100: #F5F5F5;
+            --accent-200: #929292;
+            --text-100: #FFFFFF;
+            --text-200: #e0e0e0;
+            --bg-100: #1D1F21;
+            --bg-200: #2c2e30;
+            --bg-300: #444648;
+        }
+
+        body {
+            background-color: var(--bg-100);
+            color: var(--text-100);
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.5;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* background pontilhado interativo (dots que seguem o mouse) */
+        #dot-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.5;
+        }
+
+        .content {
+            position: relative;
+            z-index: 5;
+        }
+
+        /* header */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem 5%;
+            background-color: rgba(29, 31, 33, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--bg-300);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .logo-placeholder {
+            background: linear-gradient(145deg, var(--primary-200), var(--primary-100));
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--bg-100);
+            box-shadow: 0 8px 16px rgba(255, 102, 0, 0.3);
+        }
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            background: linear-gradient(to right, var(--text-100), var(--primary-200));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .logo-sub {
+            color: var(--accent-200);
+            font-size: 0.9rem;
+            margin-top: 4px;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            font-weight: 500;
+        }
+        .nav-links a {
+            color: var(--text-200);
+            text-decoration: none;
+            transition: 0.2s;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 4px;
+            cursor: pointer;
+        }
+        .nav-links a:hover {
+            color: var(--primary-100);
+            border-bottom-color: var(--primary-100);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* seções gerais */
+        section {
+            padding: 5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+        .hero-left {
+            flex: 1 1 400px;
+        }
+        .hero-left h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            background: linear-gradient(135deg, var(--text-100) 20%, var(--primary-200) 80%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1.5rem;
+        }
+        .hero-left p {
+            font-size: 1.3rem;
+            color: var(--text-200);
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+        }
+        .btn {
+            background: var(--primary-100);
+            color: var(--bg-100);
+            font-weight: 600;
+            padding: 0.9rem 2.5rem;
+            border-radius: 60px;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 8px 20px rgba(255, 102, 0, 0.4);
+            display: inline-block;
+        }
+        .btn:hover {
+            background: var(--primary-200);
+            transform: scale(1.02);
+            box-shadow: 0 12px 28px rgba(255, 152, 63, 0.6);
+        }
+        .hero-right {
+            flex: 1 1 400px;
+            display: flex;
+            justify-content: center;
+        }
+        .tech-globe {
+            background: radial-gradient(circle at 30% 30%, var(--bg-200), transparent 70%);
+            padding: 2rem;
+            border-radius: 40px;
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--bg-300);
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem 2.5rem;
+        }
+        .tech-item {
+            font-size: 1.8rem;
+            font-weight: 600;
+            background: rgba(255,255,255,0.02);
+            padding: 0.8rem 1.2rem;
+            border-radius: 30px;
+            text-align: center;
+            border: 1px solid var(--bg-300);
+            transition: 0.2s;
+            color: var(--primary-200);
+        }
+        .tech-item:hover {
+            border-color: var(--primary-100);
+            box-shadow: 0 0 25px var(--primary-100);
+            transform: translateY(-4px);
+        }
+
+        /* cards com efeito brilho */
+        .card-grid {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+        .glass-card {
+            background: rgba(44, 46, 48, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--bg-300);
+            border-radius: 32px;
+            padding: 2rem;
+            flex: 1 1 280px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .glass-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,102,0,0.2) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s;
+            pointer-events: none;
+        }
+        .glass-card:hover {
+            border-color: var(--primary-100);
+            transform: scale(1.01) translateY(-6px);
+            box-shadow: 0 20px 40px rgba(255, 102, 0, 0.3);
+        }
+        .glass-card:hover::after {
+            opacity: 1;
+        }
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .glass-card h3 {
+            font-size: 1.8rem;
+            color: var(--primary-100);
+            margin-bottom: 1rem;
+        }
+        .glass-card p {
+            color: var(--text-200);
+        }
+
+        /* carrossel parceiros */
+        .carrossel-container {
+            background: var(--bg-200);
+            border-radius: 60px;
+            padding: 2.5rem 2rem;
+            margin: 3rem 0;
+            border: 1px solid var(--bg-300);
+            position: relative;
+        }
+        .carrossel-track {
+            display: flex;
+            gap: 4rem;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 1rem 0.5rem;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary-100) var(--bg-300);
+        }
+        .carrossel-track::-webkit-scrollbar {
+            height: 6px;
+        }
+        .carrossel-track::-webkit-scrollbar-thumb {
+            background: var(--primary-100);
+            border-radius: 20px;
+        }
+        .partner-logo {
+            flex: 0 0 140px;
+            height: 100px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem;
+            border: 1px solid var(--bg-300);
+            transition: 0.2s;
+            filter: drop-shadow(0 0 8px rgba(255,102,0,0.3));
+            background-color: rgba(0,0,0,0.2);
+            backdrop-filter: blur(4px);
+        }
+        .partner-logo:hover {
+            border-color: var(--primary-100);
+            transform: scale(1.08);
+        }
+        .partner-logo img {
+            max-width: 100%;
+            max-height: 80px;
+            object-fit: contain;
+            filter: brightness(0) invert(1) drop-shadow(0 0 4px var(--primary-100));
+            opacity: 0.9;
+            transition: 0.2s;
+        }
+        .partner-logo:hover img {
+            opacity: 1;
+            filter: brightness(1) invert(0) drop-shadow(0 0 6px var(--primary-200));
+        }
+        .partner-logo span {
+            color: var(--text-200);
+            font-weight: 500;
+            font-size: 1.2rem;
+        }
+
+        /* iframe instagram */
+        .instagram-embed {
+            background: var(--bg-200);
+            border-radius: 40px;
+            padding: 2rem;
+            border: 1px solid var(--bg-300);
+            margin: 3rem 0;
+            text-align: center;
+        }
+        .instagram-iframe {
+            width: 100%;
+            max-width: 600px;
+            height: 460px;
+            margin: 2rem auto 0;
+            border: 2px solid var(--primary-200);
+            border-radius: 30px;
+            background: white;
+        }
+        .insta-note {
+            color: var(--primary-200);
+            font-weight: 400;
+            margin-top: 1rem;
+        }
+
+        /* seção automação / métricas */
+        .automation-highlight {
+            background: linear-gradient(145deg, var(--bg-200), var(--bg-100));
+            border-radius: 70px;
+            padding: 3rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 3rem;
+            border: 1px solid var(--primary-100);
+            margin-top: 4rem;
+        }
+        .metrics-text {
+            flex: 2 1 300px;
+        }
+        .metrics-text h2 {
+            font-size: 2.6rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-100);
+        }
+        .metrics-text p {
+            font-size: 1.3rem;
+            color: var(--text-200);
+        }
+        .metrics-badge {
+            flex: 1 1 200px;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .metric-item {
+            background: var(--bg-300);
+            border-radius: 40px;
+            padding: 1.5rem;
+            min-width: 140px;
+            text-align: center;
+            border: 1px solid var(--primary-200);
+        }
+        .metric-number {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--primary-100);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2.5rem;
+            border-top: 1px solid var(--bg-300);
+            color: var(--accent-200);
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: var(--bg-200);
+            border: 2px solid var(--primary-100);
+            border-radius: 40px;
+            padding: 3rem;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+            box-shadow: 0 20px 40px rgba(255, 102, 0, 0.3);
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--text-200);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .modal-close:hover {
+            color: var(--primary-100);
+        }
+
+        .modal-content h2 {
+            color: var(--primary-100);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-content p {
+            color: var(--text-200);
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-content ul {
+            color: var(--text-200);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-left: 1.5rem;
+        }
+
+        .modal-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-content li::marker {
+            color: var(--primary-100);
+        }
+
+        .modal-btn {
+            margin-top: 1.5rem;
+            background: transparent;
+            color: var(--primary-100);
+            border: 2px solid var(--primary-100);
+            padding: 0.8rem 2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .modal-btn:hover {
+            background: var(--primary-100);
+            color: var(--bg-100);
+        }
+
+        /* responsividade */
+        @media (max-width: 700px) {
+            .header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .hero {
+                flex-direction: column;
+            }
+        }
+    </style>
+    <!-- Importando fonte Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- canvas interativo de fundo (pontilhado que segue o mouse) -->
+    <canvas id="dot-canvas"></canvas>
+
+    <!-- Modais -->
+    <div class="modal-overlay" id="modalQuemSomos">
+        <div class="modal-content">
+            <button class="modal-close" onclick="fecharModal('modalQuemSomos')">&times;</button>
+            <h2>🏛️ quem somos</h2>
+            <p>A Templo Software nasceu em 2025 com uma missão clara: unir a solidez da engenharia de software com a agilidade que o mercado moderno exige.</p>
+            <p>Somos um time de arquitetos e desenvolvedores obcecados por performance, código limpo e soluções que realmente fazem a diferença no dia a dia das empresas.</p>
+            <p><strong>Nossos pilares:</strong></p>
+            <ul>
+                <li>Excelência técnica em Node.js, Python, C e JavaScript</li>
+                <li>Automação inteligente de processos</li>
+                <li>Dados como centro da tomada de decisão</li>
+                <li>Parceria de longo prazo com nossos clientes</li>
+            </ul>
+            <button class="modal-btn" onclick="fecharModal('modalQuemSomos')">fechar</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modalOQueFazemos">
+        <div class="modal-content">
+            <button class="modal-close" onclick="fecharModal('modalOQueFazemos')">&times;</button>
+            <h2>⚙️ o que fazemos</h2>
+            <p>Desenvolvimento de software sob medida para empresas que buscam eficiência, escalabilidade e resultados mensuráveis.</p>
+            <p><strong>Nossas especialidades:</strong></p>
+            <ul>
+                <li>Sistemas ERP personalizados</li>
+                <li>Dashboards interativos com métricas em tempo real</li>
+                <li>APIs e integrações entre sistemas</li>
+                <li>Automação de processos repetitivos</li>
+                <li>Consultoria em arquitetura de software</li>
+                <li>Migração e modernização de sistemas legados</li>
+            </ul>
+            <p>Cada linha de código é pensada para gerar valor real ao seu negócio, com foco em performance e experiência do usuário.</p>
+            <button class="modal-btn" onclick="fecharModal('modalOQueFazemos')">fechar</button>
+        </div>
+    </div>
+
+    <div class="content">
+        <!-- header -->
+        <header class="header">
+            <div class="logo-area">
+                <div class="logo-placeholder" id="logoImg">🦫</div>
+                <div>
+                    <br>
+                    <img src="/templologo.png" style="width: 15rem;" alt="Templo Software">
+                    <div class="logo-sub">est. 2025 · código e estratégia</div>
+                </div>
+            </div>
+            <nav class="nav-links">
+                <a onclick="abrirModal('modalQuemSomos')">quem somos</a>
+                <a onclick="abrirModal('modalOQueFazemos')">o que fazemos</a>
+                <a href="#parceiros">parceiros</a>
+                <a href="https://wa.me/5579998457800?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20da%20Templo%20Software" target="_blank">contato</a>
+            </nav>
+        </header>
+
+        <!-- seção hero: quem somos + tecnologias -->
+        <section>
+            <div class="hero">
+                <div class="hero-left">
+                    <h1>engenharia de software sob medida</h1>
+                    <p>Na Templo, unimos tradição de código e inovação em automação. 
+                    Desde 2025 transformando dados em decisões para empresas de todos os portes.</p>
+                    <a href="https://wa.me/5579998457800?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20da%20Templo%20Software" target="_blank" class="btn">fale com o time</a>
+                </div>
+                <div class="hero-right">
+                    <div class="tech-globe">
+                        <div class="tech-item">Node.js</div>
+                        <div class="tech-item">JS/TS</div>
+                        <div class="tech-item">Python</div>
+                        <div class="tech-item">C · C++</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- cards "o que fazemos" e "quem somos" com efeito brilho -->
+        <section>
+            <div class="card-grid">
+                <div class="glass-card" onclick="abrirModal('modalQuemSomos')" style="cursor: pointer;">
+                    <div class="card-icon">🏛️</div>
+                    <h3>quem somos</h3>
+                    <p>Um time de arquitetos de software obcecados por performance. 
+                    Entregamos soluções que unem o sólido ao moderno — nascemos em 2025 
+                    para redefinir como empresas usam tecnologia.</p>
+                </div>
+                <div class="glass-card" onclick="abrirModal('modalOQueFazemos')" style="cursor: pointer;">
+                    <div class="card-icon">⚙️</div>
+                    <h3>o que fazemos</h3>
+                    <p>Desenvolvimento de softwares sob medida: ERPs, dashboards, sistemas de automação. 
+                    Cada linha de código é pensada para escalar e gerar valor real ao negócio.</p>
+                </div>
+                <div class="glass-card">
+                    <div class="card-icon">📈</div>
+                    <h3>automação + métricas</h3>
+                    <p>Automatize processos, meça cada etapa. Nossos sistemas captam dados 
+                    e os transformam em KPIs acionáveis. O futuro da sua empresa orientado a resultados.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- carrossel de empresas parceiras -->
+        <section id="parceiros">
+            <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">🏢 <span style="color: var(--primary-100);">parceiros</span> que confiam</h2>
+            <div class="carrossel-container">
+                <div class="carrossel-track" id="partnerTrack">
+                    <div class="partner-logo"><img src="/_4a7a36bb73a6e5a04be76586b482f69568402671101252_22513208.png" alt="logo cliente 1"><span>Valor Imobiliária</span></div>
+                    <div class="partner-logo"><img src="/logoajn1-pwsqc4widh06fk8agyywa3ttlj6z2o3becid2a2z28 (1).png" alt="logo 2"><span>AJN1</span></div>
+                    <div class="partner-logo"><img src="/RO-ACONTECE.png" alt="logo3"><span>RO Acontece</span></div>
+                    <div class="partner-logo"><img src="/BRANCA (1).png" alt="logo4"><span>Maya Cantor</span></div>
+                </div>
+                <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 1.5rem;">
+                    <button class="btn" style="padding: 0.6rem 1.8rem;" onclick="document.getElementById('partnerTrack').scrollBy({left: -300, behavior:'smooth'})">←</button>
+                    <button class="btn" style="padding: 0.6rem 1.8rem;" onclick="document.getElementById('partnerTrack').scrollBy({left: 300, behavior:'smooth'})">→</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- iframe instagram @templosoftware -->
+        <section>
+            <div class="instagram-embed">
+                <h2 style="color: var(--primary-100);">📸 @templosoftware</h2>
+                <p style="color: var(--text-200);">acompanhe nossos bastidores e novidades</p>
+                <div class="instagram-iframe">
+                    <iframe src="https://www.instagram.com/templosoftware/embed" width="100%" height="100%" frameborder="0" scrolling="no" allowtransparency="true" style="border-radius:28px; background: #f5f5f5;"></iframe>
+                </div>
+                <p class="insta-note">⏰ feed dinâmico • siga @templosoftware</p>
+            </div>
+        </section>
+
+        <!-- destaque automação: métricas e futuro melhor -->
+        <section>
+            <div class="automation-highlight">
+                <div class="metrics-text">
+                    <h2>dados são o novo templo</h2>
+                    <p>Automações inteligentes capturam cada clique, cada processo. Nós transformamos isso em métricas claras de ROI, conversão e eficiência. Mais do que código, entregamos direção.</p>
+                </div>
+                <div class="metrics-badge">
+                    <div class="metric-item"><span class="metric-number">+63%</span><br> eficiência</div>
+                    <div class="metric-item"><span class="metric-number">2.5x</span><br> mais dados</div>
+                    <div class="metric-item"><span class="metric-number">100%</span><br> rastreabilidade</div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>templo software • desde 2025 • forjado em código e automação</p>
+        </footer>
+    </div>
+
+    <!-- scripts -->
+    <script>
+        // Funções dos modais
+        function abrirModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function fecharModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Fechar modal ao clicar fora
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                event.target.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Fechar com ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                document.querySelectorAll('.modal-overlay.active').forEach(modal => {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            }
+        });
+
+        // Background pontilhado
+        (function() {
+            const canvas = document.getElementById('dot-canvas');
+            const ctx = canvas.getContext('2d');
+            let mouseX = 0, mouseY = 0;
+            let dots = [];
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                initDots();
+            }
+
+            function initDots() {
+                const w = canvas.width;
+                const h = canvas.height;
+                const spacing = 35;
+                dots = [];
+                for (let x = 0; x < w; x += spacing) {
+                    for (let y = 0; y < h; y += spacing) {
+                        dots.push({ x: x + 10, y: y + 10, baseX: x + 10, baseY: y + 10 });
+                    }
+                }
+            }
+
+            function drawDots() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                const radius = 2.2;
+                const influenceRadius = 110;
+
+                for (let dot of dots) {
+                    let dx = mouseX - dot.baseX;
+                    let dy = mouseY - dot.baseY;
+                    let dist = Math.sqrt(dx*dx + dy*dy);
+                    let moveX = 0, moveY = 0;
+
+                    if (dist < influenceRadius) {
+                        let force = (1 - dist / influenceRadius) * 15;
+                        let angle = Math.atan2(dy, dx);
+                        moveX = -Math.cos(angle) * force;
+                        moveY = -Math.sin(angle) * force;
+                    }
+
+                    let x = dot.baseX + moveX;
+                    let y = dot.baseY + moveY;
+                    let intensity = 0.3 + (1 - Math.min(dist, influenceRadius) / influenceRadius) * 0.5;
+                    ctx.fillStyle = `rgba(255, 152, 63, ${intensity})`;
+                    ctx.beginPath();
+                    ctx.arc(x, y, radius, 0, 2 * Math.PI);
+                    ctx.fill();
+                }
+                requestAnimationFrame(drawDots);
+            }
+
+            window.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
+
+            window.addEventListener('resize', () => {
+                resizeCanvas();
+            });
+
+            resizeCanvas();
+            drawDots();
+        })();
+    </script>
+</body>
+</html>
