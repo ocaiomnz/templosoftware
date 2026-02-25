@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Domus CRM · gestão imobiliária</title>
+  <!-- Be Vietnam Pro (Google Fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      background-color: #f6f7ec;
+      color: #1f2937;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    :root {
+      --cream-bg: #f6f7ec;
+      --white: #ffffff;
+      --soft-mint: #eef1e2;
+      --green-deep: #2e6417;
+      --green-dark: #255012;
+      --green-darker: #1e3f0e;
+      --green-soft-bg: #dcebd4;
+      --green-bright: #3f8a1f;
+      --green-light-bg: #e6f4df;
+      --gray-dark: #1f2937;
+      --gray-medium: #4b5563;
+      --gray-light: #9ca3af;
+      --gray-border: #e5e7eb;
+      --gray-border-strong: #d1d5db;
+      --red-error: #dc2626;
+      --amber-warning: #d97706;
+      --blue-info: #2563eb;
+    }
+
+    /* Following dots background */
+    #dots-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .dot-particle {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      background-color: #2e6417;
+      border-radius: 50%;
+      opacity: 0.12;
+      transition: transform 0.25s ease, opacity 0.25s ease, background-color 0.25s ease;
+      pointer-events: none;
+      will-change: transform;
+    }
+
+    .dot-particle.active {
+      opacity: 0.35;
+      background-color: #3f8a1f;
+      transform: scale(1.6);
+      box-shadow: 0 0 12px #8bc34a;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* tipografia responsiva */
+    h1 {
+      font-size: clamp(26px, 7vw, 32px);
+      font-weight: 700;
+      color: #1f2937;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      font-size: clamp(20px, 5vw, 24px);
+      font-weight: 600;
+      color: #1f2937;
+      line-height: 1.3;
+    }
+
+    h3 {
+      font-size: clamp(16px, 4.5vw, 18px);
+      font-weight: 600;
+      color: #2e6417;
+    }
+
+    .body-large {
+      font-size: 16px;
+      font-weight: 400;
+      color: #1f2937;
+    }
+
+    .body-default, p, .text-secondary, .text-disabled {
+      font-size: 14px;
+    }
+
+    .text-secondary { color: #4b5563; }
+    .text-disabled { color: #9ca3af; }
+
+    .highlight-primary {
+      font-size: 15px;
+      font-weight: 600;
+      color: #2e6417;
+    }
+
+    .label-button {
+      font-size: 14px;
+      font-weight: 600;
+      color: #ffffff;
+      background-color: #2e6417;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 22px;
+      border-radius: 40px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+      line-height: 1;
+      box-shadow: 0 4px 10px rgba(46, 100, 23, 0.2);
+      white-space: nowrap;
+    }
+    .label-button:hover {
+      background-color: #255012;
+      box-shadow: 0 8px 16px rgba(37, 80, 18, 0.25);
+    }
+    .label-button i { margin-left: 6px; }
+
+    .link-default {
+      font-size: 14px;
+      font-weight: 500;
+      color: #2e6417;
+      text-decoration: none;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+    .link-default:hover {
+      color: #255012;
+      text-decoration: underline;
+    }
+
+    .error-text { font-size: 13px; font-weight: 500; color: #dc2626; }
+    .warning-text { font-size: 13px; font-weight: 500; color: #d97706; }
+    .success-text { font-size: 13px; font-weight: 500; color: #3f8a1f; }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(4px);
+      border: 1px solid var(--gray-border);
+      border-radius: 28px;
+      padding: 20px;
+      box-shadow: 0 20px 40px -12px rgba(0, 32, 0, 0.15);
+      transition: all 0.2s;
+    }
+
+    .tech-glow {
+      background: linear-gradient(145deg, #ffffff, #eef1e2);
+      border-radius: 40px;
+      padding: 4px 14px;
+      display: inline-block;
+      border: 1px solid #dcebd4;
+      box-shadow: 0 0 16px #e6f4df;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    /* header */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .logo-img {
+      width: auto;
+      height: 32px;
+      max-width: 120px;
+      object-fit: contain;
+    }
+
+    .dev-badge {
+      background-color: #dbeafe;
+      color: #2563eb;
+      padding: 5px 12px;
+      border-radius: 40px;
+      font-size: 12px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      border: 1px solid #a5c9ff;
+      white-space: nowrap;
+    }
+    .dev-badge i { font-size: 14px; }
+
+    /* hero */
+    .hero {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      padding: 30px 0 20px;
+      flex-direction: column;
+    }
+    @media (min-width: 900px) {
+      .hero { flex-direction: row; }
+    }
+
+    .hero-content {
+      flex: 1;
+      width: 100%;
+    }
+    .hero-content .highlight-primary {
+      margin-bottom: 12px;
+      display: block;
+    }
+    .hero-content h1 { margin-bottom: 16px; }
+    .hero-content p.body-large {
+      margin-bottom: 28px;
+      color: #4b5563;
+      max-width: 100%;
+      font-size: 15px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-visual {
+      flex: 1;
+      width: 100%;
+      background: linear-gradient(130deg, #ffffff, #eef1e2);
+      border-radius: 40px;
+      padding: 24px 20px;
+      border: 1px solid #dcebd4;
+      box-shadow: 0 30px 40px -20px rgba(30, 63, 14, 0.3);
+    }
+
+    .pill {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      padding: 6px 14px;
+      border-radius: 60px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #1f2937;
+      white-space: nowrap;
+    }
+    .pill.green {
+      background: #e6f4df;
+      border-color: #bcddaf;
+      color: #1e3f0e;
+    }
+
+    /* módulos */
+    .section-title {
+      text-align: center;
+      margin: 50px 0 30px;
+    }
+    .section-title h2 { margin-bottom: 6px; }
+
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 16px;
+    }
+    .module-item {
+      background-color: var(--white);
+      border-radius: 20px;
+      padding: 16px 8px;
+      text-align: center;
+      border: 1px solid var(--gray-border);
+      transition: 0.15s;
+    }
+    .module-item i {
+      font-size: 24px;
+      color: #2e6417;
+      background: #eef1e2;
+      padding: 10px;
+      border-radius: 50px;
+      margin-bottom: 12px;
+    }
+    .module-item strong { font-size: 14px; display: block; margin-bottom: 4px; }
+    .module-item span { font-size: 12px; }
+
+    /* RF showcase */
+    .rf-showcase {
+      background-color: #ffffff;
+      border-radius: 36px;
+      padding: 28px 20px;
+      margin: 40px 0;
+      border: 1px solid #eef1e2;
+      box-shadow: 0 20px 40px -20px rgba(0,0,0,0.1);
+    }
+    .rf-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 20px;
+    }
+    @media (min-width: 600px) {
+      .rf-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 900px) {
+      .rf-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .rf-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .rf-item .dot-glow {
+      width: 8px;
+      height: 8px;
+      background-color: #3f8a1f;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #3f8a1f;
+      margin-top: 5px;
+      flex-shrink: 0;
+    }
+    .rf-item strong { color: #1e3f0e; font-weight: 600; font-size: 14px; }
+    .rf-item .body-default { font-size: 13px; }
+
+    /* stack row */
+    .stack-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      background: #eef1e2;
+      border-radius: 60px;
+      padding: 16px 20px;
+      margin: 40px 0;
+    }
+    .stack-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 500;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .templo-badge {
+      background: #1f2937;
+      color: white;
+      padding: 14px 24px;
+      border-radius: 60px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 600;
+      margin: 24px 0;
+      font-size: 14px;
+    }
+
+    /* painel tempo real */
+    .real-time-panel {
+      background: #eef1e2;
+      border-radius: 36px;
+      padding: 28px 20px;
+      margin: 32px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    @media (min-width: 700px) {
+      .real-time-panel { flex-direction: row; }
+    }
+    .rt-left { flex: 1; }
+    .rt-right {
+      flex: 1;
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 22px;
+      border: 1px solid #dcebd4;
+      box-shadow: 0 0 0 2px #e6f4df;
+    }
+
+    /* footer */
+    footer {
+      border-top: 1px solid #d1d5db;
+      padding: 28px 0;
+      margin-top: 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: center;
+      text-align: center;
+    }
+    @media (min-width: 600px) {
+      footer { flex-direction: row; justify-content: space-between; }
+    }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .footer-links a { font-size: 13px; white-space: nowrap; }
+
+    /* ajustes gerais para toque */
+    .label-button, .link-default, .module-item {
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .module-item:active { transform: scale(0.98); }
+  </style>
+</head>
+<body>
+  <div id="dots-background"></div>
+
+  <div class="container">
+    <!-- cabeçalho -->
+    <nav class="navbar">
+      <img src="logodomus.png" alt="Domus CRM" class="logo-img" style="width:120px; height:auto; margin-top:6px;">
+      <div class="dev-badge">
+        <i class="bi bi-code-slash"></i> Templo Software
+      </div>
+    </nav>
+
+    <!-- hero -->
+    <div class="hero">
+      <div class="hero-content">
+        <span class="highlight-primary"><i class="bi bi-house-door" style="margin-right:6px;"></i>plataforma imobiliária SaaS</span>
+        <h1>Gestão completa para imobiliárias & corretores</h1>
+        <p class="body-large text-secondary">Multi-tenant, modular, escalável — monolith com mentalidade de microsserviços. Desenvolvido pela Templo Software.</p>
+        <div class="hero-actions">
+          <a href="#" class="label-button">Acompanhar evolução <i class="bi bi-arrow-right"></i></a>
+          <a href="#" class="link-default"><i class="bi bi-github"></i> roadMap</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px;">
+          <span class="tech-glow"><i class="bi bi-database" style="color:#2e6417;"></i> PostgreSQL</span>
+          <span class="tech-glow"><i class="bi bi-lightning-charge" style="color:#d97706;"></i> Redis</span>
+          <span class="tech-glow"><i class="bi bi-braces" style="color:#2563eb;"></i> NestJS</span>
+        </div>
+        <div style="background: #ffffff; border-radius: 24px; padding: 18px; box-shadow: 0 8px 25px #dcebd4;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 14px;">
+            <h3 style="font-size: 15px;">🔍 últimos imóveis</h3>
+            <span class="success-text" style="font-size:12px;">+22% leads</span>
+          </div>
+          <div style="display: flex; gap:8px; flex-wrap: wrap;">
+            <span class="pill green">apto 142m²</span>
+            <span class="pill">casa 3 suítes</span>
+            <span class="pill green">cobertura</span>
+            <span class="pill">comercial</span>
+          </div>
+          <div style="margin-top: 18px; background:#eef1e2; border-radius: 18px; padding: 14px;">
+            <p class="text-secondary" style="font-size:13px;">filtros avançados · pipeline visual · <span class="highlight-primary">RF08</span></p>
+          </div>
+        </div>
+        <p class="text-disabled" style="margin-top: 16px; display: flex; gap:14px; flex-wrap: wrap; justify-content:center;">
+          <span><i class="bi bi-shield-check" style="color:#2e6417;"></i> LGPD</span>
+          <span><i class="bi bi-lock" style="color:#2e6417;"></i> RBAC</span>
+          <span><i class="bi bi-journal-code" style="color:#2e6417;"></i> auditoria</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- módulos -->
+    <div class="section-title">
+      <h2>arquitetura modular · preparado para o futuro</h2>
+    </div>
+    <div class="modules-grid">
+      <div class="module-item"><i class="bi bi-key"></i><br><strong>Auth</strong><br><span class="text-secondary">RBAC+2FA</span></div>
+      <div class="module-item"><i class="bi bi-building"></i><br><strong>Organização</strong><br><span class="text-secondary">multi‑tenant</span></div>
+      <div class="module-item"><i class="bi bi-funnel"></i><br><strong>CRM</strong><br><span class="text-secondary">leads & funil</span></div>
+      <div class="module-item"><i class="bi bi-house"></i><br><strong>Imóveis</strong><br><span class="text-secondary">mídia + filtros</span></div>
+      <div class="module-item"><i class="bi bi-file-text"></i><br><strong>Contratos</strong><br><span class="text-secondary">workflow</span></div>
+      <div class="module-item"><i class="bi bi-cash-coin"></i><br><strong>Financeiro</strong><br><span class="text-secondary">receb./inadimpl.</span></div>
+      <div class="module-item"><i class="bi bi-credit-card"></i><br><strong>Assinaturas</strong><br><span class="text-secondary">SaaS</span></div>
+      <div class="module-item"><i class="bi bi-bell"></i><br><strong>Notificações</strong><br><span class="text-secondary">webhook/api</span></div>
+      <div class="module-item"><i class="bi bi-journal"></i><br><strong>Auditoria</strong><br><span class="text-secondary">logs</span></div>
+    </div>
+
+    <!-- RF -->
+    <div class="rf-showcase">
+      <h3 style="margin-bottom: 6px;">✓ requisitos funcionais (RF)</h3>
+      <p class="text-secondary" style="margin-bottom: 20px;">18 tópicos · monolith escalável · <span class="highlight-primary">99,8% disponibilidade</span></p>
+      <div class="rf-grid">
+        <div class="rf-item"><span class="dot-glow"></span><div><strong>RF01-04</strong> <span class="body-default">imóveis, locadores, locatários</span></div></div>
+        <div class="rf-item"><span class="dot-glow"></span><div><strong>RF05-07</strong> <span class="body-default">catálogo, recebimentos, despesas</span></div></div>
+        <div class="rf-item"><span class="dot-glow"></span><div><strong>RF08-10</strong> <span class="body-default">CRM pipeline, API, webhooks</span></div></div>
+        <div class="rf-item"><span class="dot-glow"></span><div><strong>RF11-13</strong> <span class="body-default">RBAC, auditoria, workflow contratos</span></div></div>
+        <div class="rf-item"><span class="dot-glow"></span><div><strong>RF14-16</strong> <span class="body-default">notificações, dashboard, relatórios</span></div></div>
+        <div class="rf-item"><span class="dot-glow"></span><div><strong>RF17-18</strong> <span class="body-default">backup, multi-imobiliária</span></div></div>
+      </div>
+      <div style="margin-top: 24px;"><span class="success-text"><i class="bi bi-check-circle"></i> + não funcionais: lgpd, tempo real, websocket</span></div>
+    </div>
+
+    <!-- stack -->
+    <div class="stack-row">
+      <span class="stack-item"><i class="bi bi-database" style="color:#1e3f0e;"></i> PostgreSQL</span>
+      <span class="stack-item"><i class="bi bi-lightning-charge" style="color:#d97706;"></i> Redis</span>
+      <span class="stack-item"><i class="bi bi-braces" style="color:#2563eb;"></i> NestJS+TS</span>
+      <span class="stack-item"><i class="bi bi-bootstrap" style="color:#2e6417;"></i> Next.js</span>
+      <span class="stack-item"><i class="bi bi-docker" style="color:#1f2937;"></i> Docker</span>
+    </div>
+
+    <!-- templo destaque -->
+    <div style="display: flex; justify-content: center;">
+      <div class="templo-badge">
+        <i class="bi bi-code-square" style="font-size: 22px; color:#dcebd4;"></i> 
+        <span>desenvolvimento · <strong>Templo Software</strong></span>
+        <i class="bi bi-cpu" style="font-size: 18px; color:#9ca3af;"></i>
+      </div>
+    </div>
+
+    <!-- painel tempo real -->
+    <div class="real-time-panel">
+      <div class="rt-left">
+        <h3 style="display: flex; gap:6px; margin-bottom:10px;"><i class="bi bi-broadcast" style="color:#2e6417;"></i> atualização em tempo real</h3>
+        <p class="body-default" style="color:#4b5563;">WebSocket · pipeline de leads sem refresh. Notificações automáticas de contratos.</p>
+        <p><span class="highlight-primary">RF09 / RF10</span> <span class="text-disabled">· webhooks prontos</span></p>
+      </div>
+      <div class="rt-right">
+        <span class="label-button" style="background:white; color:#2e6417; border:1px solid #2e6417; box-shadow:none; margin-bottom:14px; padding:8px 16px;"><i class="bi bi-arrow-repeat"></i> demo pipeline</span>
+        <p class="success-text" style="margin-top:10px;">lead “Edifício Solar” em negociação</p>
+        <p class="error-text" style="font-size:13px;"><i class="bi bi-exclamation-triangle"></i> inadimplência controlada (RF06)</p>
+        <p class="warning-text" style="font-size:13px;"><i class="bi bi-graph-up"></i> comissões simuladas</p>
+      </div>
+    </div>
+
+    <!-- rodapé -->
+    <footer>
+      <div style="display: flex; align-items: center; gap:8px;">
+        <span style="font-weight:700; color:#1e3f0e;">Domus CRM</span>
+        <span style="background:#eef1e2; color:#2e6417; padding:4px 8px; border-radius:40px; font-size:11px;">v0.5-dev</span>
+      </div>
+      <div class="footer-links">
+        <a href="#" class="link-default">documentação</a>
+        <a href="#" class="link-default">arquitetura</a>
+        <a href="#" class="link-default"><i class="bi bi-github"></i> Templo</a>
+      </div>
+      <span class="text-disabled" style="font-size:12px;">© 2025 · desenvolvimento</span>
+    </footer>
+  </div>
+
+  <!-- Script following dots (otimizado para celular) -->
+  <script>
+    (function() {
+      const dotsContainer = document.getElementById('dots-background');
+      if (!dotsContainer) return;
+      const numberOfDots = window.innerWidth < 600 ? 45 : 80;
+      const dots = [];
+      let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+      let animationFrame;
+
+      for (let i = 0; i < numberOfDots; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'dot-particle';
+        const x = Math.random() * window.innerWidth;
+        const y = Math.random() * window.innerHeight;
+        dot.style.left = x + 'px';
+        dot.style.top = y + 'px';
+        dot.dataset.x = x;
+        dot.dataset.y = y;
+        dot.dataset.speed = 0.015 + Math.random() * 0.02;
+        dot.dataset.originalX = x;
+        dot.dataset.originalY = y;
+        dotsContainer.appendChild(dot);
+        dots.push(dot);
+      }
+
+      document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      });
+
+      // suporte a toque em dispositivos móveis
+      document.addEventListener('touchmove', (e) => {
+        if (e.touches.length) {
+          mouseX = e.touches[0].clientX;
+          mouseY = e.touches[0].clientY;
+        }
+      });
+
+      function updateDots() {
+        dots.forEach(dot => {
+          const dotX = parseFloat(dot.dataset.x);
+          const dotY = parseFloat(dot.dataset.y);
+          const speed = parseFloat(dot.dataset.speed);
+          const dx = mouseX - dotX;
+          const dy = mouseY - dotY;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+
+          if (distance < 150) {
+            const angle = Math.atan2(dy, dx);
+            const force = (150 - distance) * 0.0025;
+            const moveX = Math.cos(angle) * force * speed * 30;
+            const moveY = Math.sin(angle) * force * speed * 30;
+            let newX = dotX - moveX;
+            let newY = dotY - moveY;
+            newX = Math.max(5, Math.min(window.innerWidth - 5, newX));
+            newY = Math.max(5, Math.min(window.innerHeight - 5, newY));
+            dot.style.left = newX + 'px';
+            dot.style.top = newY + 'px';
+            dot.dataset.x = newX;
+            dot.dataset.y = newY;
+            if (distance < 90) dot.classList.add('active');
+            else dot.classList.remove('active');
+          } else {
+            const origX = parseFloat(dot.dataset.originalX);
+            const origY = parseFloat(dot.dataset.originalY);
+            const curX = parseFloat(dot.style.left);
+            const curY = parseFloat(dot.style.top);
+            if (!isNaN(curX) && !isNaN(curY)) {
+              const returnSpeed = 0.015;
+              const newX = curX + (origX - curX) * returnSpeed;
+              const newY = curY + (origY - curY) * returnSpeed;
+              dot.style.left = newX + 'px';
+              dot.style.top = newY + 'px';
+              dot.dataset.x = newX;
+              dot.dataset.y = newY;
+            }
+            dot.classList.remove('active');
+          }
+        });
+        animationFrame = requestAnimationFrame(updateDots);
+      }
+      updateDots();
+
+      window.addEventListener('resize', () => {
+        dots.forEach(dot => {
+          const newX = Math.random() * window.innerWidth;
+          const newY = Math.random() * window.innerHeight;
+          dot.style.left = newX + 'px';
+          dot.style.top = newY + 'px';
+          dot.dataset.x = newX;
+          dot.dataset.y = newY;
+          dot.dataset.originalX = newX;
+          dot.dataset.originalY = newY;
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
