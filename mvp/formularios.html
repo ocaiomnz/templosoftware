@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulários · Domus MVP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Ir para o conteúdo</a>
+  <div class="app-wrap">
+    <header class="site-header">
+      <div class="container inner">
+        <a class="brand" href="index.html">
+          <span class="brand-mark" aria-hidden="true"><i class="bi bi-house-heart"></i></span>
+          <span>
+            <span class="brand-text">Domus MVP</span>
+            <span class="brand-sub">cadastros</span>
+          </span>
+        </a>
+        <input type="checkbox" id="nav-check" class="visually-hidden">
+        <label class="nav-toggle" for="nav-check" aria-label="Abrir ou fechar menu de navegação"><i class="bi bi-list" style="font-size:1.35rem;"></i></label>
+        <nav class="main-nav" aria-label="Principal">
+          <a href="index.html">Início</a>
+          <a href="catalogo.html">Catálogo</a>
+          <a href="imoveis-cadastrados.html">Imóveis cadastrados</a>
+          <a href="formularios.html" aria-current="page">Formulários</a>
+          <a href="contratos.html">Contratos</a>
+          <a href="relatorios.html">Relatórios</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="container">
+      <header class="page-head">
+        <p class="eyebrow"><i class="bi bi-ui-checks" aria-hidden="true"></i> entrada de dados</p>
+        <h1>Formulários de cadastro</h1>
+        <p class="lead">Três blocos independentes na mesma página para facilitar revisão em mobile. Os envios estão desligados neste MVP: use “Salvar rascunho” apenas como referência visual de fluxo.</p>
+        <nav class="btn-group" aria-label="Atalhos de seção" style="margin-top:0.75rem;">
+          <a class="btn btn-ghost" href="#pf">Pessoa física</a>
+          <a class="btn btn-ghost" href="#pj">Pessoa jurídica</a>
+          <a class="btn btn-ghost" href="#imovel">Imóvel</a>
+        </nav>
+      </header>
+
+      <section id="pf" class="form-section card" aria-labelledby="titulo-pf">
+        <h2 id="titulo-pf"><i class="bi bi-person" aria-hidden="true"></i> Cadastro de pessoa física</h2>
+        <p class="muted" style="margin-top:-0.25rem;margin-bottom:1rem;">Locatários, locadores ou contatos principais.</p>
+        <form action="#" method="get" aria-describedby="hint-pf">
+          <p id="hint-pf" class="visually-hidden">Formulário ilustrativo. Nenhum dado é enviado.</p>
+          <div class="form-grid cols-2">
+            <div class="field">
+              <label for="pf-nome">Nome completo</label>
+              <input id="pf-nome" name="nome" type="text" autocomplete="name" placeholder="Ex.: Ana Paula Ferreira">
+            </div>
+            <div class="field">
+              <label for="pf-cpf">CPF</label>
+              <input id="pf-cpf" name="cpf" type="text" inputmode="numeric" autocomplete="off" placeholder="000.000.000-00">
+            </div>
+            <div class="field">
+              <label for="pf-email">E-mail</label>
+              <input id="pf-email" name="email" type="email" autocomplete="email" placeholder="nome@exemplo.com.br">
+            </div>
+            <div class="field">
+              <label for="pf-tel">Telefone / WhatsApp</label>
+              <input id="pf-tel" name="telefone" type="tel" autocomplete="tel" placeholder="(00) 00000-0000">
+            </div>
+            <div class="field">
+              <label for="pf-rg">RG</label>
+              <input id="pf-rg" name="rg" type="text" placeholder="Número e órgão emissor">
+            </div>
+            <div class="field">
+              <label for="pf-nasc">Data de nascimento</label>
+              <input id="pf-nasc" name="nascimento" type="date">
+            </div>
+            <div class="field" style="grid-column:1/-1;">
+              <label for="pf-end">Endereço residencial</label>
+              <input id="pf-end" name="endereco" type="text" autocomplete="street-address" placeholder="Logradouro, número, complemento, bairro">
+            </div>
+            <div class="field">
+              <label for="pf-cidade">Cidade</label>
+              <input id="pf-cidade" name="cidade" type="text" autocomplete="address-level2">
+            </div>
+            <div class="field">
+              <label for="pf-uf">UF</label>
+              <select id="pf-uf" name="uf" autocomplete="address-level1">
+                <option value="">Selecione</option>
+                <option>SP</option><option>RJ</option><option>MG</option><option>PR</option><option>PE</option>
+              </select>
+            </div>
+            <div class="field" style="grid-column:1/-1;">
+              <label for="pf-obs">Observações internas</label>
+              <textarea id="pf-obs" name="obs" rows="3" placeholder="Preferências de contato, restrições LGPD, etc."></textarea>
+            </div>
+          </div>
+          <div class="btn-group" style="margin-top:1rem;">
+            <button type="button" class="btn btn-primary" disabled aria-disabled="true" title="MVP sem backend">Salvar rascunho</button>
+            <button type="reset" class="btn btn-secondary">Limpar</button>
+          </div>
+        </form>
+      </section>
+
+      <section id="pj" class="form-section card" aria-labelledby="titulo-pj">
+        <h2 id="titulo-pj"><i class="bi bi-building" aria-hidden="true"></i> Cadastro de pessoa jurídica</h2>
+        <p class="muted" style="margin-top:-0.25rem;margin-bottom:1rem;">Imobiliárias parceiras, holdings ou locadores corporativos.</p>
+        <form action="#" method="get">
+          <div class="form-grid cols-2">
+            <div class="field" style="grid-column:1/-1;">
+              <label for="pj-razao">Razão social</label>
+              <input id="pj-razao" name="razao" type="text" autocomplete="organization" placeholder="Ex.: Solaris Negócios Imobiliários Ltda.">
+            </div>
+            <div class="field">
+              <label for="pj-fantasia">Nome fantasia</label>
+              <input id="pj-fantasia" name="fantasia" type="text">
+            </div>
+            <div class="field">
+              <label for="pj-cnpj">CNPJ</label>
+              <input id="pj-cnpj" name="cnpj" type="text" inputmode="numeric" placeholder="00.000.000/0001-00">
+            </div>
+            <div class="field">
+              <label for="pj-ie">Inscrição estadual</label>
+              <input id="pj-ie" name="ie" type="text" placeholder="ISENTO, se aplicável">
+            </div>
+            <div class="field">
+              <label for="pj-im">Inscrição municipal</label>
+              <input id="pj-im" name="im" type="text">
+            </div>
+            <div class="field">
+              <label for="pj-email">E-mail corporativo</label>
+              <input id="pj-email" name="email" type="email" autocomplete="email">
+            </div>
+            <div class="field">
+              <label for="pj-tel">Telefone institucional</label>
+              <input id="pj-tel" name="telefone" type="tel" autocomplete="tel">
+            </div>
+            <div class="field">
+              <label for="pj-resp">Responsável legal</label>
+              <input id="pj-resp" name="responsavel" type="text" placeholder="Nome completo do representante">
+            </div>
+            <div class="field" style="grid-column:1/-1;">
+              <label for="pj-end">Endereço da sede</label>
+              <input id="pj-end" name="endereco" type="text" autocomplete="street-address">
+            </div>
+            <fieldset class="field" style="grid-column:1/-1;">
+              <legend>Regime tributário (referência)</legend>
+              <div class="radio-row">
+                <label><input type="radio" name="regime" value="simples"> Simples Nacional</label>
+                <label><input type="radio" name="regime" value="presumido"> Lucro presumido</label>
+                <label><input type="radio" name="regime" value="real"> Lucro real</label>
+              </div>
+            </fieldset>
+          </div>
+          <div class="btn-group" style="margin-top:1rem;">
+            <button type="button" class="btn btn-primary" disabled aria-disabled="true">Salvar rascunho</button>
+            <button type="reset" class="btn btn-secondary">Limpar</button>
+          </div>
+        </form>
+      </section>
+
+      <section id="imovel" class="form-section card" aria-labelledby="titulo-imovel">
+        <h2 id="titulo-imovel"><i class="bi bi-house-gear" aria-hidden="true"></i> Cadastro de imóvel</h2>
+        <p class="muted" style="margin-top:-0.25rem;margin-bottom:1rem;">Ficha técnica para alimentar catálogo e contratos.</p>
+        <form action="#" method="get">
+          <div class="form-grid cols-2">
+            <div class="field" style="grid-column:1/-1;">
+              <label for="im-titulo">Título público do anúncio</label>
+              <input id="im-titulo" name="titulo" type="text" placeholder="Ex.: Cobertura linear com vista livre">
+            </div>
+            <div class="field">
+              <label for="im-tipo">Tipo de imóvel</label>
+              <select id="im-tipo" name="tipo">
+                <option value="">Selecione</option>
+                <option>Apartamento</option>
+                <option>Casa</option>
+                <option>Cobertura</option>
+                <option>Sala comercial</option>
+                <option>Loja</option>
+                <option>Galpão / industrial</option>
+                <option>Terreno</option>
+              </select>
+            </div>
+            <fieldset class="field">
+              <legend>Uso principal</legend>
+              <div class="radio-row">
+                <label><input type="radio" name="uso" value="res" checked> Residencial</label>
+                <label><input type="radio" name="uso" value="com"> Comercial</label>
+                <label><input type="radio" name="uso" value="misto"> Misto</label>
+              </div>
+            </fieldset>
+            <div class="field" style="grid-column:1/-1;">
+              <label for="im-end">Endereço completo</label>
+              <textarea id="im-end" name="endereco" rows="2" placeholder="Logradouro, número, complemento, CEP, cidade, UF"></textarea>
+            </div>
+            <div class="field">
+              <label for="im-area">Área útil (m²)</label>
+              <input id="im-area" name="area" type="number" min="0" step="0.01" placeholder="0">
+            </div>
+            <div class="field">
+              <label for="im-terreno">Área do terreno (m²)</label>
+              <input id="im-terreno" name="terreno" type="number" min="0" step="0.01" placeholder="Opcional">
+            </div>
+            <div class="field">
+              <label for="im-quartos">Quartos</label>
+              <input id="im-quartos" name="quartos" type="number" min="0" step="1">
+            </div>
+            <div class="field">
+              <label for="im-vagas">Vagas</label>
+              <input id="im-vagas" name="vagas" type="number" min="0" step="1">
+            </div>
+            <div class="field">
+              <label for="im-cond">Valor do condomínio (R$)</label>
+              <input id="im-cond" name="condominio" type="text" inputmode="decimal" placeholder="0,00">
+            </div>
+            <div class="field">
+              <label for="im-iptu">IPTU anual estimado (R$)</label>
+              <input id="im-iptu" name="iptu" type="text" inputmode="decimal" placeholder="0,00">
+            </div>
+            <div class="field" style="grid-column:1/-1;">
+              <label for="im-notas">Notas para equipe comercial</label>
+              <textarea id="im-notas" name="notas" rows="3" placeholder="Chaves, horário de visita, restrições, etc."></textarea>
+            </div>
+          </div>
+          <div class="btn-group" style="margin-top:1rem;">
+            <button type="button" class="btn btn-primary" disabled aria-disabled="true">Salvar rascunho</button>
+            <button type="reset" class="btn btn-secondary">Limpar</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container inner">
+        <span><strong style="color:var(--green-darker);">Domus CRM</strong> · formulários</span>
+        <span class="muted">Conecte action e validação quando o backend estiver pronto</span>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

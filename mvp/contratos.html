@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contratos · Domus MVP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Ir para o conteúdo</a>
+  <div class="app-wrap">
+    <header class="site-header">
+      <div class="container inner">
+        <a class="brand" href="index.html">
+          <span class="brand-mark" aria-hidden="true"><i class="bi bi-house-heart"></i></span>
+          <span>
+            <span class="brand-text">Domus MVP</span>
+            <span class="brand-sub">contratos</span>
+          </span>
+        </a>
+        <input type="checkbox" id="nav-check" class="visually-hidden">
+        <label class="nav-toggle" for="nav-check" aria-label="Abrir ou fechar menu de navegação"><i class="bi bi-list" style="font-size:1.35rem;"></i></label>
+        <nav class="main-nav" aria-label="Principal">
+          <a href="index.html">Início</a>
+          <a href="catalogo.html">Catálogo</a>
+          <a href="imoveis-cadastrados.html">Imóveis cadastrados</a>
+          <a href="formularios.html">Formulários</a>
+          <a href="contratos.html" aria-current="page">Contratos</a>
+          <a href="relatorios.html">Relatórios</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="container">
+      <header class="page-head">
+        <p class="eyebrow"><i class="bi bi-file-earmark-text" aria-hidden="true"></i> pipeline jurídico-financeiro</p>
+        <h1>Contratos em andamento</h1>
+        <p class="lead">Valores combinados, partes e corretores responsáveis aparecem lado a lado com indicadores de aprovação. Os números são fictícios para leitura de layout.</p>
+      </header>
+
+      <section aria-labelledby="kpi-titulo">
+        <h2 id="kpi-titulo" class="visually-hidden">Indicadores do período</h2>
+        <div class="grid-kpi">
+          <div class="kpi-card">
+            <div class="kpi-value">R$ 2,84 mi</div>
+            <div class="kpi-label">Valor total em contratos ativos e em fila</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-value">18</div>
+            <div class="kpi-label">Contratos aprovados (mês)</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-value">7</div>
+            <div class="kpi-label">Em processo de aprovação</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-value">R$ 118 mil</div>
+            <div class="kpi-label">Ticket médio (locação mensal)</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-value">72%</div>
+            <div class="kpi-label">Contratos assinados em até 14 dias</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-value">4,2 dias</div>
+            <div class="kpi-label">Tempo médio na etapa jurídica</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="tbl-titulo">
+        <h2 id="tbl-titulo" style="font-size:1.1rem;margin-bottom:0.75rem;">Painel detalhado</h2>
+        <p class="muted" style="margin-bottom:1rem;">Cada linha resume pessoas envolvidas, valores acordados e o atendente que abriu o processo no CRM.</p>
+        <div class="table-wrap">
+          <table class="data">
+            <thead>
+              <tr>
+                <th scope="col">Contrato</th>
+                <th scope="col">Imóvel</th>
+                <th scope="col">Partes</th>
+                <th scope="col">Valor acordado</th>
+                <th scope="col">Atendente</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>LOC-2026-014</td>
+                <td>Apto Jardins 142 m²</td>
+                <td>M. H. Duarte → TechFit Ltda.</td>
+                <td>R$ 12.800 / mês</td>
+                <td>Camila Rocha</td>
+                <td><span class="badge badge-success">Aprovado</span></td>
+              </tr>
+              <tr>
+                <td>LOC-2026-019</td>
+                <td>Sala Faria Lima</td>
+                <td>Holdings Aurora → Nexus Ads</td>
+                <td>R$ 9.450 / mês</td>
+                <td>Ricardo Menezes</td>
+                <td><span class="badge badge-warning">Em aprovação</span></td>
+              </tr>
+              <tr>
+                <td>VEN-2026-003</td>
+                <td>Casa Alphaville</td>
+                <td>Família Mendes → Silva &amp; Cia.</td>
+                <td>R$ 2.150.000 à vista</td>
+                <td>Juliana Prado</td>
+                <td><span class="badge badge-warning">Em aprovação</span></td>
+              </tr>
+              <tr>
+                <td>LOC-2025-221</td>
+                <td>Galpão Dutra</td>
+                <td>Logística Verde → Importadora Sul</td>
+                <td>R$ 148.000 / mês</td>
+                <td>Camila Rocha</td>
+                <td><span class="badge badge-success">Aprovado</span></td>
+              </tr>
+              <tr>
+                <td>LOC-2026-021</td>
+                <td>Apto Boa Viagem</td>
+                <td>P. e L. → StartOcean PE</td>
+                <td>R$ 6.200 / mês</td>
+                <td>Felipe Araújo</td>
+                <td><span class="badge badge-success">Aprovado</span></td>
+              </tr>
+              <tr>
+                <td>LOC-2026-022</td>
+                <td>Loja XV Curitiba</td>
+                <td>Horizonte Sul → Cafeteria 15</td>
+                <td>R$ 4.100 / mês</td>
+                <td>Ricardo Menezes</td>
+                <td><span class="badge badge-warning">Em aprovação</span></td>
+              </tr>
+              <tr>
+                <td>LOC-2026-023</td>
+                <td>Studio Consolação</td>
+                <td>C. A. Ribeiro → Morar Bem SPE</td>
+                <td>R$ 3.350 / mês</td>
+                <td>Juliana Prado</td>
+                <td><span class="badge badge-success">Aprovado</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card" style="margin-top:1rem;" aria-labelledby="cards-titulo">
+        <h2 id="cards-titulo" style="font-size:1.1rem;margin-bottom:0.75rem;">Casos (cards)</h2>
+        <p class="muted" style="margin-bottom:1rem;">Clique em um card para ver detalhes, mapa e linha do tempo (tempo em cada etapa).</p>
+
+        <div class="grid-catalog" role="list">
+          <article class="card" role="listitem">
+            <button class="card-click" type="button"
+              data-open-contract
+              data-contract-id="LOC-2026-014"
+              data-title="Locação residencial aprovada"
+              data-property="Apto Jardins 142 m²"
+              data-address="Rua Oscar Freire, 880 — São Paulo, SP"
+              data-parties="M. H. Duarte → TechFit Ltda."
+              data-agent="Camila Rocha"
+              data-value="R$ 12.800 / mês"
+              data-status-label="Aprovado"
+              data-img="https://picsum.photos/seed/domus-jardins-ct/1100/700"
+              data-img-alt="Foto do apartamento Jardins"
+              data-map-query="Rua Oscar Freire 880, São Paulo SP"
+              data-t-atendimento="2"
+              data-t-cadastro="4"
+              data-t-negociacao="6"
+              data-t-juridico="3"
+              data-t-confirmacao="1"
+            >
+              <div class="prop-thumb">
+                <img class="prop-photo" src="https://picsum.photos/seed/domus-jardins-ct/900/600" alt="Foto do apartamento Jardins" loading="lazy">
+              </div>
+              <h3 class="card-title" style="margin-bottom:0.15rem;">LOC-2026-014</h3>
+              <p class="card-meta">Apto Jardins 142 m² · <span class="badge badge-success">Aprovado</span></p>
+              <p class="muted" style="margin-top:0.5rem;">Ticket: <strong style="color:var(--green-deep);">R$ 12.800/mês</strong></p>
+            </button>
+          </article>
+
+          <article class="card" role="listitem">
+            <button class="card-click" type="button"
+              data-open-contract
+              data-contract-id="LOC-2026-019"
+              data-title="Locação comercial em aprovação"
+              data-property="Sala Faria Lima 112 m²"
+              data-address="Av. Brigadeiro Faria Lima, 3477 — São Paulo, SP"
+              data-parties="Holdings Aurora → Nexus Ads"
+              data-agent="Ricardo Menezes"
+              data-value="R$ 9.450 / mês"
+              data-status-label="Em aprovação"
+              data-img="https://picsum.photos/seed/domus-farialima-ct/1100/700"
+              data-img-alt="Foto da sala comercial Faria Lima"
+              data-map-query="Av Brigadeiro Faria Lima 3477, São Paulo SP"
+              data-t-atendimento="3"
+              data-t-cadastro="5"
+              data-t-negociacao="8"
+              data-t-juridico="6"
+              data-t-confirmacao="0"
+            >
+              <div class="prop-thumb">
+                <img class="prop-photo" src="https://picsum.photos/seed/domus-farialima-ct/900/600" alt="Foto da sala comercial Faria Lima" loading="lazy">
+              </div>
+              <h3 class="card-title" style="margin-bottom:0.15rem;">LOC-2026-019</h3>
+              <p class="card-meta">Sala Faria Lima · <span class="badge badge-warning">Em aprovação</span></p>
+              <p class="muted" style="margin-top:0.5rem;">Ticket: <strong style="color:var(--green-deep);">R$ 9.450/mês</strong></p>
+            </button>
+          </article>
+
+          <article class="card" role="listitem">
+            <button class="card-click" type="button"
+              data-open-contract
+              data-contract-id="VEN-2026-003"
+              data-title="Venda em aprovação"
+              data-property="Casa Alphaville 290 m²"
+              data-address="Alameda Rio Negro, 204 — Barueri, SP"
+              data-parties="Família Mendes → Silva & Cia."
+              data-agent="Juliana Prado"
+              data-value="R$ 2.150.000 à vista"
+              data-status-label="Em aprovação"
+              data-img="https://picsum.photos/seed/domus-alphaville-ct/1100/700"
+              data-img-alt="Foto da casa Alphaville"
+              data-map-query="Alameda Rio Negro 204, Barueri SP"
+              data-t-atendimento="2"
+              data-t-cadastro="7"
+              data-t-negociacao="10"
+              data-t-juridico="5"
+              data-t-confirmacao="0"
+            >
+              <div class="prop-thumb">
+                <img class="prop-photo" src="https://picsum.photos/seed/domus-alphaville-ct/900/600" alt="Foto da casa Alphaville" loading="lazy">
+              </div>
+              <h3 class="card-title" style="margin-bottom:0.15rem;">VEN-2026-003</h3>
+              <p class="card-meta">Casa Alphaville · <span class="badge badge-warning">Em aprovação</span></p>
+              <p class="muted" style="margin-top:0.5rem;">Venda: <strong style="color:var(--green-deep);">R$ 2,15 mi</strong></p>
+            </button>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container inner">
+        <span><strong style="color:var(--green-darker);">Domus CRM</strong> · contratos</span>
+        <span class="muted">Role a tabela horizontalmente em telas pequenas</span>
+      </div>
+    </footer>
+
+    <!-- Modal de contrato / caso -->
+    <div id="contract-modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Detalhes do contrato">
+      <div class="modal-panel">
+        <div class="modal-head">
+          <div>
+            <p class="muted" style="margin:0;"><span class="badge badge-neutral" data-c-status>Contrato</span> · <span class="muted" data-c-id></span></p>
+            <h2 class="modal-title" data-c-title>Detalhes</h2>
+            <p class="modal-sub"><span data-c-property></span></p>
+          </div>
+          <button class="icon-btn" type="button" data-modal-close aria-label="Fechar modal"><i class="bi bi-x-lg"></i></button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-grid">
+            <div>
+              <div class="modal-hero">
+                <img data-c-img src="" alt="Foto do imóvel">
+              </div>
+              <dl class="modal-kv" style="margin-top:0.85rem;">
+                <div><dt>Partes</dt><dd data-c-parties></dd></div>
+                <div><dt>Atendente</dt><dd data-c-agent></dd></div>
+                <div><dt>Valor</dt><dd data-c-value></dd></div>
+              </dl>
+
+              <h3 style="margin-top:1rem;">Linha do tempo</h3>
+              <p class="muted" style="margin-bottom:0.25rem;">Tempo em cada etapa (dias). A barra mostra proporção no total do ciclo.</p>
+              <ul class="timeline" data-c-timeline></ul>
+            </div>
+
+            <div>
+              <div class="map-frame">
+                <iframe data-c-map title="Mapa" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              </div>
+              <section class="card" style="margin-top:0.85rem;">
+                <h3>Resumo operacional</h3>
+                <ul style="margin:0;padding-left:1.15rem;color:var(--gray-medium);font-size:0.9375rem;">
+                  <li style="margin-bottom:0.35rem;"><strong style="color:var(--green-darker);">Atendimento:</strong> primeiro contato e qualificação.</li>
+                  <li style="margin-bottom:0.35rem;"><strong style="color:var(--green-darker);">Cadastro:</strong> documentos e validações.</li>
+                  <li style="margin-bottom:0.35rem;"><strong style="color:var(--green-darker);">Negociação:</strong> proposta, contraproposta, acordos.</li>
+                  <li style="margin-bottom:0.35rem;"><strong style="color:var(--green-darker);">Jurídico:</strong> análise, cláusulas, aprovação.</li>
+                  <li><strong style="color:var(--green-darker);">Confirmação:</strong> assinatura e ativação.</li>
+                </ul>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

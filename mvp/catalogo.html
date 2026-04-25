@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo · Domus MVP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Ir para o conteúdo</a>
+  <div class="app-wrap">
+    <header class="site-header">
+      <div class="container inner">
+        <a class="brand" href="index.html">
+          <span class="brand-mark" aria-hidden="true"><i class="bi bi-house-heart"></i></span>
+          <span>
+            <span class="brand-text">Domus MVP</span>
+            <span class="brand-sub">catálogo</span>
+          </span>
+        </a>
+        <input type="checkbox" id="nav-check" class="visually-hidden">
+        <label class="nav-toggle" for="nav-check" aria-label="Abrir ou fechar menu de navegação"><i class="bi bi-list" style="font-size:1.35rem;"></i></label>
+        <nav class="main-nav" aria-label="Principal">
+          <a href="index.html">Início</a>
+          <a href="catalogo.html" aria-current="page">Catálogo</a>
+          <a href="imoveis-cadastrados.html">Imóveis cadastrados</a>
+          <a href="formularios.html">Formulários</a>
+          <a href="contratos.html">Contratos</a>
+          <a href="relatorios.html">Relatórios</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="container">
+      <header class="page-head">
+        <p class="eyebrow"><i class="bi bi-shop-window" aria-hidden="true"></i> vitrine para clientes</p>
+        <h1>Catálogo de imóveis</h1>
+        <p class="lead">Seleção de doze unidades com endereço, metragem e diferenciais. Toque na foto ou no título para abrir detalhes (modal) com mapa, endereço e informações. Os botões de ação continuam abrindo WhatsApp e calendário.</p>
+      </header>
+
+      <div class="grid-catalog" role="list">
+
+        <article class="card" role="listitem">
+          <button class="card-click" type="button"
+            data-open-property
+            data-title="Apartamento · Jardins"
+            data-subtitle="Edifício Solar · alto padrão"
+            data-address="Rua Oscar Freire, 880 — Jardins — São Paulo, SP"
+            data-area="142 m² úteis"
+            data-price="R$ 12.800 / mês"
+            data-status-label="Disponível para visita"
+            data-chips="3 quartos|2 vagas|Varanda|Sol da manhã|Metrô 700m"
+            data-img="https://picsum.photos/seed/domus-jardins/1100/700"
+            data-img-alt="Sala ampla com varanda, apartamento nos Jardins"
+            data-map-query="Rua Oscar Freire 880, São Paulo SP"
+            data-wa-text="Olá! Tenho interesse no Apartamento · Jardins (142m²). Podemos conversar?"
+          >
+            <div class="prop-thumb">
+              <img class="prop-photo" src="https://picsum.photos/seed/domus-jardins/900/600" alt="Sala ampla com varanda, apartamento nos Jardins" loading="lazy">
+            </div>
+            <h2 class="card-title">Apartamento · Jardins</h2>
+            <ul class="prop-features"><li>3 quartos</li><li>2 vagas</li><li>Varanda</li></ul>
+            <p class="prop-address"><i class="bi bi-geo-alt" aria-hidden="true"></i> Rua Oscar Freire, 880 — São Paulo, SP</p>
+            <p class="prop-area">142 m² úteis</p>
+          </button>
+          <div class="btn-group">
+            <a class="btn btn-primary" href="https://wa.me/?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20apartamento%20Jardins%20142m%C2%B2.">Fale com atendente</a>
+            <a class="btn btn-secondary" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Visita%20Domus%20%E2%80%94%20Apto%20Jardins&amp;details=Im%C3%B3vel%20142m%C2%B2%20Oscar%20Freire">Agendar visita</a>
+          </div>
+        </article>
+
+        <article class="card" role="listitem">
+          <button class="card-click" type="button"
+            data-open-property
+            data-title="Casa térrea · Alphaville"
+            data-subtitle="Condomínio fechado · segurança 24h"
+            data-address="Alameda Rio Negro, 204 — Alphaville — Barueri, SP"
+            data-area="380 m² terreno · 290 m² construídos"
+            data-price="R$ 18.900 / mês"
+            data-status-label="Visitas com agendamento"
+            data-chips="4 suítes|Piscina|Quintal|Área gourmet|3 vagas"
+            data-img="https://picsum.photos/seed/domus-alphaville/1100/700"
+            data-img-alt="Casa térrea com área gourmet e piscina"
+            data-map-query="Alameda Rio Negro 204, Barueri SP"
+            data-wa-text="Olá! Tenho interesse na Casa térrea · Alphaville. Qual a melhor data para visita?"
+          >
+            <div class="prop-thumb">
+              <img class="prop-photo" src="https://picsum.photos/seed/domus-alphaville/900/600" alt="Casa térrea com área gourmet e piscina" loading="lazy">
+            </div>
+            <h2 class="card-title">Casa térrea · Alphaville</h2>
+            <ul class="prop-features"><li>4 suítes</li><li>Piscina</li><li>Quintal</li></ul>
+            <p class="prop-address"><i class="bi bi-geo-alt" aria-hidden="true"></i> Alameda Rio Negro, 204 — Barueri, SP</p>
+            <p class="prop-area">380 m² de terreno · 290 m² construídos</p>
+          </button>
+          <div class="btn-group">
+            <a class="btn btn-primary" href="https://wa.me/?text=Ol%C3%A1%2C%20quero%20informa%C3%A7%C3%B5es%20sobre%20a%20casa%20Alphaville.">Fale com atendente</a>
+            <a class="btn btn-secondary" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Visita%20%E2%80%94%20Casa%20Alphaville">Agendar visita</a>
+          </div>
+        </article>
+
+        <article class="card" role="listitem">
+          <button class="card-click" type="button"
+            data-open-property
+            data-title="Cobertura · Pinheiros"
+            data-subtitle="Terraço privativo · vista aberta"
+            data-address="Rua dos Pinheiros, 498 — Pinheiros — São Paulo, SP"
+            data-area="198 m² + 45 m² terraço"
+            data-price="R$ 19.500 / mês"
+            data-status-label="Em negociação"
+            data-chips="Churrasqueira|270° vista|3 vagas|Terraço|Pet friendly"
+            data-img="https://picsum.photos/seed/domus-pinheiros/1100/700"
+            data-img-alt="Cobertura com terraço e vista da cidade"
+            data-map-query="Rua dos Pinheiros 498, São Paulo SP"
+            data-wa-text="Olá! Gostaria de detalhes da Cobertura · Pinheiros e condições de negociação."
+          >
+            <div class="prop-thumb">
+              <img class="prop-photo" src="https://picsum.photos/seed/domus-pinheiros/900/600" alt="Cobertura com terraço e vista da cidade" loading="lazy">
+            </div>
+            <h2 class="card-title">Cobertura · Pinheiros</h2>
+            <ul class="prop-features"><li>Churrasqueira</li><li>270° vista</li><li>3 vagas</li></ul>
+            <p class="prop-address"><i class="bi bi-geo-alt" aria-hidden="true"></i> Rua dos Pinheiros, 498 — São Paulo, SP</p>
+            <p class="prop-area">198 m² + 45 m² terraço</p>
+          </button>
+          <div class="btn-group">
+            <a class="btn btn-primary" href="https://wa.me/?text=Ol%C3%A1%2C%20cobertura%20Pinheiros%20198m%C2%B2.">Fale com atendente</a>
+            <a class="btn btn-secondary" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Visita%20%E2%80%94%20Cobertura%20Pinheiros">Agendar visita</a>
+          </div>
+        </article>
+
+        <article class="card" role="listitem">
+          <button class="card-click" type="button"
+            data-open-property
+            data-title="Sala comercial · Faria Lima"
+            data-subtitle="Pronta para operar · layout flexível"
+            data-address="Av. Brigadeiro Faria Lima, 3477 — Itaim Bibi — São Paulo, SP"
+            data-area="112 m²"
+            data-price="R$ 9.450 / mês"
+            data-status-label="Disponível"
+            data-chips="Recepção|3 salas|Ar split|2 vagas|Próximo ao metrô"
+            data-img="https://picsum.photos/seed/domus-farialima/1100/700"
+            data-img-alt="Sala comercial com recepção moderna"
+            data-map-query="Av Brigadeiro Faria Lima 3477, São Paulo SP"
+            data-wa-text="Olá! Tenho interesse na Sala comercial · Faria Lima (112m²)."
+          >
+            <div class="prop-thumb">
+              <img class="prop-photo" src="https://picsum.photos/seed/domus-farialima/900/600" alt="Sala comercial com recepção moderna" loading="lazy">
+            </div>
+            <h2 class="card-title">Sala comercial · Faria Lima</h2>
+            <ul class="prop-features"><li>Recepção</li><li>3 salas</li><li>Ar split</li></ul>
+            <p class="prop-address"><i class="bi bi-geo-alt" aria-hidden="true"></i> Av. Brigadeiro Faria Lima, 3477 — São Paulo, SP</p>
+            <p class="prop-area">112 m²</p>
+          </button>
+          <div class="btn-group">
+            <a class="btn btn-primary" href="https://wa.me/?text=Ol%C3%A1%2C%20sala%20Faria%20Lima%20112m%C2%B2.">Fale com atendente</a>
+            <a class="btn btn-secondary" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Visita%20%E2%80%94%20Sala%20Faria%20Lima">Agendar visita</a>
+          </div>
+        </article>
+
+        <article class="card" role="listitem">
+          <button class="card-click" type="button"
+            data-open-property
+            data-title="Apartamento · Beira-mar"
+            data-subtitle="Boa Viagem · nascente · lazer completo"
+            data-address="Av. Boa Viagem, 4520 — Recife, PE"
+            data-area="98 m²"
+            data-price="R$ 6.200 / mês"
+            data-status-label="Disponível"
+            data-chips="2 suítes|Lazer completo|Nascente|Vista mar|1 vaga"
+            data-img="https://picsum.photos/seed/domus-boaviagem/1100/700"
+            data-img-alt="Apartamento com vista para o mar"
+            data-map-query="Av Boa Viagem 4520, Recife PE"
+            data-wa-text="Olá! Tenho interesse no Apartamento · Beira-mar (Boa Viagem)."
+          >
+            <div class="prop-thumb">
+              <img class="prop-photo" src="https://picsum.photos/seed/domus-boaviagem/900/600" alt="Apartamento com vista para o mar" loading="lazy">
+            </div>
+            <h2 class="card-title">Apartamento · Beira-mar</h2>
+            <ul class="prop-features"><li>2 suítes</li><li>Lazer completo</li><li>Nascente</li></ul>
+            <p class="prop-address"><i class="bi bi-geo-alt" aria-hidden="true"></i> Av. Boa Viagem, 4520 — Recife, PE</p>
+            <p class="prop-area">98 m²</p>
+          </button>
+          <div class="btn-group">
+            <a class="btn btn-primary" href="https://wa.me/?text=Ol%C3%A1%2C%20apto%20Boa%20Viagem%2098m%C2%B2.">Fale com atendente</a>
+            <a class="btn btn-secondary" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Visita%20%E2%80%94%20Apto%20Boa%20Viagem">Agendar visita</a>
+          </div>
+        </article>
+
+        <article class="card" role="listitem">
+          <button class="card-click" type="button"
+            data-open-property
+            data-title="Chácara · interior"
+            data-subtitle="Atibaia · área verde e lazer"
+            data-address="Estrada Municipal KM 12 — Atibaia, SP"
+            data-area="15.000 m²"
+            data-price="R$ 1.980.000 (venda) / diária sob consulta"
+            data-status-label="Disponível"
+            data-chips="Lago|Casa sede|Área gourmet|Trilha|Internet"
+            data-img="https://picsum.photos/seed/domus-atibaia/1100/700"
+            data-img-alt="Chácara com área verde e lago"
+            data-map-query="Atibaia SP Estrada Municipal KM 12"
+            data-wa-text="Olá! Tenho interesse na Chácara · interior (Atibaia)."
+          >
+            <div class="prop-thumb">
+              <img class="prop-photo" src="https://picsum.photos/seed/domus-atibaia/900/600" alt="Chácara com área verde e lago" loading="lazy">
+            </div>
+            <h2 class="card-title">Chácara · interior</h2>
+            <ul class="prop-features"><li>Lago</li><li>Casa sede</li><li>420 V</li></ul>
+            <p class="prop-address"><i class="bi bi-geo-alt" aria-hidden="true"></i> Estrada Municipal KM 12 — Atibaia, SP</p>
+            <p class="prop-area">15.000 m²</p>
+          </button>
+          <div class="btn-group">
+            <a class="btn btn-primary" href="https://wa.me/?text=Ol%C3%A1%2C%20ch%C3%A1cara%20Atibaia%2015ha.">Fale com atendente</a>
+            <a class="btn btn-secondary" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Visita%20%E2%80%94%20Ch%C3%A1cara%20Atibaia">Agendar visita</a>
+          </div>
+        </article>
+
+        <article class="card" role="listitem">
+          <button class="card-click" type="button"
+            data-open-property
+            data-title="Studio · Consolação"
+            data-subtitle="Mobiliado · metrô a 300m"
+            data-address="Rua da Consolação, 2301 — São Paulo, SP"
+            data-area="36 m²"
+            data-price="R$ 3.350 / mês"
+            data-status-label="Disponível"
+            data-chips="Mobiliado|Smart|Metrô 300m|Lavanderia|Portaria"
+            data-img="https://picsum.photos/seed/domus-consolacao/1100/700"
+            data-img-alt="Studio mobiliado com iluminação natural"
+            data-map-query="Rua da Consolação 2301, São Paulo SP"
+            data-wa-text="Olá! Tenho interesse no Studio · Consolação (36m²)."
+          >
+            <div class="prop-thumb">
+              <img class="prop-photo" src="https://picsum.photos/seed/domus-consolacao/900/600" alt="Studio mobiliado com iluminação natural" loading="lazy">
+            </div>
+            <h2 class="card-title">Studio · Consolação</h2>
+            <ul class="prop-features"><li>Mobiliado</li><li>Smart</li><li>Metrô 300m</li></ul>
+            <p class="prop-address"><i class="bi bi-geo-alt" aria-hidden="true"></i> Rua da Consolação, 2301 — São Paulo, SP</p>
+            <p class="prop-area">36 m²</p>
+          </button>
+          <div class="btn-group">
+            <a class="btn btn-primary" href="https://wa.me/?text=Ol%C3%A1%2C%20studio%20Consola%C3%A7%C3%A3o%2036m%C2%B2.">Fale com atendente</a>
+            <a class="btn btn-secondary" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Visita%20%E2%80%94%20Studio%20Consola%C3%A7%C3%A3o">Agendar visita</a>
+          </div>
+        </article>
+
+        <article class="card" role="listitem">
+          <button class="card-click" type="button"
+            data-open-property
+            data-title="Sobrado · Moema"
+            data-subtitle="Três pavimentos · ideal para home office"
+            data-address="Rua Gaivota, 612 — Moema — São Paulo, SP"
+            data-area="240 m²"
+            data-price="R$ 11.900 / mês"
+            data-status-label="Disponível"
+            data-chips="3 pavimentos|Elevador|Home office|Quintal|2 vagas"
+            data-img="https://picsum.photos/seed/domus-moema/1100/700"
+            data-img-alt="Sobrado moderno em bairro residencial"
+            data-map-query="Rua Gaivota 612, São Paulo SP"
+            data-wa-text="Olá! Quero informações sobre o Sobrado · Moema (240m²)."
+          >
+            <div class="prop-thumb">
+              <img class="prop-photo" src="https://picsum.photos/seed/domus-moema/900/600" alt="Sobrado moderno em bairro residencial" loading="lazy">
+            </div>
+            <h2 class="card-title">Sobrado · Moema</h2>
+            <ul class="prop-features"><li>3 pavimentos</li><li>Elevador</li><li>Home office</li></ul>
+            <p class="prop-address"><i class="bi bi-geo-alt" aria-hidden="true"></i> Rua Gaivota, 612 — São Paulo, SP</p>
+            <p class="prop-area">240 m²</p>
+          </button>
+          <div class="btn-group">
+            <a class="btn btn-primary" href="https://wa.me/?text=Ol%C3%A1%2C%20sobrado%20Moema%20240m%C2%B2.">Fale com atendente</a>
+            <a class="btn btn-secondary" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Visita%20%E2%80%94%20Sobrado%20Moema">Agendar visita</a>
+          </div>
+        </article>
+
+        <article class="card" role="listitem">
+          <button class="card-click" type="button"
+            data-open-property
+            data-title="Loja de rua · Centro"
+            data-subtitle="Curitiba · vitrine e fluxo alto"
+            data-address="Rua XV de Novembro, 145 — Curitiba, PR"
+            data-area="78 m²"
+            data-price="R$ 4.100 / mês"
+            data-status-label="Disponível"
+            data-chips="Pé-direito alto|Vitrine|Mezanino|Depósito|Banheiro"
+            data-img="https://picsum.photos/seed/domus-curitiba/1100/700"
+            data-img-alt="Loja com vitrine em rua movimentada"
+            data-map-query="Rua XV de Novembro 145, Curitiba PR"
+            data-wa-text="Olá! Tenho interesse na Loja de rua · Centro (Curitiba)."
+          >
+            <div class="prop-thumb">
+              <img class="prop-photo" src="https://picsum.photos/seed/domus-curitiba/900/600" alt="Loja com vitrine em rua movimentada" loading="lazy">
+            </div>
+            <h2 class="card-title">Loja de rua · Centro</h2>
+            <ul class="prop-features"><li>Pé-direito alto</li><li>Vitrine</li><li>Mezanino</li></ul>
+            <p class="prop-address"><i class="bi bi-geo-alt" aria-hidden="true"></i> Rua XV de Novembro, 145 — Curitiba, PR</p>
+            <p class="prop-area">78 m²</p>
+          </button>
+          <div class="btn-group">
+            <a class="btn btn-primary" href="https://wa.me/?text=Ol%C3%A1%2C%20loja%20Centro%20Curitiba%2078m%C2%B2.">Fale com atendente</a>
+            <a class="btn btn-secondary" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Visita%20%E2%80%94%20Loja%20Curitiba">Agendar visita</a>
+          </div>
+        </article>
+
+        <article class="card" role="listitem">
+          <button class="card-click" type="button"
+            data-open-property
+            data-title="Apartamento · Lourdes"
+            data-subtitle="Belo Horizonte · bairro nobre"
+            data-address="Rua Alvarenga Peixoto, 655 — Belo Horizonte, MG"
+            data-area="88 m²"
+            data-price="R$ 5.100 / mês"
+            data-status-label="Disponível"
+            data-chips="2 quartos|1 suíte|Academia|Coworking|Portaria"
+            data-img="https://picsum.photos/seed/domus-lourdes/1100/700"
+            data-img-alt="Apartamento com sala integrada e iluminação suave"
+            data-map-query="Rua Alvarenga Peixoto 655, Belo Horizonte MG"
+            data-wa-text="Olá! Tenho interesse no Apartamento · Lourdes (88m²)."
+          >
+            <div class="prop-thumb">
+              <img class="prop-photo" src="https://picsum.photos/seed/domus-lourdes/900/600" alt="Apartamento com sala integrada e iluminação suave" loading="lazy">
+            </div>
+            <h2 class="card-title">Apartamento · Lourdes</h2>
+            <ul class="prop-features"><li>2 quartos</li><li>1 suíte</li><li>Academia</li></ul>
+            <p class="prop-address"><i class="bi bi-geo-alt" aria-hidden="true"></i> Rua Alvarenga Peixoto, 655 — Belo Horizonte, MG</p>
+            <p class="prop-area">88 m²</p>
+          </button>
+          <div class="btn-group">
+            <a class="btn btn-primary" href="https://wa.me/?text=Ol%C3%A1%2C%20apto%20Lourdes%2088m%C2%B2.">Fale com atendente</a>
+            <a class="btn btn-secondary" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Visita%20%E2%80%94%20Apto%20Lourdes">Agendar visita</a>
+          </div>
+        </article>
+
+        <article class="card" role="listitem">
+          <button class="card-click" type="button"
+            data-open-property
+            data-title="Galpão logístico"
+            data-subtitle="Guarulhos · acesso fácil à Dutra"
+            data-address="Rod. Presidente Dutra, KM 223 — Guarulhos, SP"
+            data-area="4.200 m²"
+            data-price="R$ 148.000 / mês"
+            data-status-label="Disponível"
+            data-chips="Docas|Pé-direito 12m|Segurança 24h|Pátio|Sprinklers"
+            data-img="https://picsum.photos/seed/domus-galpao/1100/700"
+            data-img-alt="Galpão logístico com docas e pátio"
+            data-map-query="Rodovia Presidente Dutra km 223, Guarulhos SP"
+            data-wa-text="Olá! Tenho interesse no Galpão logístico (4.200m²)."
+          >
+            <div class="prop-thumb">
+              <img class="prop-photo" src="https://picsum.photos/seed/domus-galpao/900/600" alt="Galpão logístico com docas e pátio" loading="lazy">
+            </div>
+            <h2 class="card-title">Galpão logístico</h2>
+            <ul class="prop-features"><li>Docas</li><li>Pé-direito 12m</li><li>Segurança 24h</li></ul>
+            <p class="prop-address"><i class="bi bi-geo-alt" aria-hidden="true"></i> Rod. Presidente Dutra, KM 223 — Guarulhos, SP</p>
+            <p class="prop-area">4.200 m²</p>
+          </button>
+          <div class="btn-group">
+            <a class="btn btn-primary" href="https://wa.me/?text=Ol%C3%A1%2C%20galp%C3%A3o%20Guarulhos%204200m%C2%B2.">Fale com atendente</a>
+            <a class="btn btn-secondary" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Visita%20%E2%80%94%20Galp%C3%A3o%20Guarulhos">Agendar visita</a>
+          </div>
+        </article>
+
+        <article class="card" role="listitem">
+          <button class="card-click" type="button"
+            data-open-property
+            data-title="Apartamento garden"
+            data-subtitle="Barra · garden privativo"
+            data-address="Av. das Américas, 7700 — Rio de Janeiro, RJ"
+            data-area="120 m² + garden"
+            data-price="R$ 8.750 / mês"
+            data-status-label="Disponível"
+            data-chips="Jardim 80m²|Pet friendly|2 vagas|Churrasqueira|Lazer"
+            data-img="https://picsum.photos/seed/domus-garden/1100/700"
+            data-img-alt="Apartamento garden com área externa"
+            data-map-query="Av das Américas 7700, Rio de Janeiro RJ"
+            data-wa-text="Olá! Tenho interesse no Apartamento garden (Barra, 120m² + garden)."
+          >
+            <div class="prop-thumb">
+              <img class="prop-photo" src="https://picsum.photos/seed/domus-garden/900/600" alt="Apartamento garden com área externa" loading="lazy">
+            </div>
+            <h2 class="card-title">Apartamento garden</h2>
+            <ul class="prop-features"><li>Jardim 80m²</li><li>Pet friendly</li><li>2 vagas</li></ul>
+            <p class="prop-address"><i class="bi bi-geo-alt" aria-hidden="true"></i> Av. das Américas, 7700 — Rio de Janeiro, RJ</p>
+            <p class="prop-area">120 m² + garden</p>
+          </button>
+          <div class="btn-group">
+            <a class="btn btn-primary" href="https://wa.me/?text=Ol%C3%A1%2C%20garden%20Barra%20120m%C2%B2.">Fale com atendente</a>
+            <a class="btn btn-secondary" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Visita%20%E2%80%94%20Garden%20Barra">Agendar visita</a>
+          </div>
+        </article>
+
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container inner">
+        <span><strong style="color:var(--green-darker);">Domus CRM</strong> · catálogo</span>
+        <span class="muted">Fotos são placeholders (troque por imagens reais)</span>
+      </div>
+    </footer>
+
+    <!-- Modal de imóvel -->
+    <div id="property-modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Detalhes do imóvel">
+      <div class="modal-panel">
+        <div class="modal-head">
+          <div>
+            <p class="muted" style="margin:0;"><span class="badge badge-neutral" data-m-status>Detalhes</span></p>
+            <h2 class="modal-title" data-m-title>Imóvel</h2>
+            <p class="modal-sub" data-m-subtitle></p>
+          </div>
+          <button class="icon-btn" type="button" data-modal-close aria-label="Fechar modal"><i class="bi bi-x-lg"></i></button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-grid">
+            <div>
+              <div class="modal-hero">
+                <img data-m-img src="" alt="Foto do imóvel">
+              </div>
+              <div class="btn-group" style="margin-top:0.85rem;">
+                <a class="btn btn-primary" data-m-wa href="#">Fale com atendente</a>
+                <a class="btn btn-secondary" data-m-cal href="#">Agendar visita</a>
+              </div>
+              <ul class="prop-features" data-m-chips style="margin-top:0.85rem;"></ul>
+            </div>
+            <div>
+              <dl class="modal-kv">
+                <div><dt>Endereço</dt><dd data-m-address></dd></div>
+                <div><dt>Metragem</dt><dd data-m-area></dd></div>
+                <div><dt>Valor</dt><dd data-m-price></dd></div>
+              </dl>
+              <div class="map-frame" style="margin-top:0.85rem;">
+                <iframe data-m-map title="Mapa" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              </div>
+              <p class="muted" style="margin-top:0.75rem;">Dica: no app final, isso vira página de detalhes com galeria completa e ficha técnica.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

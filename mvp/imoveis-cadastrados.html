@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Imóveis cadastrados · Domus MVP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Ir para o conteúdo</a>
+  <div class="app-wrap">
+    <header class="site-header">
+      <div class="container inner">
+        <a class="brand" href="index.html">
+          <span class="brand-mark" aria-hidden="true"><i class="bi bi-house-heart"></i></span>
+          <span>
+            <span class="brand-text">Domus MVP</span>
+            <span class="brand-sub">carteira interna</span>
+          </span>
+        </a>
+        <input type="checkbox" id="nav-check" class="visually-hidden">
+        <label class="nav-toggle" for="nav-check" aria-label="Abrir ou fechar menu de navegação"><i class="bi bi-list" style="font-size:1.35rem;"></i></label>
+        <nav class="main-nav" aria-label="Principal">
+          <a href="index.html">Início</a>
+          <a href="catalogo.html">Catálogo</a>
+          <a href="imoveis-cadastrados.html" aria-current="page">Imóveis cadastrados</a>
+          <a href="formularios.html">Formulários</a>
+          <a href="contratos.html">Contratos</a>
+          <a href="relatorios.html">Relatórios</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="container">
+      <header class="page-head">
+        <p class="eyebrow"><i class="bi bi-building-gear" aria-hidden="true"></i> base interna</p>
+        <h1>Imóveis cadastrados</h1>
+        <p class="lead">Use o menu para filtrar por status (disponíveis, locados ou em negociação). Toque no card para abrir os detalhes administrativos. As fotos são placeholders para validação visual.</p>
+      </header>
+
+      <section data-filter-root>
+        <div class="filters" role="group" aria-label="Filtrar imóveis por status">
+          <button type="button" class="btn btn-ghost" data-filter="todos" aria-pressed="true"><i class="bi bi-grid-3x3-gap"></i> Todos</button>
+          <button type="button" class="btn btn-ghost" data-filter="disponivel" aria-pressed="false"><i class="bi bi-check2-circle"></i> Disponíveis</button>
+          <button type="button" class="btn btn-ghost" data-filter="locado" aria-pressed="false"><i class="bi bi-lock"></i> Locados</button>
+          <button type="button" class="btn btn-ghost" data-filter="negociacao" aria-pressed="false"><i class="bi bi-chat-left-text"></i> Em negociação</button>
+        </div>
+
+        <div class="grid-registered">
+
+        <details class="reg-card" data-status="locado">
+          <summary>
+            <div class="reg-top">
+              <div class="thumb-sm"><img src="https://picsum.photos/seed/domus-jardins-reg/240/160" alt="Foto do apartamento nos Jardins" loading="lazy"></div>
+              <div style="min-width:0;">
+                <span style="display:block; font-weight:700;">Apto 142 m² · Oscar Freire</span>
+                <span class="muted">Residencial · contrato ativo</span>
+              </div>
+            </div>
+            <span class="badge badge-success">Locado</span>
+          </summary>
+          <div class="reg-body">
+            <dl class="reg-dl">
+              <div><dt>Locador</dt><dd>Maria Helena Duarte</dd></div>
+              <div><dt>Locado em</dt><dd>12/03/2025</dd></div>
+              <div><dt>Uso</dt><dd>Residencial</dd></div>
+              <div><dt>Status</dt><dd>Contrato ativo · vencimento março/2027</dd></div>
+            </dl>
+          </div>
+        </details>
+
+        <details class="reg-card" data-status="disponivel">
+          <summary>
+            <div class="reg-top">
+              <div class="thumb-sm"><img src="https://picsum.photos/seed/domus-farialima-reg/240/160" alt="Foto da sala comercial na Faria Lima" loading="lazy"></div>
+              <div style="min-width:0;">
+                <span style="display:block; font-weight:700;">Sala Faria Lima · 112 m²</span>
+                <span class="muted">Comercial · vago</span>
+              </div>
+            </div>
+            <span class="badge badge-neutral">Disponível</span>
+          </summary>
+          <div class="reg-body">
+            <dl class="reg-dl">
+              <div><dt>Locador</dt><dd>Holdings Aurora Ltda.</dd></div>
+              <div><dt>Locado em</dt><dd>— (vago desde 01/04/2026)</dd></div>
+              <div><dt>Uso</dt><dd>Comercial</dd></div>
+              <div><dt>Status</dt><dd>Disponível para locação e venda</dd></div>
+            </dl>
+          </div>
+        </details>
+
+        <details class="reg-card" data-status="locado">
+          <summary>
+            <div class="reg-top">
+              <div class="thumb-sm"><img src="https://picsum.photos/seed/domus-alphaville-reg/240/160" alt="Foto da casa em Alphaville" loading="lazy"></div>
+              <div style="min-width:0;">
+                <span style="display:block; font-weight:700;">Casa Alphaville · 290 m²</span>
+                <span class="muted">Residencial · renovação automática</span>
+              </div>
+            </div>
+            <span class="badge badge-success">Locado</span>
+          </summary>
+          <div class="reg-body">
+            <dl class="reg-dl">
+              <div><dt>Locador</dt><dd>Família Mendes (PF conjunta)</dd></div>
+              <div><dt>Locado em</dt><dd>28/01/2024</dd></div>
+              <div><dt>Uso</dt><dd>Residencial</dd></div>
+              <div><dt>Status</dt><dd>Locado · renovação automática</dd></div>
+            </dl>
+          </div>
+        </details>
+
+        <details class="reg-card" data-status="negociacao">
+          <summary>
+            <div class="reg-top">
+              <div class="thumb-sm"><img src="https://picsum.photos/seed/domus-pinheiros-reg/240/160" alt="Foto da cobertura em Pinheiros" loading="lazy"></div>
+              <div style="min-width:0;">
+                <span style="display:block; font-weight:700;">Cobertura Pinheiros</span>
+                <span class="muted">Residencial · reservado</span>
+              </div>
+            </div>
+            <span class="badge badge-warning">Em negociação</span>
+          </summary>
+          <div class="reg-body">
+            <dl class="reg-dl">
+              <div><dt>Locador</dt><dd>Engenho Participações S.A.</dd></div>
+              <div><dt>Locado em</dt><dd>— (proposta em análise)</dd></div>
+              <div><dt>Uso</dt><dd>Residencial</dd></div>
+              <div><dt>Status</dt><dd>Reservado até 30/04/2026</dd></div>
+            </dl>
+          </div>
+        </details>
+
+        <details class="reg-card" data-status="locado">
+          <summary>
+            <div class="reg-top">
+              <div class="thumb-sm"><img src="https://picsum.photos/seed/domus-galpao-reg/240/160" alt="Foto do galpão logístico" loading="lazy"></div>
+              <div style="min-width:0;">
+                <span style="display:block; font-weight:700;">Galpão Dutra · 4.200 m²</span>
+                <span class="muted">Comercial · contrato ativo</span>
+              </div>
+            </div>
+            <span class="badge badge-success">Locado</span>
+          </summary>
+          <div class="reg-body">
+            <dl class="reg-dl">
+              <div><dt>Locador</dt><dd>Logística Verde Log S.A.</dd></div>
+              <div><dt>Locado em</dt><dd>05/11/2023</dd></div>
+              <div><dt>Uso</dt><dd>Comercial / industrial leve</dd></div>
+              <div><dt>Status</dt><dd>Locado · multa rescisória vigente</dd></div>
+            </dl>
+          </div>
+        </details>
+
+        <details class="reg-card" data-status="disponivel">
+          <summary>
+            <div class="reg-top">
+              <div class="thumb-sm"><img src="https://picsum.photos/seed/domus-consolacao-reg/240/160" alt="Foto do studio na Consolação" loading="lazy"></div>
+              <div style="min-width:0;">
+                <span style="display:block; font-weight:700;">Studio Consolação · 36 m²</span>
+                <span class="muted">Residencial · visitas agendadas</span>
+              </div>
+            </div>
+            <span class="badge badge-neutral">Disponível</span>
+          </summary>
+          <div class="reg-body">
+            <dl class="reg-dl">
+              <div><dt>Locador</dt><dd>Caio Augusto Ribeiro</dd></div>
+              <div><dt>Locado em</dt><dd>—</dd></div>
+              <div><dt>Uso</dt><dd>Residencial</dd></div>
+              <div><dt>Status</dt><dd>Disponível · visitas agendadas</dd></div>
+            </dl>
+          </div>
+        </details>
+
+        <details class="reg-card" data-status="locado">
+          <summary>
+            <div class="reg-top">
+              <div class="thumb-sm"><img src="https://picsum.photos/seed/domus-curitiba-reg/240/160" alt="Foto da loja no centro" loading="lazy"></div>
+              <div style="min-width:0;">
+                <span style="display:block; font-weight:700;">Loja XV · Curitiba</span>
+                <span class="muted">Comercial · sublocação ok</span>
+              </div>
+            </div>
+            <span class="badge badge-success">Locado</span>
+          </summary>
+          <div class="reg-body">
+            <dl class="reg-dl">
+              <div><dt>Locador</dt><dd>Imobiliária Horizonte Sul</dd></div>
+              <div><dt>Locado em</dt><dd>19/08/2025</dd></div>
+              <div><dt>Uso</dt><dd>Comercial</dd></div>
+              <div><dt>Status</dt><dd>Locado · sublocação autorizada</dd></div>
+            </dl>
+          </div>
+        </details>
+
+        <details class="reg-card" data-status="disponivel">
+          <summary>
+            <div class="reg-top">
+              <div class="thumb-sm"><img src="https://picsum.photos/seed/domus-atibaia-reg/240/160" alt="Foto da chácara em Atibaia" loading="lazy"></div>
+              <div style="min-width:0;">
+                <span style="display:block; font-weight:700;">Chácara Atibaia · 1,5 ha</span>
+                <span class="muted">Misto · temporada e venda</span>
+              </div>
+            </div>
+            <span class="badge badge-neutral">Disponível</span>
+          </summary>
+          <div class="reg-body">
+            <dl class="reg-dl">
+              <div><dt>Locador</dt><dd>Sítio Boa Vista (MEI)</dd></div>
+              <div><dt>Locado em</dt><dd>—</dd></div>
+              <div><dt>Uso</dt><dd>Misto (eventos / temporada)</dd></div>
+              <div><dt>Status</dt><dd>Disponível para temporada e venda</dd></div>
+            </dl>
+          </div>
+        </details>
+
+        <details class="reg-card" data-status="locado">
+          <summary>
+            <div class="reg-top">
+              <div class="thumb-sm"><img src="https://picsum.photos/seed/domus-boaviagem-reg/240/160" alt="Foto do apartamento em Boa Viagem" loading="lazy"></div>
+              <div style="min-width:0;">
+                <span style="display:block; font-weight:700;">Apto Boa Viagem · 98 m²</span>
+                <span class="muted">Residencial · fiador aprovado</span>
+              </div>
+            </div>
+            <span class="badge badge-success">Locado</span>
+          </summary>
+          <div class="reg-body">
+            <dl class="reg-dl">
+              <div><dt>Locador</dt><dd>Patrícia e Luiz (condomínio fechado)</dd></div>
+              <div><dt>Locado em</dt><dd>02/02/2026</dd></div>
+              <div><dt>Uso</dt><dd>Residencial</dd></div>
+              <div><dt>Status</dt><dd>Locado · fiador aprovado</dd></div>
+            </dl>
+          </div>
+        </details>
+
+        <details class="reg-card" data-status="disponivel">
+          <summary>
+            <div class="reg-top">
+              <div class="thumb-sm"><img src="https://picsum.photos/seed/domus-moema-reg/240/160" alt="Foto do sobrado em Moema" loading="lazy"></div>
+              <div style="min-width:0;">
+                <span style="display:block; font-weight:700;">Sobrado Moema · 240 m²</span>
+                <span class="muted">Residencial · indisponível temporário</span>
+              </div>
+            </div>
+            <span class="badge badge-info">Manutenção</span>
+          </summary>
+          <div class="reg-body">
+            <dl class="reg-dl">
+              <div><dt>Locador</dt><dd>Fundo de Investimento Domus I</dd></div>
+              <div><dt>Locado em</dt><dd>15/06/2022 (término reforma)</dd></div>
+              <div><dt>Uso</dt><dd>Residencial</dd></div>
+              <div><dt>Status</dt><dd>Indisponível temporariamente para visitas</dd></div>
+            </dl>
+          </div>
+        </details>
+
+        <details class="reg-card" data-status="locado">
+          <summary>
+            <div class="reg-top">
+              <div class="thumb-sm"><img src="https://picsum.photos/seed/domus-lourdes-reg/240/160" alt="Foto do apartamento em Lourdes" loading="lazy"></div>
+              <div style="min-width:0;">
+                <span style="display:block; font-weight:700;">Apto Lourdes · 88 m²</span>
+                <span class="muted">Residencial · caução ok</span>
+              </div>
+            </div>
+            <span class="badge badge-success">Locado</span>
+          </summary>
+          <div class="reg-body">
+            <dl class="reg-dl">
+              <div><dt>Locador</dt><dd>Helena Costa (PF)</dd></div>
+              <div><dt>Locado em</dt><dd>10/09/2025</dd></div>
+              <div><dt>Uso</dt><dd>Residencial</dd></div>
+              <div><dt>Status</dt><dd>Locado · caução em título</dd></div>
+            </dl>
+          </div>
+        </details>
+
+        <details class="reg-card" data-status="disponivel">
+          <summary>
+            <div class="reg-top">
+              <div class="thumb-sm"><img src="https://picsum.photos/seed/domus-garden-reg/240/160" alt="Foto do apartamento garden" loading="lazy"></div>
+              <div style="min-width:0;">
+                <span style="display:block; font-weight:700;">Garden Barra · 120 m²</span>
+                <span class="muted">Residencial · documentação ok</span>
+              </div>
+            </div>
+            <span class="badge badge-neutral">Disponível</span>
+          </summary>
+          <div class="reg-body">
+            <dl class="reg-dl">
+              <div><dt>Locador</dt><dd>Construtora Oásis RJ</dd></div>
+              <div><dt>Locado em</dt><dd>—</dd></div>
+              <div><dt>Uso</dt><dd>Residencial</dd></div>
+              <div><dt>Status</dt><dd>Pronto para morar · documentação ok</dd></div>
+            </dl>
+          </div>
+        </details>
+
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container inner">
+        <span><strong style="color:var(--green-darker);">Domus CRM</strong> · carteira</span>
+        <span class="muted">Legenda: badges indicam status operacional resumido</span>
+      </div>
+    </footer>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
