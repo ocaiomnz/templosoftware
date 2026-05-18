@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="academia-page">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Academia · análise corporal e evolução de carga</title>
+  <meta name="description" content="MVP: corpo, exercícios, diário de treino e mapa de evolução muscular com dados demonstrativos.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/academia.css">
+</head>
+<body class="academia-page">
+  <a class="ac-skip" href="#main">Ir para o conteúdo</a>
+
+  <div class="ac-wrap">
+    <header class="ac-header">
+      <div class="ac-container inner">
+        <a class="ac-brand" href="academia.html">
+          <span class="ac-brand-mark" aria-hidden="true"><i class="bi bi-activity"></i></span>
+          <span>
+            <span class="ac-brand-text">Academia</span>
+            <span class="ac-brand-sub">MVP · dados demonstrativos</span>
+          </span>
+        </a>
+        <nav class="ac-nav" aria-label="Seções">
+          <a href="#panel-corpo" class="is-active">Corpo</a>
+          <a href="#panel-exercicios">Exercícios</a>
+          <a href="#panel-diario">Diário</a>
+          <a href="#panel-evolucao">Evolução</a>
+          <a href="index.html">Domus MVP</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="ac-main ac-container">
+      <header class="ac-hero">
+        <span class="ac-demo-badge"><i class="bi bi-info-circle" aria-hidden="true"></i> protótipo visual</span>
+        <p class="ac-eyebrow"><i class="bi bi-graph-up" aria-hidden="true"></i> maio 2026 · 28 exercícios mockados</p>
+        <h1>Corpo, treino e evolução de carga</h1>
+        <p class="lead">Analise IMC e silhueta muscular, cadastre exercícios com grupos recrutados, registre o dia e veja percentuais de progresso — do vermelho ao verde. Ex.: supino 50→54&nbsp;kg (+8%), elevação lateral 6→12&nbsp;kg (+100%).</p>
+      </header>
+
+      <div class="ac-tabs" role="tablist" aria-label="Painéis principais">
+        <button type="button" class="ac-tab" role="tab" data-panel="panel-corpo" aria-selected="true" aria-controls="panel-corpo">Corpo</button>
+        <button type="button" class="ac-tab" role="tab" data-panel="panel-exercicios" aria-selected="false" aria-controls="panel-exercicios">Exercícios</button>
+        <button type="button" class="ac-tab" role="tab" data-panel="panel-diario" aria-selected="false" aria-controls="panel-diario">Diário</button>
+        <button type="button" class="ac-tab" role="tab" data-panel="panel-evolucao" aria-selected="false" aria-controls="panel-evolucao">Evolução</button>
+      </div>
+
+      <!-- CORPO -->
+      <section id="panel-corpo" class="ac-panel is-visible" role="tabpanel" aria-labelledby="tab-corpo">
+        <div class="ac-grid-2">
+          <article class="ac-card">
+            <h2><i class="bi bi-person-bounding-box" aria-hidden="true"></i> Análise corporal</h2>
+            <p class="hint">Peso, altura e idade para IMC e estimativa de massa magra (fórmula simplificada para demo).</p>
+            <form id="body-form">
+              <div class="ac-form-row cols-3">
+                <div>
+                  <label class="ac-label" for="input-weight">Peso (kg)</label>
+                  <input class="ac-input" type="number" id="input-weight" name="weight" min="30" max="250" step="0.1" value="78" required>
+                </div>
+                <div>
+                  <label class="ac-label" for="input-height">Altura (cm)</label>
+                  <input class="ac-input" type="number" id="input-height" name="height" min="120" max="230" value="175" required>
+                </div>
+                <div>
+                  <label class="ac-label" for="input-age">Idade</label>
+                  <input class="ac-input" type="number" id="input-age" name="age" min="14" max="99" value="28" required>
+                </div>
+              </div>
+              <button type="submit" class="ac-btn ac-btn-primary"><i class="bi bi-check2" aria-hidden="true"></i> Atualizar medidas</button>
+            </form>
+            <div class="ac-grid-kpi" style="margin-top:1rem;">
+              <div class="ac-kpi">
+                <div class="ac-kpi-val" id="kpi-bmi">25.4</div>
+                <div class="ac-kpi-lbl">IMC · <span id="kpi-bmi-label">Peso saudável</span></div>
+              </div>
+              <div class="ac-kpi">
+                <div class="ac-kpi-val" id="kpi-weight">78 kg</div>
+                <div class="ac-kpi-lbl">Peso atual</div>
+              </div>
+              <div class="ac-kpi">
+                <div class="ac-kpi-val" id="kpi-height">175 cm</div>
+                <div class="ac-kpi-lbl">Altura</div>
+              </div>
+              <div class="ac-kpi">
+                <div class="ac-kpi-val" id="kpi-lean">~64.0 kg</div>
+                <div class="ac-kpi-lbl">Massa magra est.</div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <article class="ac-card ac-card-body">
+            <h2><i class="bi bi-body-text" aria-hidden="true"></i> Mapa muscular</h2>
+            <p class="hint">Regiões coloridas pela evolução média de carga. Passe o mouse para ver todos os exercícios daquele grupo.</p>
+            <div class="ac-body-stage">
+              <div class="ac-body-figure">
+              <svg class="ac-body-svg" viewBox="0 0 200 440" role="img" aria-labelledby="body-svg-title">
+                  <title id="body-svg-title">Silhueta humana frontal com grupos musculares</title>
+                  <defs>
+                    <linearGradient id="body-skin" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stop-color="#2a3548"/>
+                      <stop offset="100%" stop-color="#1a2230"/>
+                    </linearGradient>
+                  </defs>
+                  <g class="ac-body-outline" aria-hidden="true">
+                    <ellipse cx="100" cy="36" rx="26" ry="30" fill="url(#body-skin)" stroke="#3d4f66" stroke-width="1.5"/>
+                    <path d="M88 62 Q100 68 112 62 L118 78 Q100 74 82 78 Z" fill="#243044" stroke="#3d4f66" stroke-width="1"/>
+                    <path d="M62 78 Q100 88 138 78 L145 200 Q100 210 55 200 Z" fill="url(#body-skin)" stroke="#3d4f66" stroke-width="1.5"/>
+                    <path d="M55 200 L48 320 Q100 328 152 320 L145 200 Z" fill="url(#body-skin)" stroke="#3d4f66" stroke-width="1.5"/>
+                    <path d="M48 320 L42 400 Q100 408 158 400 L152 320 Z" fill="url(#body-skin)" stroke="#3d4f66" stroke-width="1.5"/>
+                    <path d="M28 82 Q18 140 22 200 L38 195 Q34 130 42 88 Z" fill="#243044" stroke="#3d4f66" stroke-width="1"/>
+                    <path d="M172 82 Q182 140 178 200 L162 195 Q166 130 158 88 Z" fill="#243044" stroke="#3d4f66" stroke-width="1"/>
+                  </g>
+                  <path class="ac-muscle-zone is-marked is-active" data-muscle="Ombros" d="M62 78 Q42 72 38 95 Q48 108 62 102 Q72 90 62 78 Z"/>
+                  <path class="ac-muscle-zone is-marked is-active" data-muscle="Ombros" d="M138 78 Q158 72 162 95 Q152 108 138 102 Q128 90 138 78 Z"/>
+                  <path class="ac-muscle-zone is-marked" data-muscle="Peito" d="M72 88 Q100 82 128 88 L132 128 Q100 134 68 128 Z"/>
+                  <path class="ac-muscle-zone is-marked" data-muscle="Abdômen" d="M78 132 Q100 128 122 132 L118 168 Q100 172 82 168 Z"/>
+                  <path class="ac-muscle-zone is-marked" data-muscle="Costas" d="M55 95 Q48 130 52 165 L68 160 Q62 125 65 100 Z"/>
+                  <path class="ac-muscle-zone is-marked" data-muscle="Costas" d="M145 95 Q152 130 148 165 L132 160 Q138 125 135 100 Z"/>
+                  <path class="ac-muscle-zone is-marked" data-muscle="Bíceps" d="M22 98 Q14 130 18 168 L32 165 Q28 125 34 102 Z"/>
+                  <path class="ac-muscle-zone is-marked" data-muscle="Bíceps" d="M178 98 Q186 130 182 168 L168 165 Q172 125 166 102 Z"/>
+                  <path class="ac-muscle-zone is-marked" data-muscle="Tríceps" d="M26 168 Q20 200 24 228 L36 225 Q32 195 38 172 Z"/>
+                  <path class="ac-muscle-zone is-marked" data-muscle="Tríceps" d="M174 168 Q180 200 176 228 L164 225 Q168 195 162 172 Z"/>
+                  <path class="ac-muscle-zone is-marked" data-muscle="Glúteos" d="M68 172 Q100 178 132 172 L128 198 Q100 204 72 198 Z"/>
+                  <path class="ac-muscle-zone is-marked" data-muscle="Quadríceps" d="M58 205 Q52 260 55 310 L78 308 Q75 255 72 208 Z"/>
+                  <path class="ac-muscle-zone is-marked" data-muscle="Quadríceps" d="M142 205 Q148 260 145 310 L122 308 Q125 255 128 208 Z"/>
+                  <path class="ac-muscle-zone is-marked" data-muscle="Posterior" d="M72 208 Q100 214 128 208 L125 248 Q100 252 75 248 Z"/>
+                  <path class="ac-muscle-zone is-marked" data-muscle="Panturrilha" d="M52 318 Q48 365 50 395 L72 392 Q70 345 68 318 Z"/>
+                  <path class="ac-muscle-zone is-marked" data-muscle="Panturrilha" d="M148 318 Q152 365 150 395 L128 392 Q130 345 132 318 Z"/>
+                </svg>
+              </div>
+              <aside class="ac-muscle-panel" id="muscle-hover-panel" aria-live="polite">
+                <p class="ac-muscle-panel-placeholder" id="muscle-panel-placeholder" hidden>Passe o mouse sobre um músculo</p>
+                <div class="ac-muscle-panel-content" id="muscle-panel-content">
+                  <h3 class="ac-muscle-panel-title" id="muscle-panel-title">Ombros</h3>
+                  <p class="ac-muscle-panel-meta" id="muscle-panel-meta">5 exercício(s) · evolução média +42%</p>
+                  <ul class="ac-muscle-panel-list" id="muscle-panel-exercises">
+                    <li><span class="ex-name">Elevação lateral</span><span class="ex-pct" style="color:#4ade80">+100% · 6 → 12 kg</span></li>
+                    <li><span class="ex-name">Desenvolvimento</span><span class="ex-pct" style="color:#86efac">+9% · 22 → 24 kg</span></li>
+                    <li><span class="ex-name">Supino reto</span><span class="ex-pct" style="color:#86efac">+8% · 50 → 54 kg</span></li>
+                    <li><span class="ex-name">Elevação frontal</span><span class="ex-pct" style="color:#86efac">+10% · 10 → 11 kg</span></li>
+                    <li><span class="ex-name">Supino inclinado</span><span class="ex-pct" style="color:#86efac">+7% · 42 → 45 kg</span></li>
+                  </ul>
+                </div>
+              </aside>
+            </div>
+            <div class="ac-heat-scale" style="margin-top:1rem;" aria-hidden="true">
+              <span>Perda / estagnação</span>
+              <span class="ac-heat-gradient"></span>
+              <span>Maior ganho</span>
+            </div>
+          </article>
+
+        <article class="ac-card">
+          <h2><i class="bi bi-list-check" aria-hidden="true"></i> Evolução de carga · 28 exercícios</h2>
+          <p class="hint">Ganhos e perdas percentuais entre a carga anterior e a atual (dados fictícios para o MVP).</p>
+          <ul class="ac-ex-load-list" id="exercise-load-list" role="list">
+            <li class="ac-ex-load-item ac-ex-load-skeleton" aria-hidden="true">Carregando 28 exercícios…</li>
+          </ul>
+        </article>
+      </section>
+
+      <!-- EXERCÍCIOS -->
+      <section id="panel-exercicios" class="ac-panel" role="tabpanel" hidden>
+        <div class="ac-grid-2">
+          <article class="ac-card">
+            <h2><i class="bi bi-plus-circle" aria-hidden="true"></i> Cadastrar exercício</h2>
+            <p class="hint">Defina quais músculos são recrutados e cargas de referência (anterior × atual).</p>
+            <form id="exercise-form">
+              <div class="ac-form-row">
+                <div>
+                  <label class="ac-label" for="ex-name">Nome do exercício</label>
+                  <input class="ac-input" id="ex-name" name="name" placeholder="Ex.: Supino inclinado" required>
+                </div>
+              </div>
+              <div class="ac-form-row">
+                <div>
+                  <label class="ac-label" for="ex-muscles">Músculos recrutados (Ctrl+clique)</label>
+                  <select class="ac-select" id="ex-muscles" name="muscles" multiple size="5" required aria-describedby="ex-muscles-hint">
+                    <option value="Peito">Peito</option>
+                    <option value="Ombros">Ombros</option>
+                    <option value="Costas">Costas</option>
+                    <option value="Bíceps">Bíceps</option>
+                    <option value="Tríceps">Tríceps</option>
+                    <option value="Quadríceps">Quadríceps</option>
+                    <option value="Posterior">Posterior</option>
+                    <option value="Glúteos">Glúteos</option>
+                    <option value="Abdômen">Abdômen</option>
+                    <option value="Panturrilha">Panturrilha</option>
+                  </select>
+                  <span id="ex-muscles-hint" class="hint" style="margin-top:0.35rem;display:block;">Segure Ctrl (Windows) ou Cmd (Mac) para múltipla seleção.</span>
+                </div>
+              </div>
+              <div class="ac-form-row cols-2">
+                <div>
+                  <label class="ac-label" for="ex-prev">Carga anterior (kg)</label>
+                  <input class="ac-input" type="number" id="ex-prev" min="0" step="0.5" value="0">
+                </div>
+                <div>
+                  <label class="ac-label" for="ex-curr">Carga atual (kg)</label>
+                  <input class="ac-input" type="number" id="ex-curr" min="0" step="0.5" value="0">
+                </div>
+              </div>
+              <button type="submit" class="ac-btn ac-btn-primary">Adicionar ao catálogo</button>
+            </form>
+          </article>
+
+          <article class="ac-card">
+            <h2><i class="bi bi-lightning" aria-hidden="true"></i> Exemplos de evolução</h2>
+            <p class="hint">Comparativo percentual entre cargas — núcleo do relatório de progresso.</p>
+            <ul style="margin:0;padding-left:1.1rem;color:var(--ac-muted);font-size:0.875rem;">
+              <li style="margin-bottom:0.5rem;"><strong style="color:var(--ac-green);">Supino 50→54 kg</strong> = +8% (verde suave)</li>
+              <li style="margin-bottom:0.5rem;"><strong style="color:var(--ac-green);">Elevação lateral 6→12 kg</strong> = +100% (verde intenso)</li>
+              <li><strong style="color:var(--ac-amber);">Agachamento 80→92 kg</strong> = +15%</li>
+            </ul>
+          </article>
+        </div>
+
+        <article class="ac-card">
+          <h2>Catálogo de exercícios</h2>
+          <p class="hint">28 movimentos pré-cadastrados para demonstração do MVP.</p>
+          <div class="ac-table-wrap">
+            <table class="ac-table">
+              <thead>
+                <tr>
+                  <th scope="col">Exercício</th>
+                  <th scope="col">Músculos</th>
+                  <th scope="col">Cargas</th>
+                  <th scope="col">Δ %</th>
+                </tr>
+              </thead>
+              <tbody id="exercise-tbody">
+                <tr><td colspan="4" class="muted" style="padding:1rem;text-align:center;font-size:0.875rem;">Carregando catálogo…</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <!-- DIÁRIO -->
+      <section id="panel-diario" class="ac-panel" role="tabpanel" hidden>
+        <div class="ac-grid-2">
+          <article class="ac-card">
+            <h2><i class="bi bi-calendar-plus" aria-hidden="true"></i> Registrar treino de hoje</h2>
+            <p class="hint">Associa exercício, carga/séries e músculos trabalhados automaticamente pelo catálogo.</p>
+            <form id="diary-form">
+              <div class="ac-form-row">
+                <div>
+                  <label class="ac-label" for="diary-exercise">Exercício</label>
+                  <select class="ac-select" id="diary-exercise" name="exercise" required></select>
+                </div>
+                <div>
+                  <label class="ac-label" for="diary-load">Carga / volume</label>
+                  <input class="ac-input" id="diary-load" name="load" placeholder="Ex.: 54 kg × 4" required>
+                </div>
+              </div>
+              <button type="submit" class="ac-btn ac-btn-primary">Salvar no diário</button>
+            </form>
+          </article>
+
+          <article class="ac-card">
+            <h2>Resumo da semana (mock)</h2>
+            <div class="ac-grid-kpi">
+              <div class="ac-kpi"><div class="ac-kpi-val">5</div><div class="ac-kpi-lbl">Dias com treino</div></div>
+              <div class="ac-kpi"><div class="ac-kpi-val">28</div><div class="ac-kpi-lbl">Séries registradas</div></div>
+              <div class="ac-kpi"><div class="ac-kpi-val">9</div><div class="ac-kpi-lbl">Grupos musculares</div></div>
+            </div>
+          </article>
+        </div>
+
+        <article class="ac-card">
+          <h2>Linha do tempo</h2>
+          <p class="hint">Histórico fictício dos últimos dias — em produção viria do backend.</p>
+          <ul class="ac-timeline" id="diary-timeline"></ul>
+        </article>
+      </section>
+
+      <!-- EVOLUÇÃO -->
+      <section id="panel-evolucao" class="ac-panel" role="tabpanel" hidden>
+        <article class="ac-card">
+          <h2><i class="bi bi-thermometer-half" aria-hidden="true"></i> Mapa de calor por grupo muscular</h2>
+          <p class="hint">Média de aumento percentual de carga por músculo — vermelho (baixo) a verde (alto).</p>
+          <div class="ac-heat-scale" aria-hidden="true">
+            <span>Menor ganho</span>
+            <span class="ac-heat-gradient"></span>
+            <span>Maior ganho</span>
+          </div>
+          <div class="ac-muscle-heat-grid" id="muscle-heat-grid"></div>
+        </article>
+
+        <article class="ac-card">
+          <h2><i class="bi bi-bar-chart-steps" aria-hidden="true"></i> Progressão por exercício</h2>
+          <p class="hint">Ordenado do maior para o menor percentual de evolução de carga.</p>
+          <div class="ac-evolution-list" id="evolution-list" role="list"></div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="ac-footer">
+      <div class="ac-container inner">
+        <span>Academia MVP · Templo Software</span>
+        <span>Dados locais apenas · protótipo MVP</span>
+      </div>
+    </footer>
+  </div>
+
+  <div id="ac-toast" class="ac-toast" role="status" aria-live="polite"></div>
+
+  <style>
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
+  <script src="js/academia.js" defer></script>
+</body>
+</html>
