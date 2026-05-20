@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TEMPLO SOFTWARE — EMOBI Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&family=Neue+Haas+Grotesk+Display+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f0eeeb;
+    --surface: #ffffff;
+    --surface-2: #f7f6f4;
+    --border: rgba(0,0,0,0.08);
+    --text: #1a1a1a;
+    --text-2: #6b6b6b;
+    --text-3: #9a9a9a;
+    --accent: #1d3557;
+    --accent-light: #457b9d;
+    --green: #2d6a4f;
+    --green-bg: #d8f3dc;
+    --green-dot: #52b788;
+    --amber: #7c4f00;
+    --amber-bg: #fff3cd;
+    --amber-dot: #f4a261;
+    --blue: #1d3557;
+    --blue-bg: #dbeafe;
+    --blue-dot: #457b9d;
+    --gray-dot: #b0b0b0;
+    --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
+    --shadow-md: 0 4px 24px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.06);
+    --shadow-lg: 0 8px 40px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06);
+    --radius: 18px;
+    --radius-sm: 12px;
+    --radius-xs: 8px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ——— PASSWORD GATE ——— */
+  #gate {
+    position: fixed; inset: 0; z-index: 1000;
+    background: #1a1a2e;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .gate-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(69,123,157,0.25) 0%, transparent 70%),
+                radial-gradient(ellipse 60% 40% at 80% 100%, rgba(29,53,87,0.4) 0%, transparent 60%);
+  }
+
+  .gate-noise {
+    position: absolute; inset: 0;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 200px;
+  }
+
+  .gate-card {
+    position: relative; z-index: 1;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(40px);
+    border-radius: 28px;
+    padding: 48px 44px;
+    width: 380px;
+    text-align: center;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.4);
+    animation: slideUp 0.6s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .gate-logo {
+    width: 56px; height: 56px;
+    background: linear-gradient(135deg, #457b9d, #1d3557);
+    border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 24px;
+    box-shadow: 0 8px 24px rgba(69,123,157,0.4);
+  }
+
+  .gate-title {
+    font-family: 'Instrument Serif', serif;
+    font-size: 26px;
+    color: #fff;
+    margin-bottom: 4px;
+    letter-spacing: -0.5px;
+  }
+
+  .gate-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 32px;
+    font-weight: 400;
+  }
+
+  .gate-input-wrap { position: relative; margin-bottom: 16px; }
+
+  .gate-input {
+    width: 100%;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 14px;
+    padding: 16px 48px 16px 18px;
+    font-size: 15px;
+    color: #fff;
+    outline: none;
+    font-family: inherit;
+    letter-spacing: 1px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .gate-input:focus {
+    border-color: rgba(69,123,157,0.6);
+    background: rgba(255,255,255,0.11);
+  }
+
+  .gate-input::placeholder { color: rgba(255,255,255,0.25); letter-spacing: 0; }
+
+  .toggle-pass {
+    position: absolute; right: 16px; top: 50%; transform: translateY(-50%);
+    background: none; border: none; cursor: pointer;
+    color: rgba(255,255,255,0.3); font-size: 16px;
+    transition: color 0.2s;
+  }
+  .toggle-pass:hover { color: rgba(255,255,255,0.6); }
+
+  .gate-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #457b9d 0%, #1d3557 100%);
+    border: none; border-radius: 14px;
+    padding: 16px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.2px;
+    transition: opacity 0.2s, transform 0.15s;
+    box-shadow: 0 4px 16px rgba(29,53,87,0.5);
+  }
+
+  .gate-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+  .gate-btn:active { transform: translateY(0); }
+
+  .gate-error {
+    margin-top: 14px;
+    font-size: 13px;
+    color: #ff6b6b;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .gate-error.show { opacity: 1; }
+
+  /* ——— MAIN APP ——— */
+  #app { display: none; min-height: 100vh; }
+  #app.visible { display: block; animation: fadeIn 0.5s ease; }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+  /* ——— HEADER ——— */
+  header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(240,238,235,0.85);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid var(--border);
+    padding: 0 32px;
+    height: 64px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  .header-left { display: flex; align-items: center; gap: 12px; }
+
+  .logo-mark {
+    width: 36px; height: 36px;
+    background: linear-gradient(135deg, #457b9d 0%, #1d3557 100%);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    box-shadow: 0 2px 8px rgba(29,53,87,0.3);
+    flex-shrink: 0;
+  }
+
+  .header-brand {
+    font-family: 'Instrument Serif', serif;
+    font-size: 17px;
+    color: var(--text);
+    letter-spacing: -0.3px;
+  }
+
+  .header-divider {
+    width: 1px; height: 20px;
+    background: var(--border);
+  }
+
+  .header-project {
+    font-size: 13px;
+    color: var(--text-2);
+    font-weight: 400;
+  }
+
+  .header-right { display: flex; align-items: center; gap: 10px; }
+
+  .badge-live {
+    display: flex; align-items: center; gap: 6px;
+    background: var(--green-bg);
+    border: 1px solid rgba(82,183,136,0.3);
+    border-radius: 100px;
+    padding: 5px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--green);
+  }
+
+  .live-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--green-dot);
+    animation: pulse 2s ease infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(0.85); }
+  }
+
+  /* ——— MAIN ——— */
+  main { max-width: 1160px; margin: 0 auto; padding: 40px 24px 80px; }
+
+  /* ——— HERO SECTION ——— */
+  .hero {
+    margin-bottom: 40px;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 500;
+    color: var(--text-2);
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .hero-title {
+    font-family: 'Instrument Serif', serif;
+    font-size: 42px;
+    line-height: 1.12;
+    letter-spacing: -1.5px;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+
+  .hero-title em { font-style: italic; color: var(--accent-light); }
+
+  .hero-desc {
+    font-size: 15px;
+    color: var(--text-2);
+    max-width: 460px;
+    line-height: 1.6;
+    font-weight: 400;
+  }
+
+  /* ——— STATS STRIP ——— */
+  .stats-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 20px 22px;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stat-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px;
+    border-radius: 2px 2px 0 0;
+  }
+
+  .stat-card.green::before { background: linear-gradient(90deg, #52b788, #2d6a4f); }
+  .stat-card.amber::before { background: linear-gradient(90deg, #f4a261, #e76f51); }
+  .stat-card.blue::before { background: linear-gradient(90deg, #457b9d, #1d3557); }
+  .stat-card.gray::before { background: linear-gradient(90deg, #b0b0b0, #6b6b6b); }
+
+  .stat-value {
+    font-family: 'Instrument Serif', serif;
+    font-size: 34px;
+    letter-spacing: -1px;
+    color: var(--text);
+    margin-bottom: 2px;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: var(--text-3);
+    font-weight: 500;
+    letter-spacing: 0.3px;
+  }
+
+  /* ——— SECTION LABELS ——— */
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-bottom: 14px;
+    padding-left: 2px;
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+    max-width: 60px;
+  }
+
+  /* ——— MODULE GRID ——— */
+  .modules-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .module-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s;
+    cursor: default;
+  }
+
+  .module-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .module-card.done { border-color: rgba(82,183,136,0.25); }
+  .module-card.in-progress { border-color: rgba(244,162,97,0.3); }
+
+  .module-card.done .card-glow {
+    position: absolute; top: -40px; right: -40px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(82,183,136,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .module-card.in-progress .card-glow {
+    position: absolute; top: -40px; right: -40px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(244,162,97,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .module-icon {
+    width: 44px; height: 44px;
+    border-radius: 13px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  .icon-green { background: var(--green-bg); }
+  .icon-amber { background: var(--amber-bg); }
+
+  .module-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+    letter-spacing: -0.2px;
+  }
+
+  .module-status {
+    font-size: 12px;
+    font-weight: 500;
+    display: flex; align-items: center; gap: 6px;
+    margin-bottom: 16px;
+  }
+
+  .status-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .status-done { color: var(--green); }
+  .status-done .status-dot { background: var(--green-dot); }
+  .status-progress { color: var(--amber); }
+  .status-progress .status-dot { background: var(--amber-dot); animation: pulse 1.8s ease infinite; }
+
+  /* Progress bar */
+  .prog-track {
+    height: 5px;
+    background: var(--surface-2);
+    border-radius: 100px;
+    overflow: hidden;
+  }
+
+  .prog-fill {
+    height: 100%;
+    border-radius: 100px;
+    transition: width 1.2s cubic-bezier(0.34,1,0.64,1);
+    animation: fillAnim 1.5s cubic-bezier(0.34,1,0.64,1) forwards;
+  }
+
+  @keyframes fillAnim {
+    from { width: 0 !important; }
+  }
+
+  .prog-fill.green { background: linear-gradient(90deg, #52b788, #2d6a4f); }
+  .prog-fill.amber { background: linear-gradient(90deg, #f4a261, #e76f51); }
+
+  .prog-label {
+    font-size: 11px;
+    color: var(--text-3);
+    margin-top: 6px;
+    font-weight: 500;
+    text-align: right;
+  }
+
+  /* ——— WAITING SECTION ——— */
+  .waiting-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 40px;
+  }
+
+  .wait-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 18px 18px;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .wait-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .wait-icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+  .wait-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+    line-height: 1.3;
+    letter-spacing: -0.1px;
+  }
+
+  .wait-badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 3px 9px;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-3);
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+  }
+
+  .wait-badge .w-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--gray-dot);
+  }
+
+  /* ——— OVERALL PROGRESS CARD ——— */
+  .progress-hero {
+    background: linear-gradient(135deg, #1a1a2e 0%, #1d3557 60%, #457b9d 100%);
+    border-radius: var(--radius);
+    padding: 36px;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .progress-hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 260px; height: 260px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+  }
+
+  .progress-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -40px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(69,123,157,0.2) 0%, transparent 70%);
+  }
+
+  .ph-inner { position: relative; z-index: 1; }
+
+  .ph-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+
+  .ph-title {
+    font-family: 'Instrument Serif', serif;
+    font-size: 22px;
+    color: #fff;
+    margin-bottom: 4px;
+    letter-spacing: -0.5px;
+  }
+
+  .ph-sub { font-size: 13px; color: rgba(255,255,255,0.45); font-weight: 400; }
+
+  .ph-percent {
+    font-family: 'Instrument Serif', serif;
+    font-size: 56px;
+    color: #fff;
+    letter-spacing: -2px;
+    line-height: 1;
+  }
+
+  .ph-percent span { font-size: 22px; color: rgba(255,255,255,0.5); }
+
+  .ph-track {
+    height: 8px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 100px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+
+  .ph-fill {
+    height: 100%;
+    background: linear-gradient(90deg, rgba(255,255,255,0.5), rgba(255,255,255,0.9));
+    border-radius: 100px;
+    width: 26%;
+    animation: fillAnim 1.8s cubic-bezier(0.34,1,0.64,1) forwards;
+    box-shadow: 0 0 12px rgba(255,255,255,0.4);
+  }
+
+  .ph-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  .ph-tag {
+    display: flex; align-items: center; gap: 6px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 100px;
+    padding: 5px 12px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    font-weight: 400;
+  }
+
+  .ph-tag .t-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+  }
+
+  /* ——— FOOTER ——— */
+  .footer-bar {
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-3);
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-weight: 400;
+  }
+
+  /* ——— RESPONSIVE ——— */
+  @media (max-width: 900px) {
+    .modules-grid { grid-template-columns: repeat(2, 1fr); }
+    .waiting-grid { grid-template-columns: repeat(2, 1fr); }
+    .stats-strip { grid-template-columns: repeat(2, 1fr); }
+    .hero-title { font-size: 32px; }
+  }
+
+  @media (max-width: 580px) {
+    .modules-grid { grid-template-columns: 1fr; }
+    .waiting-grid { grid-template-columns: repeat(2, 1fr); }
+    .stats-strip { grid-template-columns: repeat(2, 1fr); }
+    header { padding: 0 18px; }
+    main { padding: 28px 16px 60px; }
+    .hero-title { font-size: 28px; }
+    .ph-percent { font-size: 44px; }
+  }
+
+  /* Stagger animation for cards */
+  .module-card { animation: cardIn 0.5s cubic-bezier(0.16,1,0.3,1) both; }
+  .module-card:nth-child(1) { animation-delay: 0.05s; }
+  .module-card:nth-child(2) { animation-delay: 0.1s; }
+  .module-card:nth-child(3) { animation-delay: 0.15s; }
+  .module-card:nth-child(4) { animation-delay: 0.2s; }
+  .module-card:nth-child(5) { animation-delay: 0.25s; }
+
+  .wait-card { animation: cardIn 0.5s cubic-bezier(0.16,1,0.3,1) both; }
+  .wait-card:nth-child(1) { animation-delay: 0.3s; }
+  .wait-card:nth-child(2) { animation-delay: 0.35s; }
+  .wait-card:nth-child(3) { animation-delay: 0.4s; }
+  .wait-card:nth-child(4) { animation-delay: 0.45s; }
+  .wait-card:nth-child(5) { animation-delay: 0.5s; }
+  .wait-card:nth-child(6) { animation-delay: 0.55s; }
+  .wait-card:nth-child(7) { animation-delay: 0.6s; }
+  .wait-card:nth-child(8) { animation-delay: 0.65s; }
+  .wait-card:nth-child(9) { animation-delay: 0.7s; }
+  .wait-card:nth-child(10) { animation-delay: 0.75s; }
+
+  @keyframes cardIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<!-- PASSWORD GATE -->
+<div id="gate">
+  <div class="gate-bg"></div>
+  <div class="gate-noise"></div>
+  <div class="gate-card">
+    <div class="gate-logo"><img src="Software.png" alt="Templo Software" style="width: 100%;"></div>
+    <h1 class="gate-title">TEMPLO SOFTWARE</h1>
+    <p class="gate-sub">Painel de desenvolvimento — EMOBI</p>
+    <div class="gate-input-wrap">
+      <input class="gate-input" type="password" id="passInput" placeholder="Senha de acesso" onkeydown="if(event.key==='Enter')checkPass()">
+      <button class="toggle-pass" onclick="togglePass()" title="Mostrar senha">👁</button>
+    </div>
+    <button class="gate-btn" onclick="checkPass()">Entrar</button>
+    <p class="gate-error" id="gateError">Senha incorreta. Tente novamente.</p>
+  </div>
+</div>
+
+<!-- MAIN APP -->
+<div id="app">
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-left">
+      <div class="logo-mark"><img src="Software.png" alt="Templo Software" style="width: 100%;"></div>
+      <span class="header-brand">TEMPLO SOFTWARE</span>
+      <div class="header-divider"></div>
+      <span class="header-project">Sistema EMOBI</span>
+    </div>
+    <div class="header-right">
+      <div class="badge-live">
+        <div class="live-dot"></div>
+        Em desenvolvimento
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main>
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-eyebrow">
+        <span>📋</span> Acompanhamento de projeto
+      </div>
+      <h2 class="hero-title">Desenvolvimento<br><em>EMOBI</em> — 2026</h2>
+      <p class="hero-desc">Visão geral do progresso de desenvolvimento dos módulos do sistema. Atualizado em tempo real pela equipe Templo Software.</p>
+    </div>
+
+    <!-- OVERALL PROGRESS -->
+    <div class="progress-hero">
+      <div class="ph-inner">
+        <div class="ph-row">
+          <div>
+            <div class="ph-title">Progresso geral do projeto</div>
+            <div class="ph-sub">5 módulos em desenvolvimento · 10 aguardando início</div>
+          </div>
+          <div class="ph-percent">26<span>%</span></div>
+        </div>
+        <div class="ph-track"><div class="ph-fill"></div></div>
+        <div class="ph-tags">
+          <div class="ph-tag"><div class="t-dot" style="background:#52b788"></div> 3 concluídos</div>
+          <div class="ph-tag"><div class="t-dot" style="background:#f4a261"></div> 2 em progresso</div>
+          <div class="ph-tag"><div class="t-dot" style="background:#888"></div> 10 aguardando</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats-strip">
+      <div class="stat-card green">
+        <div class="stat-value">3</div>
+        <div class="stat-label">Módulos concluídos</div>
+      </div>
+      <div class="stat-card amber">
+        <div class="stat-value">2</div>
+        <div class="stat-label">Em andamento</div>
+      </div>
+      <div class="stat-card blue">
+        <div class="stat-value">10</div>
+        <div class="stat-label">Aguardando início</div>
+      </div>
+      <div class="stat-card gray">
+        <div class="stat-value">15</div>
+        <div class="stat-label">Total de módulos</div>
+      </div>
+    </div>
+
+    <!-- ACTIVE MODULES -->
+    <div class="section-label">Módulos ativos</div>
+    <div class="modules-grid">
+
+      <!-- Login -->
+      <div class="module-card done">
+        <div class="card-glow"></div>
+        <div class="module-icon icon-green">🔐</div>
+        <div class="module-name">Login</div>
+        <div class="module-status status-done">
+          <div class="status-dot"></div>Concluído
+        </div>
+        <div class="prog-track"><div class="prog-fill green" style="width:100%"></div></div>
+        <div class="prog-label">100%</div>
+      </div>
+
+      <!-- Auditoria -->
+      <div class="module-card done">
+        <div class="card-glow"></div>
+        <div class="module-icon icon-green">📊</div>
+        <div class="module-name">Camada de Auditoria</div>
+        <div class="module-status status-done">
+          <div class="status-dot"></div>Concluída
+        </div>
+        <div class="prog-track"><div class="prog-fill green" style="width:100%"></div></div>
+        <div class="prog-label">100%</div>
+      </div>
+
+      <!-- Segurança -->
+      <div class="module-card done">
+        <div class="card-glow"></div>
+        <div class="module-icon icon-green">🛡️</div>
+        <div class="module-name">Camada de Segurança</div>
+        <div class="module-status status-done">
+          <div class="status-dot"></div>Concluída
+        </div>
+        <div class="prog-track"><div class="prog-fill green" style="width:100%"></div></div>
+        <div class="prog-label">100%</div>
+      </div>
+
+      <!-- Cadastro Clientes -->
+      <div class="module-card in-progress">
+        <div class="card-glow"></div>
+        <div class="module-icon icon-amber">👥</div>
+        <div class="module-name">Cadastro de Clientes (PF/PJ)</div>
+        <div class="module-status status-progress">
+          <div class="status-dot"></div>Em andamento
+        </div>
+        <div class="prog-track"><div class="prog-fill amber" style="width:65%"></div></div>
+        <div class="prog-label">65%</div>
+      </div>
+
+      <!-- Cadastro Contratos -->
+      <div class="module-card in-progress">
+        <div class="card-glow"></div>
+        <div class="module-icon icon-amber">📄</div>
+        <div class="module-name">Cadastro de Contratos</div>
+        <div class="module-status status-progress">
+          <div class="status-dot"></div>Em andamento
+        </div>
+        <div class="prog-track"><div class="prog-fill amber" style="width:12%"></div></div>
+        <div class="prog-label">12%</div>
+      </div>
+
+    </div>
+
+    <!-- WAITING MODULES -->
+    <div class="section-label">Aguardando liberação / iniciar processo</div>
+    <div class="waiting-grid">
+
+      <div class="wait-card">
+        <div class="wait-icon">🏠</div>
+        <div class="wait-name">Cadastro de Imóveis</div>
+        <div class="wait-badge"><div class="w-dot"></div>Aguardando</div>
+      </div>
+
+      <div class="wait-card">
+        <div class="wait-icon">🔗</div>
+        <div class="wait-name">Conexões Relevantes<br><span style="font-weight:400;color:var(--text-3)">(Imoview)</span></div>
+        <div class="wait-badge"><div class="w-dot"></div>Aguardando</div>
+      </div>
+
+      <div class="wait-card">
+        <div class="wait-icon">💬</div>
+        <div class="wait-name">CRM de Clientes</div>
+        <div class="wait-badge"><div class="w-dot"></div>Aguardando</div>
+      </div>
+
+      <div class="wait-card">
+        <div class="wait-icon">⚙️</div>
+        <div class="wait-name">ERP Interno</div>
+        <div class="wait-badge"><div class="w-dot"></div>Aguardando</div>
+      </div>
+
+      <div class="wait-card">
+        <div class="wait-icon">💳</div>
+        <div class="wait-name">Cartão Virtual</div>
+        <div class="wait-badge"><div class="w-dot"></div>Aguardando</div>
+      </div>
+
+      <div class="wait-card">
+        <div class="wait-icon">📚</div>
+        <div class="wait-name">Manual da Empresa</div>
+        <div class="wait-badge"><div class="w-dot"></div>Aguardando</div>
+      </div>
+
+      <div class="wait-card">
+        <div class="wait-icon">🗓️</div>
+        <div class="wait-name">Gestão de Plantão</div>
+        <div class="wait-badge"><div class="w-dot"></div>Aguardando</div>
+      </div>
+
+      <div class="wait-card">
+        <div class="wait-icon">🏡</div>
+        <div class="wait-name">Catálogo de Imóveis</div>
+        <div class="wait-badge"><div class="w-dot"></div>Aguardando</div>
+      </div>
+
+      <div class="wait-card">
+        <div class="wait-icon">📍</div>
+        <div class="wait-name">Estudo de Localização</div>
+        <div class="wait-badge"><div class="w-dot"></div>Aguardando</div>
+      </div>
+
+      <div class="wait-card">
+        <div class="wait-icon">✨</div>
+        <div class="wait-name">Outros Módulos</div>
+        <div class="wait-badge"><div class="w-dot"></div>Aguardando</div>
+      </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer-bar">
+      © 2026 TEMPLO SOFTWARE · Painel privado — uso exclusivo interno EMOBI
+    </div>
+
+  </main>
+</div>
+
+<script>
+  const PASS = 'EMOBI@2026';
+
+  function checkPass() {
+    const val = document.getElementById('passInput').value;
+    if (val === PASS) {
+      document.getElementById('gate').style.opacity = '0';
+      document.getElementById('gate').style.transition = 'opacity 0.4s ease';
+      setTimeout(() => {
+        document.getElementById('gate').style.display = 'none';
+        const app = document.getElementById('app');
+        app.classList.add('visible');
+      }, 400);
+    } else {
+      const err = document.getElementById('gateError');
+      err.classList.add('show');
+      document.getElementById('passInput').style.borderColor = 'rgba(255,100,100,0.5)';
+      setTimeout(() => {
+        err.classList.remove('show');
+        document.getElementById('passInput').style.borderColor = '';
+      }, 2500);
+    }
+  }
+
+  function togglePass() {
+    const inp = document.getElementById('passInput');
+    inp.type = inp.type === 'password' ? 'text' : 'password';
+  }
+</script>
+</body>
+</html>
