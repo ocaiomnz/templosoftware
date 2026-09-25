@@ -7,7 +7,6 @@
     <meta name="description" content="Projetamos e construímos plataformas web escaláveis, sistemas corporativos, APIs e automações que ajudam empresas a operar com mais eficiência.">
     <link rel="canonical" href="https://templosoftware.com.br/">
 
-    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://templosoftware.com.br/">
     <meta property="og:title" content="Templo Software — Engenharia de software que impulsiona negócios">
@@ -15,13 +14,11 @@
     <meta property="og:image" content="https://templosoftware.com.br/templologo.png">
     <meta property="og:locale" content="pt_BR">
 
-    <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Templo Software — Engenharia de software que impulsiona negócios">
     <meta name="twitter:description" content="Plataformas web, sistemas corporativos, APIs e automações sob medida para empresas que precisam escalar.">
     <meta name="twitter:image" content="https://templosoftware.com.br/templologo.png">
 
-    <!-- Structured Data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -44,26 +41,27 @@
     }
     </script>
 
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-    <link href="https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-sans/style.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
 
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --bg: #09090B;
-            --surface: #111113;
-            --primary: #2563EB;
-            --primary-hover: #1D4ED8;
-            --secondary: #22C55E;
-            --text: #FFFFFF;
-            --muted: #A1A1AA;
-            --border: rgba(255, 255, 255, 0.08);
-            --radius: 12px;
-            --radius-lg: 16px;
-            --max-w: 1200px;
-            --header-h: 80px;
+            --bg: #05070A;
+            --bg-elevated: #0B0F14;
+            --surface: #11161D;
+            --primary: #3B82F6;
+            --primary-bright: #60A5FA;
+            --primary-deep: #1D4ED8;
+            --accent: #38BDF8;
+            --text: #F8FAFC;
+            --muted: #94A3B8;
+            --border: rgba(148, 163, 184, 0.14);
+            --max-w: 1120px;
+            --header-h: 76px;
+            --ease: cubic-bezier(0.22, 1, 0.36, 1);
         }
 
         html { scroll-behavior: smooth; }
@@ -71,86 +69,80 @@
         body {
             background: var(--bg);
             color: var(--text);
-            font-family: 'Geist', 'Inter', system-ui, -apple-system, sans-serif;
+            font-family: 'Outfit', sans-serif;
             font-size: 18px;
-            line-height: 1.6;
+            line-height: 1.65;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
 
         :focus-visible {
-            outline: 2px solid var(--primary);
+            outline: 2px solid var(--primary-bright);
             outline-offset: 3px;
         }
 
-        h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; }
-        h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; }
-        h3 { font-size: clamp(1.25rem, 2.5vw, 2rem); font-weight: 600; letter-spacing: -0.01em; }
-        .caption { font-size: 16px; color: var(--muted); }
+        h1, h2, h3, .brand-mark {
+            font-family: 'Sora', 'Outfit', sans-serif;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+        }
+
+        h1 { font-size: clamp(2.4rem, 6vw, 4.25rem); font-weight: 700; }
+        h2 { font-size: clamp(1.85rem, 4vw, 3rem); font-weight: 700; }
+        h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); font-weight: 600; }
 
         .container {
             max-width: var(--max-w);
             margin: 0 auto;
-            padding: 0 5%;
+            padding: 0 clamp(1.25rem, 4vw, 2rem);
         }
 
-        section { padding: 6rem 0; }
-        .section-label {
-            font-size: 14px;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-        .section-header { margin-bottom: 3.5rem; max-width: 640px; }
-        .section-header p { color: var(--muted); margin-top: 1rem; }
-
-        /* Buttons */
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            font-size: 16px;
-            font-weight: 500;
-            border-radius: 8px;
+            padding: 0.9rem 1.6rem;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 999px;
             border: none;
             cursor: pointer;
-            transition: opacity 0.2s, transform 0.2s, background 0.2s;
             text-decoration: none;
             font-family: inherit;
+            transition: transform 0.25s var(--ease), background 0.25s, border-color 0.25s, color 0.25s, box-shadow 0.25s;
         }
         .btn:active { transform: scale(0.98); }
-        .btn-primary { background: var(--primary); color: var(--text); }
-        .btn-primary:hover { background: var(--primary-hover); }
-        .btn-soft {
-            background: rgba(37, 99, 235, 0.1);
-            color: #93C5FD;
-            border: 1px solid rgba(37, 99, 235, 0.22);
-            font-weight: 500;
-            transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+        .btn-primary {
+            background: var(--primary);
+            color: #fff;
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.28);
         }
-        .btn-soft:hover {
-            background: rgba(37, 99, 235, 0.18);
-            border-color: rgba(37, 99, 235, 0.35);
-            color: var(--text);
+        .btn-primary:hover {
+            background: var(--primary-deep);
+            box-shadow: 0 14px 36px rgba(59, 130, 246, 0.38);
         }
-        .btn-secondary {
+        .btn-ghost {
             background: transparent;
             color: var(--text);
-            border: 1px solid var(--border);
+            border: 1px solid rgba(255,255,255,0.22);
         }
-        .btn-secondary:hover { background: var(--surface); border-color: rgba(255,255,255,0.15); }
-        .btn-group { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+        .btn-ghost:hover {
+            border-color: var(--primary-bright);
+            color: var(--primary-bright);
+        }
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.85rem;
+            justify-content: center;
+            margin-top: 1.75rem;
+        }
 
         /* Header */
         .header {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            inset: 0 0 auto;
             height: var(--header-h);
             z-index: 100;
             display: flex;
@@ -159,9 +151,9 @@
             border-bottom: 1px solid transparent;
         }
         .header.scrolled {
-            background: rgba(9, 9, 11, 0.85);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            background: rgba(5, 7, 10, 0.82);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
             border-bottom-color: var(--border);
         }
         .header-inner {
@@ -171,421 +163,556 @@
             width: 100%;
             max-width: var(--max-w);
             margin: 0 auto;
-            padding: 0 clamp(1.25rem, 5vw, 3rem);
-            gap: 1.5rem;
+            padding: 0 clamp(1.25rem, 4vw, 2rem);
+            gap: 1rem;
         }
         .logo-link {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
             text-decoration: none;
             flex-shrink: 0;
-            padding: 0.25rem 0;
         }
-        .logo-link img { height: 34px; width: auto; }
-        .nav {
+        .logo-link img { height: 32px; width: auto; }
+        .header-actions {
             display: flex;
             align-items: center;
-            gap: clamp(1rem, 2.5vw, 2.5rem);
-            margin-left: auto;
+            gap: 0.75rem;
         }
-        .nav-links {
+        .nav-desktop {
             display: flex;
             align-items: center;
-            gap: clamp(1rem, 1.8vw, 1.75rem);
+            gap: 1.5rem;
             list-style: none;
+            margin-right: 0.5rem;
         }
-        .nav-links a {
+        .nav-desktop a {
             color: var(--muted);
             text-decoration: none;
             font-size: 14px;
             font-weight: 500;
             transition: color 0.2s;
-            white-space: nowrap;
-            padding: 0.375rem 0;
         }
-        .nav-links a:hover { color: var(--text); }
-        .nav-cta {
-            margin-left: 0.25rem;
-            padding: 0.625rem 1.125rem;
-            font-size: 14px;
-            border-radius: 10px;
-            flex-shrink: 0;
-        }
+        .nav-desktop a:hover { color: var(--text); }
+        .nav-cta { padding: 0.7rem 1.25rem; font-size: 14px; }
         .menu-toggle {
             display: none;
             background: none;
-            border: none;
+            border: 1px solid var(--border);
             color: var(--text);
             cursor: pointer;
-            padding: 0.625rem;
-            margin-right: -0.625rem;
-            min-width: 44px;
-            min-height: 44px;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
             align-items: center;
             justify-content: center;
-            border-radius: 8px;
-            transition: background 0.2s;
         }
-        .menu-toggle:hover { background: rgba(255,255,255,0.05); }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            inset: var(--header-h) 0 0;
+            background: rgba(5, 7, 10, 0.97);
+            backdrop-filter: blur(16px);
+            z-index: 99;
+            flex-direction: column;
+            padding: 1.5rem;
+            gap: 0.25rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+        .mobile-nav.open { opacity: 1; pointer-events: auto; }
+        .mobile-nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 0.9rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .mobile-nav .btn { margin-top: 1.25rem; width: 100%; border-bottom: none; }
 
         /* Hero */
         .hero {
-            padding-top: calc(var(--header-h) + 5rem);
-            padding-bottom: 6rem;
-            min-height: 90vh;
+            position: relative;
+            min-height: 100svh;
             display: flex;
             align-items: center;
-        }
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-        .hero-content p {
-            color: var(--muted);
-            margin-top: 1.5rem;
-            max-width: 540px;
-        }
-
-        /* Dashboard mockup */
-        .dashboard-mockup {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
+            justify-content: center;
+            padding: calc(var(--header-h) + 2.5rem) 0 3.5rem;
+            text-align: center;
             overflow: hidden;
-            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
-            animation: float 6s ease-in-out infinite;
         }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
+        .hero-atmosphere {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse 70% 50% at 70% 35%, rgba(59, 130, 246, 0.18), transparent 60%),
+                radial-gradient(ellipse 50% 40% at 20% 70%, rgba(56, 189, 248, 0.1), transparent 55%),
+                linear-gradient(180deg, #05070A 0%, #070B12 55%, #05070A 100%);
         }
-        .mockup-bar {
-            display: flex;
+        .hero-atmosphere::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url('./Software.png');
+            background-size: min(48vw, 440px);
+            background-repeat: no-repeat;
+            background-position: 92% 58%;
+            opacity: 0.07;
+            filter: saturate(0.6);
+            animation: drift 14s ease-in-out infinite;
+        }
+        @keyframes drift {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-18px) scale(1.03); }
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 780px;
+            margin: 0 auto;
+        }
+        .hero-badge {
+            display: inline-flex;
             align-items: center;
-            gap: 6px;
-            padding: 12px 16px;
-            border-bottom: 1px solid var(--border);
-            background: rgba(255,255,255,0.02);
-        }
-        .mockup-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--border); }
-        .mockup-dot:nth-child(1) { background: #EF4444; opacity: 0.7; }
-        .mockup-dot:nth-child(2) { background: #EAB308; opacity: 0.7; }
-        .mockup-dot:nth-child(3) { background: var(--secondary); opacity: 0.7; }
-        .mockup-body { padding: 1.5rem; }
-        .mockup-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0.75rem;
-            margin-bottom: 1.25rem;
-        }
-        .mockup-stat {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 0.875rem;
-        }
-        .mockup-stat-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
-        .mockup-stat-value { font-size: 1.25rem; font-weight: 600; margin-top: 0.25rem; }
-        .mockup-stat-value.up { color: var(--secondary); }
-        .mockup-chart {
-            height: 120px;
-            background: rgba(37, 99, 235, 0.06);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            display: flex;
-            align-items: flex-end;
-            gap: 6px;
-            padding: 1rem;
-        }
-        .chart-bar {
-            flex: 1;
-            background: linear-gradient(to top, var(--primary), rgba(37, 99, 235, 0.3));
-            border-radius: 4px 4px 0 0;
-            animation: barGrow 1.2s ease-out forwards;
-            transform-origin: bottom;
-            transform: scaleY(0);
-        }
-        .chart-bar:nth-child(1) { height: 40%; animation-delay: 0.1s; }
-        .chart-bar:nth-child(2) { height: 65%; animation-delay: 0.2s; }
-        .chart-bar:nth-child(3) { height: 45%; animation-delay: 0.3s; }
-        .chart-bar:nth-child(4) { height: 80%; animation-delay: 0.4s; }
-        .chart-bar:nth-child(5) { height: 55%; animation-delay: 0.5s; }
-        .chart-bar:nth-child(6) { height: 90%; animation-delay: 0.6s; }
-        .chart-bar:nth-child(7) { height: 70%; animation-delay: 0.7s; }
-        @keyframes barGrow { to { transform: scaleY(1); } }
-        .mockup-rows { margin-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
-        .mockup-row {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.625rem 0.75rem;
-            background: rgba(255,255,255,0.02);
-            border-radius: 6px;
+            padding: 0.4rem 1rem;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.96);
+            color: var(--primary-deep);
             font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+            margin-bottom: 1.25rem;
+            animation: fadeUp 0.8s var(--ease) both;
         }
-        .mockup-row-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--secondary); flex-shrink: 0; }
-        .mockup-row-text { color: var(--muted); flex: 1; }
-        .mockup-row-badge {
-            font-size: 11px;
-            padding: 2px 8px;
-            border-radius: 4px;
-            background: rgba(34, 197, 94, 0.15);
-            color: var(--secondary);
+        .brand-mark {
+            font-size: clamp(2.6rem, 7.5vw, 4.5rem);
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 0.75rem;
+            animation: fadeUp 0.8s var(--ease) 0.08s both;
+        }
+        .brand-mark span { color: var(--primary-bright); }
+        .hero h1 {
+            color: var(--muted);
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            animation: fadeUp 0.8s var(--ease) 0.16s both;
+        }
+        .hero h1 .accent {
+            display: inline;
+            color: var(--primary-bright);
+            position: relative;
+        }
+        .hero h1 .accent::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -0.12em;
+            height: 0.18em;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12' fill='none'%3E%3Cpath d='M2 8C40 2 80 2 100 6C140 12 170 4 198 7' stroke='%233B82F6' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+            animation: drawLine 1.2s var(--ease) 0.6s both;
+        }
+        @keyframes drawLine {
+            from { transform: scaleX(0); transform-origin: left; opacity: 0; }
+            to { transform: scaleX(1); opacity: 1; }
+        }
+        .hero-lead {
+            color: rgba(248, 250, 252, 0.78);
+            font-size: clamp(1rem, 2vw, 1.125rem);
+            max-width: 560px;
+            margin: 0 auto;
+            animation: fadeUp 0.8s var(--ease) 0.24s both;
+        }
+        .hero .btn-group { animation: fadeUp 0.8s var(--ease) 0.32s both; }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(18px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Trust metrics */
-        .trust {
+        /* Logo marquee */
+        .clients {
+            padding: 2.5rem 0 3.5rem;
             border-top: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
-            background: var(--surface);
-            padding: 4rem 0;
+            background: rgba(11, 15, 20, 0.6);
+            overflow: hidden;
         }
-        .trust-grid {
+        .clients-label {
+            text-align: center;
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 1.75rem;
+        }
+        .clients-label strong { color: var(--text); font-weight: 600; }
+        .marquee {
+            display: flex;
+            gap: 3.5rem;
+            width: max-content;
+            animation: marquee 28s linear infinite;
+        }
+        .marquee:hover { animation-play-state: paused; }
+        @keyframes marquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+        .marquee-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 44px;
+            opacity: 0.7;
+            filter: brightness(0) invert(1);
+            transition: opacity 0.25s;
+        }
+        .marquee-item:hover { opacity: 1; }
+        .marquee-item img { max-height: 36px; max-width: 120px; object-fit: contain; }
+
+        /* Sections */
+        section { padding: 5.5rem 0; }
+        .section-eyebrow {
+            display: inline-block;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--primary-bright);
+            margin-bottom: 0.85rem;
+        }
+        .section-intro {
+            max-width: 640px;
+            margin: 0 auto 3.5rem;
+            text-align: center;
+        }
+        .section-intro p {
+            color: var(--muted);
+            margin-top: 1rem;
+            font-size: 1.05rem;
+        }
+
+        /* Featured services — Colina-style large blocks */
+        .feature {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3.5rem;
+            align-items: center;
+            margin-bottom: 5rem;
+        }
+        .feature:last-child { margin-bottom: 0; }
+        .feature:nth-child(even) .feature-copy { order: 2; }
+        .feature-copy h3 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        .feature-copy p {
+            color: var(--muted);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+        .feature-points {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+            margin-bottom: 1.75rem;
+        }
+        .feature-points li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            color: rgba(248, 250, 252, 0.88);
+            font-size: 15px;
+        }
+        .feature-points li::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            margin-top: 0.45rem;
+            border-radius: 50%;
+            background: var(--primary-bright);
+            flex-shrink: 0;
+            box-shadow: 0 0 12px rgba(96, 165, 250, 0.5);
+        }
+        .feature-visual {
+            position: relative;
+            min-height: 280px;
+            border-radius: 24px;
+            overflow: hidden;
+            background:
+                linear-gradient(145deg, rgba(59, 130, 246, 0.2), rgba(15, 23, 42, 0.9)),
+                var(--surface);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: flex-end;
+            padding: 1.75rem;
+        }
+        .feature-visual::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 30% 20%, rgba(96, 165, 250, 0.35), transparent 45%),
+                radial-gradient(circle at 80% 80%, rgba(56, 189, 248, 0.2), transparent 40%);
+            animation: glowPulse 6s ease-in-out infinite;
+        }
+        @keyframes glowPulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+        .feature-metric {
+            position: relative;
+            z-index: 1;
+            background: rgba(5, 7, 10, 0.72);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.25rem 1.5rem;
+            max-width: 260px;
+        }
+        .feature-metric strong {
+            display: block;
+            font-family: 'Sora', sans-serif;
+            font-size: 2rem;
+            color: var(--primary-bright);
+            margin-bottom: 0.25rem;
+        }
+        .feature-metric span {
+            font-size: 14px;
+            color: var(--muted);
+        }
+
+        /* Secondary services */
+        .services-more {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        .service-link {
+            display: block;
+            padding: 1.75rem 0;
+            text-decoration: none;
+            color: inherit;
+            border-top: 1px solid var(--border);
+            transition: color 0.2s, border-color 0.2s, padding-left 0.3s var(--ease);
+        }
+        .service-link:hover {
+            border-top-color: var(--primary-bright);
+            padding-left: 0.5rem;
+        }
+        .service-link h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.5rem;
+        }
+        .service-link p {
+            color: var(--muted);
+            font-size: 15px;
+        }
+
+        /* Process */
+        .process-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            counter-reset: step;
+        }
+        .process-step {
+            position: relative;
+            padding-top: 0.5rem;
+        }
+        .process-step::before {
+            counter-increment: step;
+            content: "0" counter(step);
+            display: block;
+            font-family: 'Sora', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--primary-bright);
+            margin-bottom: 1rem;
+            letter-spacing: 0.06em;
+        }
+        .process-step h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.6rem;
+        }
+        .process-step p {
+            color: var(--muted);
+            font-size: 15px;
+        }
+
+        /* Cases */
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+        }
+        .case {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-height: 320px;
+            padding: 1.75rem;
+            border-radius: 20px;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            transition: transform 0.35s var(--ease), border-color 0.35s;
+        }
+        .case:hover {
+            transform: translateY(-4px);
+            border-color: rgba(96, 165, 250, 0.35);
+        }
+        .case-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(180deg, transparent 20%, rgba(5, 7, 10, 0.92) 75%),
+                radial-gradient(circle at top right, rgba(59, 130, 246, 0.25), transparent 55%);
+        }
+        .case-logo {
+            position: relative;
+            z-index: 1;
+            width: 64px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 0.6rem;
+            margin-bottom: auto;
+        }
+        .case-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+            opacity: 0.9;
+        }
+        .case-body {
+            position: relative;
+            z-index: 1;
+            margin-top: 2rem;
+        }
+        .case-body h3 { margin-bottom: 0.5rem; }
+        .case-body p {
+            color: var(--muted);
+            font-size: 15px;
+            margin-bottom: 1rem;
+        }
+        .case-link {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--primary-bright);
+        }
+
+        /* Differentials */
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem 2rem;
+        }
+        .why-item h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.55rem;
+        }
+        .why-item p {
+            color: var(--muted);
+            font-size: 15px;
+        }
+
+        /* Stats */
+        .stats {
+            background:
+                radial-gradient(ellipse at center, rgba(59, 130, 246, 0.12), transparent 60%),
+                var(--bg-elevated);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        .stats-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 2rem;
             text-align: center;
         }
-        .trust-item .number {
-            font-size: clamp(2rem, 4vw, 3rem);
+        .stat-value {
+            font-family: 'Sora', sans-serif;
+            font-size: clamp(2rem, 4vw, 2.75rem);
             font-weight: 700;
-            letter-spacing: -0.02em;
-            color: var(--text);
+            color: var(--primary-bright);
+            letter-spacing: -0.03em;
         }
-        .trust-item .label { color: var(--muted); font-size: 16px; margin-top: 0.5rem; }
-
-        /* Cards */
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.25rem;
-        }
-        .card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 2rem;
-            transition: border-color 0.25s, transform 0.25s, opacity 0.25s;
-        }
-        .card:hover {
-            border-color: rgba(255,255,255,0.15);
-            transform: translateY(-2px);
-        }
-        .card-icon {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(37, 99, 235, 0.1);
-            border-radius: 8px;
-            color: var(--primary);
-            margin-bottom: 1.25rem;
-        }
-        .card h3 { font-size: 1.25rem; margin-bottom: 0.75rem; }
-        .card p { color: var(--muted); font-size: 16px; }
-        .card-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
-        .tag {
-            font-size: 13px;
-            padding: 0.25rem 0.625rem;
-            border-radius: 6px;
-            background: rgba(255,255,255,0.04);
-            border: 1px solid var(--border);
+        .stat-label {
             color: var(--muted);
-        }
-
-        /* Process flow */
-        .process-flow {
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-            max-width: 640px;
-            margin: 0 auto;
-        }
-        .process-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 1.5rem 1.75rem;
-        }
-        .process-card-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 0.625rem;
-        }
-        .process-num {
-            flex-shrink: 0;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--primary);
-            background: rgba(37, 99, 235, 0.1);
-            border: 1px solid rgba(37, 99, 235, 0.2);
-            border-radius: 10px;
-        }
-        .process-card h3 {
-            font-size: 1.125rem;
-            font-weight: 600;
-            line-height: 1.3;
-        }
-        .process-card .process-desc {
             font-size: 15px;
+            margin-top: 0.4rem;
+        }
+
+        /* Final CTA */
+        .cta-band {
+            text-align: center;
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-band::before {
+            content: '';
+            position: absolute;
+            inset: 20% 10%;
+            background: radial-gradient(ellipse, rgba(59, 130, 246, 0.18), transparent 65%);
+            pointer-events: none;
+        }
+        .cta-band .container { position: relative; }
+        .cta-band h2 {
+            max-width: 700px;
+            margin: 0 auto 1rem;
+        }
+        .cta-band h2 .accent { color: var(--primary-bright); }
+        .cta-band p {
             color: var(--muted);
-            line-height: 1.65;
-            padding-left: calc(40px + 1rem);
+            max-width: 480px;
+            margin: 0 auto 2rem;
         }
-        .process-arrow {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 0.5rem 0;
-            color: rgba(37, 99, 235, 0.4);
-        }
-        .process-arrow svg {
-            width: 22px;
-            height: 22px;
-        }
-
-        @media (min-width: 900px) {
-            .process-flow {
-                max-width: 720px;
-            }
-            .process-card { padding: 1.75rem 2rem; }
-            .process-card .process-desc { font-size: 16px; }
-        }
-
-        /* Technologies */
-        .tech-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.25rem;
-        }
-        .tech-category {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 1.75rem;
-        }
-        .tech-category h3 {
-            font-size: 1rem;
-            color: var(--muted);
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            margin-bottom: 1.25rem;
-            font-weight: 500;
-        }
-        .tech-list { list-style: none; display: flex; flex-direction: column; gap: 0.625rem; }
-        .tech-list li {
-            font-size: 16px;
-            font-weight: 500;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid var(--border);
-        }
-        .tech-list li:last-child { border-bottom: none; }
-
-        /* Case studies */
-        .cases-grid { display: flex; flex-direction: column; gap: 1.25rem; }
-        .case-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 2.5rem;
-            display: grid;
-            grid-template-columns: auto 1fr;
-            gap: 2rem;
-            align-items: start;
-        }
-        .case-logo {
-            width: 80px;
-            height: 80px;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.75rem;
-        }
-        .case-logo img { max-width: 100%; max-height: 100%; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.85; }
-        .case-flow {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-        .case-flow-item h4 {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-        .case-flow-item p { font-size: 15px; color: var(--muted); }
-        .case-flow-arrow {
-            display: none;
-        }
-
-        /* Why us */
-        .why-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.25rem;
-        }
-        .why-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 1.75rem;
-            transition: border-color 0.25s;
-        }
-        .why-card:hover { border-color: rgba(37, 99, 235, 0.3); }
-        .why-card h3 { font-size: 1.125rem; margin-bottom: 0.625rem; }
-        .why-card p { font-size: 15px; color: var(--muted); }
-
-        /* About */
-        .about-block {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 4rem;
-            max-width: 800px;
-        }
-        .about-block p { color: var(--muted); margin-top: 1.25rem; font-size: 1.125rem; }
-        .about-highlight {
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border);
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-        .about-highlight span { font-weight: 600; color: var(--text); }
 
         /* Contact */
         .contact-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 3.5rem;
             align-items: start;
         }
-        .contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
-        .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
-        .form-group label { font-size: 14px; font-weight: 500; color: var(--muted); }
+        .contact-copy p {
+            color: var(--muted);
+            margin-top: 1rem;
+        }
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.1rem;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+        }
+        .form-group label {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--muted);
+        }
         .form-group input,
         .form-group textarea {
             background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 0.75rem 1rem;
+            border-radius: 12px;
+            padding: 0.85rem 1rem;
             color: var(--text);
             font-size: 16px;
             font-family: inherit;
@@ -596,30 +723,47 @@
             outline: none;
             border-color: var(--primary);
         }
-        .form-group textarea { min-height: 120px; resize: vertical; }
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
 
         /* Footer */
         footer {
             border-top: 1px solid var(--border);
             padding: 4rem 0 2rem;
-            background: var(--surface);
+            background: var(--bg-elevated);
         }
         .footer-grid {
             display: grid;
-            grid-template-columns: 2fr repeat(3, 1fr);
-            gap: 3rem;
+            grid-template-columns: 1.4fr repeat(3, 1fr);
+            gap: 2.5rem;
             margin-bottom: 3rem;
         }
-        .footer-brand p { color: var(--muted); font-size: 15px; margin-top: 1rem; max-width: 280px; }
+        .footer-brand p {
+            color: var(--muted);
+            font-size: 15px;
+            margin-top: 1rem;
+            max-width: 280px;
+        }
         .footer-col h4 {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.06em;
-            margin-bottom: 1.25rem;
-            color: var(--text);
+            letter-spacing: 0.08em;
+            margin-bottom: 1.1rem;
         }
-        .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+        }
         .footer-col a {
             color: var(--muted);
             text-decoration: none;
@@ -636,104 +780,83 @@
             flex-wrap: wrap;
             gap: 1rem;
         }
-        .footer-bottom p { color: var(--muted); font-size: 14px; }
+        .footer-bottom p,
+        .footer-legal a {
+            color: var(--muted);
+            font-size: 14px;
+            text-decoration: none;
+        }
         .footer-legal { display: flex; gap: 1.5rem; }
-        .footer-legal a { color: var(--muted); text-decoration: none; font-size: 14px; }
         .footer-legal a:hover { color: var(--text); }
 
-        /* Scroll animations */
+        /* Reveal */
         .reveal {
             opacity: 0;
-            transform: translateY(16px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            transform: translateY(20px);
+            transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
         }
         .reveal.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* Mobile nav */
-        .mobile-nav {
-            display: none;
-            position: fixed;
-            inset: 0;
-            top: var(--header-h);
-            background: rgba(9, 9, 11, 0.97);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            z-index: 99;
-            flex-direction: column;
-            align-items: stretch;
-            padding: 1.5rem 1.25rem 2rem;
-            gap: 0;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s;
-            overflow-y: auto;
-        }
-        .mobile-nav.open { opacity: 1; pointer-events: auto; }
-        .mobile-nav a {
-            color: var(--text);
-            text-decoration: none;
-            font-size: 1.0625rem;
-            font-weight: 500;
-            padding: 0.875rem 0;
-            border-bottom: 1px solid var(--border);
-        }
-        .mobile-nav a:last-of-type { border-bottom: none; }
-        .mobile-nav .btn-soft {
-            margin-top: 1.25rem;
-            width: 100%;
-            justify-content: center;
-            padding: 0.875rem 1.5rem;
-        }
-
         /* Responsive */
         @media (max-width: 1024px) {
-            .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
-            .hero-visual { order: -1; max-width: 500px; margin: 0 auto; width: 100%; }
-            .card-grid, .why-grid, .tech-grid { grid-template-columns: repeat(2, 1fr); }
-            .trust-grid { grid-template-columns: repeat(2, 1fr); }
-            .case-flow { grid-template-columns: repeat(2, 1fr); }
-            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+            .feature { grid-template-columns: 1fr; gap: 2rem; }
+            .feature:nth-child(even) .feature-copy { order: 0; }
+            .process-row { grid-template-columns: repeat(2, 1fr); }
+            .cases-grid { grid-template-columns: 1fr 1fr; }
+            .why-grid { grid-template-columns: 1fr 1fr; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .hero-atmosphere::after {
+                background-position: center 80%;
+                opacity: 0.08;
+                background-size: min(80vw, 400px);
+            }
         }
 
         @media (max-width: 768px) {
-            :root { --header-h: 72px; }
+            :root { --header-h: 68px; }
             body { font-size: 16px; }
             section { padding: 4rem 0; }
-            .container { padding: 0 1.25rem; }
-            .header-inner { padding: 0 1.25rem; gap: 1rem; }
-            .logo-link img { height: 30px; }
-            .nav-links, .nav-cta { display: none; }
+            .nav-desktop { display: none; }
             .menu-toggle { display: flex; }
             .mobile-nav { display: flex; }
-            .hero {
-                padding-top: calc(var(--header-h) + 2.5rem);
-                padding-bottom: 3.5rem;
-                min-height: auto;
-            }
-            h1 { font-size: clamp(1.875rem, 7vw, 2.5rem); }
-            .btn-group { flex-direction: column; }
-            .btn-group .btn { width: 100%; justify-content: center; }
-            .card-grid, .why-grid, .tech-grid { grid-template-columns: 1fr; }
-            .trust { padding: 2.5rem 0; }
-            .trust-grid { grid-template-columns: repeat(2, 1fr); gap: 1.25rem 1rem; }
-            .trust-item .number { font-size: 1.75rem; }
-            .trust-item .label { font-size: 14px; }
-            .process-card { padding: 1.25rem; }
-            .process-card .process-desc { padding-left: 0; margin-top: 0.25rem; }
-            .process-card-header { margin-bottom: 0.5rem; }
-            .case-card { grid-template-columns: 1fr; padding: 1.5rem; }
-            .case-flow { grid-template-columns: 1fr; }
+            .nav-cta { display: none; }
+            .hero { min-height: auto; padding-top: calc(var(--header-h) + 2.5rem); padding-bottom: 3rem; }
+            .services-more { grid-template-columns: 1fr; }
+            .process-row { grid-template-columns: 1fr; gap: 1.75rem; }
+            .cases-grid { grid-template-columns: 1fr; }
+            .why-grid { grid-template-columns: 1fr; gap: 1.75rem; }
             .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .form-row { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
-            .about-block { padding: 1.5rem; }
-            .section-header { margin-bottom: 2.5rem; }
+            .btn-group { flex-direction: column; }
+            .btn-group .btn { width: 100%; }
+            .feature-visual { min-height: 220px; }
         }
 
-        @media (max-width: 380px) {
-            .trust-grid { grid-template-columns: 1fr; }
+        @media (max-width: 420px) {
+            .stats-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            .marquee { animation: none; }
+            .reveal,
+            .hero-badge,
+            .brand-mark,
+            .hero h1,
+            .hero-lead,
+            .hero .btn-group {
+                opacity: 1 !important;
+                transform: none !important;
+            }
         }
     </style>
 </head>
@@ -744,515 +867,332 @@
             <a href="#home" class="logo-link" aria-label="Templo Software — início">
                 <img src="./templologo.png" alt="Templo Software">
             </a>
-            <nav class="nav" aria-label="Navegação principal">
-                <ul class="nav-links">
-                    <li><a href="#home">Início</a></li>
-                    <li><a href="#solucoes">Soluções</a></li>
+            <div class="header-actions">
+                <ul class="nav-desktop" aria-label="Navegação principal">
                     <li><a href="#servicos">Serviços</a></li>
                     <li><a href="#cases">Cases</a></li>
                     <li><a href="#processo">Processo</a></li>
-                    <li><a href="#tecnologias">Tecnologias</a></li>
                     <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#contato">Contato</a></li>
                 </ul>
-                <a href="#contato" class="btn btn-soft nav-cta">Solicitar Orçamento</a>
-            </nav>
-            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                    <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
-                </svg>
-            </button>
+                <a href="#contato" class="btn btn-primary nav-cta">Agendar conversa</a>
+                <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+                    </svg>
+                </button>
+            </div>
         </div>
     </header>
 
     <nav class="mobile-nav" id="mobileNav" aria-label="Menu mobile">
-        <a href="#home">Início</a>
-        <a href="#solucoes">Soluções</a>
         <a href="#servicos">Serviços</a>
         <a href="#cases">Cases</a>
         <a href="#processo">Processo</a>
-        <a href="#tecnologias">Tecnologias</a>
         <a href="#sobre">Sobre</a>
         <a href="#contato">Contato</a>
-        <a href="#contato" class="btn btn-soft">Solicitar Orçamento</a>
+        <a href="#contato" class="btn btn-primary">Agendar conversa</a>
     </nav>
 
     <main>
-        <!-- Hero -->
         <section class="hero" id="home">
+            <div class="hero-atmosphere" aria-hidden="true"></div>
             <div class="container">
-                <div class="hero-grid">
-                    <div class="hero-content reveal">
-                        <h1>Engenharia de software que impulsiona o crescimento do negócio</h1>
-                        <p>Projetamos e construímos plataformas web escaláveis, sistemas corporativos, APIs e soluções de automação que ajudam empresas a operar com mais eficiência.</p>
-                        <div class="btn-group">
-                            <a href="#contato" class="btn btn-primary">Solicitar Orçamento</a>
-                            <a href="#cases" class="btn btn-secondary">Conhecer Projetos</a>
-                        </div>
-                    </div>
-                    <div class="hero-visual reveal" aria-hidden="true">
-                        <div class="dashboard-mockup">
-                            <div class="mockup-bar">
-                                <span class="mockup-dot"></span>
-                                <span class="mockup-dot"></span>
-                                <span class="mockup-dot"></span>
-                            </div>
-                            <div class="mockup-body">
-                                <div class="mockup-stats">
-                                    <div class="mockup-stat">
-                                        <div class="mockup-stat-label">Receita</div>
-                                        <div class="mockup-stat-value up">+24%</div>
-                                    </div>
-                                    <div class="mockup-stat">
-                                        <div class="mockup-stat-label">Usuários</div>
-                                        <div class="mockup-stat-value">1.2k</div>
-                                    </div>
-                                    <div class="mockup-stat">
-                                        <div class="mockup-stat-label">Uptime</div>
-                                        <div class="mockup-stat-value up">99.9%</div>
-                                    </div>
-                                </div>
-                                <div class="mockup-chart">
-                                    <div class="chart-bar"></div>
-                                    <div class="chart-bar"></div>
-                                    <div class="chart-bar"></div>
-                                    <div class="chart-bar"></div>
-                                    <div class="chart-bar"></div>
-                                    <div class="chart-bar"></div>
-                                    <div class="chart-bar"></div>
-                                </div>
-                                <div class="mockup-rows">
-                                    <div class="mockup-row">
-                                        <span class="mockup-row-dot"></span>
-                                        <span class="mockup-row-text">Deploy em produção concluído</span>
-                                        <span class="mockup-row-badge">OK</span>
-                                    </div>
-                                    <div class="mockup-row">
-                                        <span class="mockup-row-dot"></span>
-                                        <span class="mockup-row-text">API de integração sincronizada</span>
-                                        <span class="mockup-row-badge">OK</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <div class="hero-content">
+                    <span class="hero-badge">software house de engenharia</span>
+                    <p class="brand-mark">Templo <span>Software</span></p>
+                    <h1>Engenharia que gera <span class="accent">resultado mensurável</span></h1>
+                    <p class="hero-lead">Projetamos plataformas, sistemas e automações sob medida — sem fórmulas prontas — para empresas que precisam operar melhor e vender mais.</p>
+                    <div class="btn-group">
+                        <a href="#contato" class="btn btn-primary">Quero conhecer</a>
+                        <a href="#cases" class="btn btn-ghost">Cases de sucesso</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Trust -->
-        <section class="trust" aria-label="Métricas de confiança">
+        <section class="clients" aria-label="Empresas parceiras">
             <div class="container">
-                <div class="trust-grid reveal">
-                    <div class="trust-item">
-                        <div class="number">20+</div>
-                        <div class="label">Projetos entregues</div>
+                <p class="clients-label"><strong>Empresas</strong> que confiam na nossa engenharia</p>
+            </div>
+            <div class="marquee" aria-hidden="true">
+                <div class="marquee-item"><img src="./valor.png" alt=""></div>
+                <div class="marquee-item"><img src="./logoajn1-pwsqc4widh06fk8agyywa3ttlj6z2o3becid2a2z28 (1).png" alt=""></div>
+                <div class="marquee-item"><img src="./RO-ACONTECE.png" alt=""></div>
+                <div class="marquee-item"><img src="./valor.png" alt=""></div>
+                <div class="marquee-item"><img src="./logoajn1-pwsqc4widh06fk8agyywa3ttlj6z2o3becid2a2z28 (1).png" alt=""></div>
+                <div class="marquee-item"><img src="./RO-ACONTECE.png" alt=""></div>
+            </div>
+        </section>
+
+        <section id="servicos">
+            <div class="container">
+                <div class="section-intro reveal">
+                    <span class="section-eyebrow">O que fazemos</span>
+                    <h2>Software alinhado aos objetivos do seu negócio</h2>
+                    <p>Entendemos o seu contexto e construímos a solução certa para cada canal de operação — com arquitetura sólida e foco em impacto.</p>
+                </div>
+
+                <article class="feature reveal">
+                    <div class="feature-copy">
+                        <h3>Plataformas web que escalam com a sua operação</h3>
+                        <p>Aplicações sob medida para centralizar processos, reduzir atrito e acompanhar o crescimento do negócio — sem depender de planilhas e ferramentas desconectadas.</p>
+                        <ul class="feature-points">
+                            <li>Arquitetura preparada para alto volume</li>
+                            <li>Experiência focada em produtividade do time</li>
+                            <li>Integrações com os sistemas que você já usa</li>
+                        </ul>
+                        <a href="#contato" class="btn btn-ghost">Conhecer mais</a>
                     </div>
-                    <div class="trust-item">
-                        <div class="number">98%</div>
-                        <div class="label">Satisfação dos clientes</div>
+                    <div class="feature-visual" aria-hidden="true">
+                        <div class="feature-metric">
+                            <strong>+24%</strong>
+                            <span>ganho médio de eficiência operacional após go-live</span>
+                        </div>
                     </div>
-                    <div class="trust-item">
-                        <div class="number">100%</div>
-                        <div class="label">Soluções sob medida</div>
+                </article>
+
+                <article class="feature reveal">
+                    <div class="feature-copy">
+                        <h3>Sistemas internos e APIs que unem a empresa</h3>
+                        <p>CRMs, ERPs, painéis e integrações com contratos claros — para o dado certo chegar no lugar certo, na hora certa.</p>
+                        <ul class="feature-points">
+                            <li>Visão única do cliente e da operação</li>
+                            <li>Automações que cortam retrabalho</li>
+                            <li>APIs documentadas e seguras</li>
+                        </ul>
+                        <a href="#contato" class="btn btn-ghost">Conhecer mais</a>
                     </div>
-                    <div class="trust-item">
-                        <div class="number">+3</div>
-                        <div class="label">Anos desenvolvendo</div>
+                    <div class="feature-visual" aria-hidden="true">
+                        <div class="feature-metric">
+                            <strong>99.9%</strong>
+                            <span>uptime em ambientes monitorados em produção</span>
+                        </div>
                     </div>
+                </article>
+
+                <article class="feature reveal">
+                    <div class="feature-copy">
+                        <h3>Automação e cloud para vender e operar todo dia</h3>
+                        <p>Fluxos repetitivos viram processos confiáveis. Deploy, monitoramento e evolução contínua — engenharia de verdade no dia a dia.</p>
+                        <ul class="feature-points">
+                            <li>Menos erro humano, mais previsibilidade</li>
+                            <li>Infraestrutura moderna (AWS, Docker, CI/CD)</li>
+                            <li>Suporte após o lançamento</li>
+                        </ul>
+                        <a href="#contato" class="btn btn-ghost">Conhecer mais</a>
+                    </div>
+                    <div class="feature-visual" aria-hidden="true">
+                        <div class="feature-metric">
+                            <strong>−40%</strong>
+                            <span>tempo médio em tarefas manuais automatizadas</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="mais-servicos" style="padding-top: 0;">
+            <div class="container">
+                <div class="section-intro reveal">
+                    <span class="section-eyebrow">Mais serviços</span>
+                    <h2>Está buscando outra frente técnica?</h2>
+                    <p>Do discovery à operação, cobrimos o ciclo completo de produto digital.</p>
+                </div>
+                <div class="services-more reveal">
+                    <a class="service-link" href="#contato">
+                        <h3>Consultoria técnica</h3>
+                        <p>Arquitetura, performance e escalabilidade antes da primeira linha de código.</p>
+                    </a>
+                    <a class="service-link" href="#contato">
+                        <h3>Infraestrutura cloud</h3>
+                        <p>Ambientes modernos com monitoramento contínuo e pipelines de deploy.</p>
+                    </a>
+                    <a class="service-link" href="https://casaris.com.br/" target="_blank" rel="noopener noreferrer">
+                        <h3>Casaris — CRM imobiliário</h3>
+                        <p>Site da marca, funil, agenda e operação humana para imobiliárias e corretores.</p>
+                    </a>
                 </div>
             </div>
         </section>
 
-        <!-- Solutions intro -->
-        <section id="solucoes">
-            <div class="container">
-                <div class="section-header reveal">
-                    <span class="section-label">Soluções</span>
-                    <h2>Tecnologia alinhada aos objetivos do seu negócio</h2>
-                    <p>Não vendemos software. Entregamos soluções para problemas complexos de negócio — com arquitetura sólida, código limpo e foco em resultados mensuráveis.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Services -->
-        <section id="servicos" style="padding-top: 0;">
-            <div class="container">
-                <div class="section-header reveal">
-                    <span class="section-label">Serviços</span>
-                    <h2>O que construímos</h2>
-                </div>
-                <div class="card-grid">
-                    <article class="card reveal">
-                        <div class="card-icon" aria-hidden="true">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-                        </div>
-                        <h3>Plataformas Web</h3>
-                        <p>Aplicações de nível corporativo, projetadas para escalar com o crescimento da sua operação.</p>
-                    </article>
-                    <article class="card reveal">
-                        <div class="card-icon" aria-hidden="true">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3z"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
-                        </div>
-                        <h3>Sistemas Internos</h3>
-                        <p>CRMs, ERPs e dashboards que centralizam dados e simplificam a gestão do dia a dia.</p>
-                    </article>
-                    <article class="card reveal">
-                        <div class="card-icon" aria-hidden="true">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-                        </div>
-                        <h3>APIs</h3>
-                        <p>Integrações seguras entre sistemas, com contratos claros e documentação completa.</p>
-                    </article>
-                    <article class="card reveal">
-                        <div class="card-icon" aria-hidden="true">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-                        </div>
-                        <h3>Automação</h3>
-                        <p>Otimização de fluxos de trabalho repetitivos para reduzir custos e erros operacionais.</p>
-                    </article>
-                    <article class="card reveal">
-                        <div class="card-icon" aria-hidden="true">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-6V4"/><path d="M6 14h6v6"/><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
-                        </div>
-                        <h3>Infraestrutura Cloud</h3>
-                        <p>Deploy e operação em ambientes modernos com monitoramento contínuo.</p>
-                        <div class="card-tags">
-                            <span class="tag">AWS</span>
-                            <span class="tag">Docker</span>
-                            <span class="tag">CI/CD</span>
-                            <span class="tag">Monitoramento</span>
-                        </div>
-                    </article>
-                    <article class="card reveal">
-                        <div class="card-icon" aria-hidden="true">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
-                        </div>
-                        <h3>Consultoria Técnica</h3>
-                        <p>Arquitetura, performance e escalabilidade avaliadas antes da primeira linha de código.</p>
-                        <div class="card-tags">
-                            <span class="tag">Arquitetura</span>
-                            <span class="tag">Performance</span>
-                            <span class="tag">Escalabilidade</span>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- Process -->
         <section id="processo">
             <div class="container">
-                <div class="section-header reveal">
-                    <span class="section-label">Processo</span>
-                    <h2>Como trabalhamos</h2>
-                    <p>Do primeiro contato ao lançamento, cada etapa tem objetivo claro, entregáveis definidos e comunicação transparente com o seu time.</p>
+                <div class="section-intro reveal">
+                    <span class="section-eyebrow">Processo</span>
+                    <h2>Do diagnóstico ao crescimento contínuo</h2>
+                    <p>Cada etapa tem objetivo claro, entregáveis definidos e comunicação transparente.</p>
                 </div>
-                <div class="process-flow reveal">
-                    <article class="process-card">
-                        <div class="process-card-header">
-                            <span class="process-num">01</span>
-                            <h3>Discovery</h3>
-                        </div>
-                        <p class="process-desc">Mapeamos o contexto do negócio, os fluxos atuais e as dores reais. Entendemos objetivos, restrições e o que define sucesso antes de propor qualquer solução.</p>
-                    </article>
-                    <div class="process-arrow" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+                <div class="process-row reveal">
+                    <div class="process-step">
+                        <h3>Discovery</h3>
+                        <p>Mapeamos o negócio, dores reais e o que define sucesso.</p>
                     </div>
-                    <article class="process-card">
-                        <div class="process-card-header">
-                            <span class="process-num">02</span>
-                            <h3>Planejamento</h3>
-                        </div>
-                        <p class="process-desc">Definimos a arquitetura técnica, escopo das entregas e cronograma. Documentamos decisões para garantir previsibilidade e alinhamento com o time.</p>
-                    </article>
-                    <div class="process-arrow" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+                    <div class="process-step">
+                        <h3>Arquitetura</h3>
+                        <p>Definimos escopo, stack e decisões técnicas documentadas.</p>
                     </div>
-                    <article class="process-card">
-                        <div class="process-card-header">
-                            <span class="process-num">03</span>
-                            <h3>Design</h3>
-                        </div>
-                        <p class="process-desc">Prototipamos interfaces e validamos a experiência com stakeholders. Ajustamos fluxos e usabilidade antes de iniciar o desenvolvimento.</p>
-                    </article>
-                    <div class="process-arrow" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+                    <div class="process-step">
+                        <h3>Construção</h3>
+                        <p>Entregas incrementais com validação contínua do seu time.</p>
                     </div>
-                    <article class="process-card">
-                        <div class="process-card-header">
-                            <span class="process-num">04</span>
-                            <h3>Desenvolvimento</h3>
-                        </div>
-                        <p class="process-desc">Implementamos em ciclos ágeis com entregas incrementais. Você acompanha o progresso e valida funcionalidades ao longo do caminho.</p>
-                    </article>
-                    <div class="process-arrow" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
-                    </div>
-                    <article class="process-card">
-                        <div class="process-card-header">
-                            <span class="process-num">05</span>
-                            <h3>Testes</h3>
-                        </div>
-                        <p class="process-desc">Executamos testes funcionais, de integração e performance. Corrigimos inconsistências e garantimos que o sistema atende aos requisitos acordados.</p>
-                    </article>
-                    <div class="process-arrow" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
-                    </div>
-                    <article class="process-card">
-                        <div class="process-card-header">
-                            <span class="process-num">06</span>
-                            <h3>Deploy</h3>
-                        </div>
-                        <p class="process-desc">Publicamos em produção com pipeline automatizado, configuração de ambiente e monitoramento inicial para uma entrada segura e controlada.</p>
-                    </article>
-                    <div class="process-arrow" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
-                    </div>
-                    <article class="process-card">
-                        <div class="process-card-header">
-                            <span class="process-num">07</span>
-                            <h3>Suporte contínuo</h3>
-                        </div>
-                        <p class="process-desc">Acompanhamos métricas, corrigimos incidentes e evoluímos o sistema conforme o negócio cresce. O relacionamento não termina no lançamento.</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- Technologies -->
-        <section id="tecnologias">
-            <div class="container">
-                <div class="section-header reveal">
-                    <span class="section-label">Tecnologias</span>
-                    <h2>Stack moderna e comprovada</h2>
-                </div>
-                <div class="tech-grid reveal">
-                    <div class="tech-category">
-                        <h3>Frontend</h3>
-                        <ul class="tech-list">
-                            <li>React</li>
-                            <li>Next.js</li>
-                            <li>TypeScript</li>
-                        </ul>
-                    </div>
-                    <div class="tech-category">
-                        <h3>Backend</h3>
-                        <ul class="tech-list">
-                            <li>Node.js</li>
-                            <li>Python</li>
-                        </ul>
-                    </div>
-                    <div class="tech-category">
-                        <h3>Bancos de Dados</h3>
-                        <ul class="tech-list">
-                            <li>PostgreSQL</li>
-                            <li>MongoDB</li>
-                        </ul>
-                    </div>
-                    <div class="tech-category">
-                        <h3>Infraestrutura</h3>
-                        <ul class="tech-list">
-                            <li>Docker</li>
-                            <li>AWS</li>
-                            <li>Linux</li>
-                        </ul>
-                    </div>
-                    <div class="tech-category">
-                        <h3>DevOps</h3>
-                        <ul class="tech-list">
-                            <li>GitHub Actions</li>
-                            <li>CI/CD</li>
-                            <li>Nginx</li>
-                        </ul>
-                    </div>
-                    <div class="tech-category">
-                        <h3>Legado &amp; Sistemas</h3>
-                        <ul class="tech-list">
-                            <li>JavaScript / TypeScript</li>
-                            <li>C / C++</li>
-                            <li>APIs REST</li>
-                        </ul>
+                    <div class="process-step">
+                        <h3>Evolução</h3>
+                        <p>Deploy, monitoramento e suporte depois do lançamento.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Case Studies -->
         <section id="cases">
             <div class="container">
-                <div class="section-header reveal">
-                    <span class="section-label">Cases</span>
-                    <h2>Projetos com impacto real</h2>
-                    <p>Cada projeto parte de um problema concreto e termina com resultados mensuráveis.</p>
+                <div class="section-intro reveal">
+                    <span class="section-eyebrow">Cases</span>
+                    <h2>Resultados reais, não slides</h2>
+                    <p>Cada projeto parte de um problema concreto e termina com impacto mensurável.</p>
                 </div>
                 <div class="cases-grid">
-                    <article class="case-card reveal">
+                    <a class="case reveal" href="#contato">
+                        <div class="case-bg" aria-hidden="true"></div>
                         <div class="case-logo">
-                            <img src="./valor.png" alt="Valor Imobiliária">
+                            <img src="./valor.png" alt="">
                         </div>
-                        <div>
+                        <div class="case-body">
                             <h3>Valor Imobiliária</h3>
-                            <div class="case-flow">
-                                <div class="case-flow-item">
-                                    <h4>Problema</h4>
-                                    <p>Gestão de imóveis fragmentada em planilhas e processos manuais.</p>
-                                </div>
-                                <div class="case-flow-item">
-                                    <h4>Solução</h4>
-                                    <p>Plataforma web centralizada para cadastro, acompanhamento e relatórios.</p>
-                                </div>
-                                <div class="case-flow-item">
-                                    <h4>Tecnologias</h4>
-                                    <p>React, Node.js, PostgreSQL, APIs REST.</p>
-                                </div>
-                                <div class="case-flow-item">
-                                    <h4>Impacto</h4>
-                                    <p>Redução significativa no tempo de gestão e maior visibilidade operacional.</p>
-                                </div>
-                            </div>
+                            <p>Plataforma web que substituiu planilhas e centralizou gestão de imóveis.</p>
+                            <span class="case-link">Ver detalhes →</span>
                         </div>
-                    </article>
-                    <article class="case-card reveal">
+                    </a>
+                    <a class="case reveal" href="#contato">
+                        <div class="case-bg" aria-hidden="true"></div>
                         <div class="case-logo">
-                            <img src="./logoajn1-pwsqc4widh06fk8agyywa3ttlj6z2o3becid2a2z28 (1).png" alt="AJN1">
+                            <img src="./logoajn1-pwsqc4widh06fk8agyywa3ttlj6z2o3becid2a2z28 (1).png" alt="">
                         </div>
-                        <div>
+                        <div class="case-body">
                             <h3>AJN1</h3>
-                            <div class="case-flow">
-                                <div class="case-flow-item">
-                                    <h4>Problema</h4>
-                                    <p>Necessidade de presença digital moderna e sistemas internos integrados.</p>
-                                </div>
-                                <div class="case-flow-item">
-                                    <h4>Solução</h4>
-                                    <p>Desenvolvimento de plataforma web com automações e painéis de controle.</p>
-                                </div>
-                                <div class="case-flow-item">
-                                    <h4>Tecnologias</h4>
-                                    <p>Next.js, TypeScript, Node.js, Docker.</p>
-                                </div>
-                                <div class="case-flow-item">
-                                    <h4>Impacto</h4>
-                                    <p>Operação digital unificada com processos automatizados e escaláveis.</p>
-                                </div>
-                            </div>
+                            <p>Presença digital e sistemas internos com automações e painéis de controle.</p>
+                            <span class="case-link">Ver detalhes →</span>
                         </div>
-                    </article>
-                    <article class="case-card reveal">
+                    </a>
+                    <a class="case reveal" href="#contato">
+                        <div class="case-bg" aria-hidden="true"></div>
                         <div class="case-logo">
-                            <img src="./RO-ACONTECE.png" alt="RO Acontece">
+                            <img src="./RO-ACONTECE.png" alt="">
                         </div>
-                        <div>
+                        <div class="case-body">
                             <h3>RO Acontece</h3>
-                            <div class="case-flow">
-                                <div class="case-flow-item">
-                                    <h4>Problema</h4>
-                                    <p>Publicação e gestão de conteúdo sem fluxo técnico eficiente.</p>
-                                </div>
-                                <div class="case-flow-item">
-                                    <h4>Solução</h4>
-                                    <p>Portal de conteúdo com CMS sob medida e integrações de mídia.</p>
-                                </div>
-                                <div class="case-flow-item">
-                                    <h4>Tecnologias</h4>
-                                    <p>React, Python, MongoDB, Nginx.</p>
-                                </div>
-                                <div class="case-flow-item">
-                                    <h4>Impacto</h4>
-                                    <p>Publicação mais ágil e infraestrutura preparada para alto tráfego.</p>
-                                </div>
-                            </div>
+                            <p>Portal de conteúdo com CMS sob medida e infraestrutura para alto tráfego.</p>
+                            <span class="case-link">Ver detalhes →</span>
                         </div>
-                    </article>
+                    </a>
                 </div>
             </div>
         </section>
 
-        <!-- Why Choose Us -->
-        <section id="diferenciais">
-            <div class="container">
-                <div class="section-header reveal">
-                    <span class="section-label">Diferenciais</span>
-                    <h2>Por que nos escolher</h2>
-                </div>
-                <div class="why-grid">
-                    <div class="why-card reveal">
-                        <h3>Engenharia em primeiro lugar</h3>
-                        <p>Priorizamos arquitetura antes da implementação. Cada decisão técnica tem fundamento.</p>
-                    </div>
-                    <div class="why-card reveal">
-                        <h3>Performance</h3>
-                        <p>Sistemas otimizados e projetados para escalar conforme a demanda cresce.</p>
-                    </div>
-                    <div class="why-card reveal">
-                        <h3>Segurança</h3>
-                        <p>Boas práticas aplicadas por padrão — autenticação, criptografia e auditoria.</p>
-                    </div>
-                    <div class="why-card reveal">
-                        <h3>Manutenibilidade</h3>
-                        <p>Código limpo e documentado para sustentabilidade de longo prazo.</p>
-                    </div>
-                    <div class="why-card reveal">
-                        <h3>Comunicação</h3>
-                        <p>Transparência em cada fase do projeto, com entregas incrementais e previsíveis.</p>
-                    </div>
-                    <div class="why-card reveal">
-                        <h3>Visão de negócio</h3>
-                        <p>Tecnologia alinhada aos objetivos estratégicos da sua empresa.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- About -->
         <section id="sobre">
             <div class="container">
-                <div class="section-header reveal">
-                    <span class="section-label">Sobre</span>
-                    <h2>Nossa missão</h2>
+                <div class="section-intro reveal">
+                    <span class="section-eyebrow">Por que a Templo</span>
+                    <h2>Levar engenharia ao software do seu negócio</h2>
+                    <p>Não vendemos pacotes genéricos. Construímos soluções sustentáveis, com dados e decisão técnica no centro.</p>
                 </div>
-                <div class="about-block reveal">
-                    <p>A Templo Software existe para ajudar empresas a aproveitar a tecnologia por meio de soluções de software robustas, escaláveis e sustentáveis.</p>
-                    <div class="about-highlight">
-                        <span>Engenharia é nossa base.</span>
-                        <span>Crescimento do negócio é nosso objetivo.</span>
+                <div class="why-grid reveal">
+                    <div class="why-item">
+                        <h3>Engenharia primeiro</h3>
+                        <p>Arquitetura sólida antes da implementação. Cada decisão tem fundamento.</p>
+                    </div>
+                    <div class="why-item">
+                        <h3>Performance real</h3>
+                        <p>Sistemas pensados para escalar conforme a demanda — não só para o pitch.</p>
+                    </div>
+                    <div class="why-item">
+                        <h3>Comunicação clara</h3>
+                        <p>Entregas incrementais, previsíveis e transparentes em cada fase.</p>
+                    </div>
+                    <div class="why-item">
+                        <h3>Segurança por padrão</h3>
+                        <p>Autenticação, criptografia e boas práticas desde o primeiro commit.</p>
+                    </div>
+                    <div class="why-item">
+                        <h3>Código sustentável</h3>
+                        <p>Manutenibilidade de longo prazo — o sistema precisa viver com o negócio.</p>
+                    </div>
+                    <div class="why-item">
+                        <h3>Visão de negócio</h3>
+                        <p>Tecnologia alinhada a metas: eficiência, receita e operação.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contact -->
+        <section class="stats" aria-label="Números">
+            <div class="container">
+                <div class="section-intro reveal">
+                    <span class="section-eyebrow">Os dados</span>
+                    <h2>Falam por nós</h2>
+                </div>
+                <div class="stats-grid reveal">
+                    <div>
+                        <div class="stat-value" data-count="20">0+</div>
+                        <div class="stat-label">Projetos entregues</div>
+                    </div>
+                    <div>
+                        <div class="stat-value" data-count="98">0%</div>
+                        <div class="stat-label">Satisfação dos clientes</div>
+                    </div>
+                    <div>
+                        <div class="stat-value" data-count="100">0%</div>
+                        <div class="stat-label">Soluções sob medida</div>
+                    </div>
+                    <div>
+                        <div class="stat-value" data-count="3">0+</div>
+                        <div class="stat-label">Anos desenvolvendo</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-band">
+            <div class="container reveal">
+                <h2>Transforme sua operação com a <span class="accent">Templo Software</span></h2>
+                <p>Conte o desafio. Montamos a estratégia técnica certa para o seu momento.</p>
+                <a href="#contato" class="btn btn-primary">Agendar reunião</a>
+            </div>
+        </section>
+
         <section id="contato">
             <div class="container">
                 <div class="contact-grid">
-                    <div class="reveal">
-                        <span class="section-label">Contato</span>
+                    <div class="contact-copy reveal">
+                        <span class="section-eyebrow">Contato</span>
                         <h2>Vamos construir juntos</h2>
-                        <p class="caption" style="margin-top: 1rem;">Conte sobre o seu projeto. Respondemos em até 24 horas úteis.</p>
+                        <p>Descreva o projeto. Respondemos em até 24 horas úteis — direto no WhatsApp.</p>
                     </div>
                     <form class="contact-form reveal" id="contactForm" aria-label="Formulário de contato">
-                        <div class="form-group">
-                            <label for="nome">Nome</label>
-                            <input type="text" id="nome" name="nome" required autocomplete="name">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nome">Nome</label>
+                                <input type="text" id="nome" name="nome" required autocomplete="name">
+                            </div>
+                            <div class="form-group">
+                                <label for="empresa">Empresa</label>
+                                <input type="text" id="empresa" name="empresa" autocomplete="organization">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="empresa">Empresa</label>
-                            <input type="text" id="empresa" name="empresa" autocomplete="organization">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">E-mail</label>
-                            <input type="email" id="email" name="email" required autocomplete="email">
-                        </div>
-                        <div class="form-group">
-                            <label for="telefone">Telefone</label>
-                            <input type="tel" id="telefone" name="telefone" autocomplete="tel">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">E-mail</label>
+                                <input type="email" id="email" name="email" required autocomplete="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="telefone">Telefone</label>
+                                <input type="tel" id="telefone" name="telefone" autocomplete="tel">
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="descricao">Descrição do projeto</label>
                             <textarea id="descricao" name="descricao" required placeholder="Conte brevemente o que você precisa construir..."></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Vamos Construir Juntos</button>
+                        <button type="submit" class="btn btn-primary">Falar com especialista</button>
                     </form>
                 </div>
             </div>
@@ -1263,7 +1203,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <img src="./templologo.png" alt="Templo Software" style="height: 32px;">
+                    <img src="./templologo.png" alt="Templo Software" style="height: 30px;">
                     <p>Engenharia de software sob medida para empresas que precisam de sistemas confiáveis e escaláveis.</p>
                 </div>
                 <div class="footer-col">
@@ -1272,32 +1212,30 @@
                         <li><a href="#sobre">Sobre</a></li>
                         <li><a href="#processo">Processo</a></li>
                         <li><a href="#cases">Cases</a></li>
-                        <li><a href="#contato">Contato</a></li>
-                        <li><a href="./domus.html">Domus</a></li>
+                        <li><a href="https://casaris.com.br/" target="_blank" rel="noopener noreferrer">Casaris</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>Serviços</h4>
                     <ul>
                         <li><a href="#servicos">Plataformas Web</a></li>
-                        <li><a href="#servicos">Sistemas Internos</a></li>
-                        <li><a href="#servicos">APIs</a></li>
+                        <li><a href="#servicos">Sistemas e APIs</a></li>
                         <li><a href="#servicos">Automação</a></li>
-                        <li><a href="#servicos">Consultoria</a></li>
+                        <li><a href="#mais-servicos">Consultoria</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Redes</h4>
+                    <h4>Contato</h4>
                     <ul>
-                        <li><a href="https://github.com/templosoftware" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-                        <li><a href="https://www.linkedin.com/company/templosoftware" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-                        <li><a href="https://www.instagram.com/templosoftware" target="_blank" rel="noopener noreferrer">Instagram</a></li>
                         <li><a href="https://wa.me/5579998457800" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+                        <li><a href="https://www.instagram.com/templosoftware" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                        <li><a href="https://www.linkedin.com/company/templosoftware" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                        <li><a href="https://github.com/templosoftware" target="_blank" rel="noopener noreferrer">GitHub</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Templo Software. Todos os direitos reservados.</p>
+                <p>&copy; 2026 Templo Software. Todos os direitos reservados.</p>
                 <div class="footer-legal">
                     <a href="#">Política de Privacidade</a>
                     <a href="#">Termos de Uso</a>
@@ -1307,7 +1245,6 @@
     </footer>
 
     <script>
-        // Header scroll
         const header = document.getElementById('header');
         function updateHeader() {
             header.classList.toggle('scrolled', window.scrollY > 20);
@@ -1315,7 +1252,6 @@
         window.addEventListener('scroll', updateHeader, { passive: true });
         updateHeader();
 
-        // Mobile menu
         const menuToggle = document.getElementById('menuToggle');
         const mobileNav = document.getElementById('mobileNav');
         menuToggle.addEventListener('click', () => {
@@ -1331,19 +1267,41 @@
             });
         });
 
-        // Scroll reveal
         const revealEls = document.querySelectorAll('.reveal');
-        const observer = new IntersectionObserver((entries) => {
+        const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
+                    revealObserver.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-        revealEls.forEach(el => observer.observe(el));
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        revealEls.forEach(el => revealObserver.observe(el));
 
-        // Contact form → WhatsApp
+        const stats = document.querySelectorAll('.stat-value[data-count]');
+        const animateCount = (el) => {
+            const target = Number(el.dataset.count);
+            const suffix = el.textContent.replace(/[\d.]/g, '');
+            const duration = 1200;
+            const start = performance.now();
+            const tick = (now) => {
+                const t = Math.min(1, (now - start) / duration);
+                const eased = 1 - Math.pow(1 - t, 3);
+                el.textContent = Math.round(target * eased) + suffix;
+                if (t < 1) requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+        };
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCount(entry.target);
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.4 });
+        stats.forEach(el => statsObserver.observe(el));
+
         document.getElementById('contactForm').addEventListener('submit', (e) => {
             e.preventDefault();
             const nome = document.getElementById('nome').value;
